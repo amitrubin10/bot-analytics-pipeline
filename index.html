@@ -1,520 +1,420 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>דשבורד ניהולי — דוח קריאות 15-19.03.26</title>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<title>דשבורד ניהולי — דוח קריאות בוט | 22-26.3.2026</title>
 <style>
-:root {
-  --primary: #1a3a5c;
-  --primary-light: #2c5f8a;
-  --accent: #e8913a;
-  --bg: #f0f2f5;
-  --card: #ffffff;
-  --text: #1e293b;
-  --text-muted: #64748b;
-  --border: #e2e8f0;
-  --success: #16a34a;
-  --danger: #dc2626;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; direction: rtl; }
-.container { max-width: 1400px; margin: 0 auto; padding: 20px; }
-.header { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: #fff; padding: 30px 40px; border-radius: 16px; margin-bottom: 24px; text-align: center; }
-.header h1 { font-size: 28px; margin-bottom: 6px; }
-.header p { font-size: 16px; opacity: 0.85; }
-.section-title { font-size: 22px; font-weight: 700; color: var(--primary); margin: 32px 0 16px; padding-right: 12px; border-right: 4px solid var(--accent); }
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#f0f4f8;color:#1e293b;direction:rtl;}
+.header{background:linear-gradient(135deg,#1a3a5c 0%,#2c5f8a 100%);color:white;padding:28px 32px 20px;}
+.header h1{font-size:1.65rem;font-weight:700;margin-bottom:5px;}
+.header .sub{font-size:0.9rem;opacity:0.82;}
+.header .meta{font-size:0.78rem;opacity:0.65;margin-top:7px;}
+.container{max-width:1400px;margin:0 auto;padding:22px 18px;}
 /* KPI */
-.kpi-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-bottom: 14px; }
-.kpi-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 24px; }
-.kpi-card { background: var(--card); border-radius: 12px; padding: 18px 16px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-top: 3px solid var(--primary); transition: transform 0.2s; }
-.kpi-card:hover { transform: translateY(-3px); }
-.kpi-card .value { font-size: 28px; font-weight: 800; color: var(--primary); margin-bottom: 4px; }
-.kpi-card .value.accent { color: var(--accent); }
-.kpi-card .value.success { color: var(--success); }
-.kpi-card .value.danger { color: var(--danger); }
-.kpi-card .value.warning { color: #b45309; }
-.kpi-card .value.small { font-size: 18px; }
-.kpi-card .label { font-size: 13px; color: var(--text-muted); }
-/* Charts */
-.charts-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
-.chart-card { background: var(--card); border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
-.chart-card h3 { font-size: 17px; color: var(--primary); margin-bottom: 16px; text-align: center; }
-.chart-card canvas { max-height: 400px; }
+.kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-bottom:22px;}
+.kpi{background:white;border-radius:11px;padding:16px 18px;box-shadow:0 2px 8px rgba(0,0,0,.07);border-top:4px solid #3b82f6;}
+.kpi.g{border-top-color:#16a34a;} .kpi.r{border-top-color:#dc2626;}
+.kpi.o{border-top-color:#e8913a;} .kpi.p{border-top-color:#8b5cf6;}
+.kpi .lbl{font-size:.76rem;color:#64748b;font-weight:600;margin-bottom:7px;}
+.kpi .val{font-size:1.8rem;font-weight:800;color:#1a3a5c;line-height:1;}
+.kpi.g .val{color:#16a34a;} .kpi.r .val{color:#dc2626;}
+.kpi.o .val{color:#e8913a;} .kpi.p .val{color:#8b5cf6;font-size:1rem;padding-top:5px;}
+.kpi .s{font-size:.72rem;color:#94a3b8;margin-top:4px;}
+/* Note */
+.note{background:#fffbeb;border:1px solid #f59e0b;border-radius:8px;padding:12px 16px;margin-bottom:20px;font-size:.83rem;color:#92400e;}
+/* Section */
+.sec{background:white;border-radius:11px;padding:22px;box-shadow:0 2px 8px rgba(0,0,0,.07);margin-bottom:20px;}
+.sec-title{font-size:1.05rem;font-weight:700;color:#1a3a5c;padding-bottom:9px;border-bottom:2px solid #e2e8f0;margin-bottom:14px;}
+.sec-sub{font-size:.8rem;color:#64748b;margin-bottom:14px;margin-top:-8px;}
+/* Two-col */
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.card{background:white;border-radius:11px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,.07);}
+.card h3{font-size:.92rem;font-weight:700;color:#1a3a5c;margin-bottom:12px;}
+/* SVG charts */
+.chart-svg{width:100%;overflow:visible;}
+.bar-lbl{font-size:11px;fill:#475569;text-anchor:end;}
+.bar-val{font-size:10px;fill:#64748b;}
+/* Doughnut */
+.donut-wrap{position:relative;width:220px;height:220px;margin:0 auto;}
+.donut-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none;}
+.donut-center .dc-num{font-size:1.35rem;font-weight:800;color:#1a3a5c;}
+.donut-center .dc-lbl{font-size:.68rem;color:#64748b;}
+.donut-legend{display:flex;flex-direction:column;gap:7px;margin-top:12px;}
+.dl-item{display:flex;align-items:center;gap:7px;font-size:.78rem;color:#475569;}
+.dl-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;}
 /* Funnel */
-.funnel-container { background: var(--card); border-radius: 12px; padding: 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 24px; }
-.funnel { display: flex; align-items: center; justify-content: center; gap: 0; flex-direction: row; }
-.funnel-step { text-align: center; position: relative; }
-.funnel-step .funnel-box { padding: 20px 30px; border-radius: 12px; color: #fff; font-weight: 700; font-size: 22px; min-width: 180px; }
-.funnel-step .funnel-label { margin-top: 8px; font-size: 14px; color: var(--text-muted); max-width: 260px; }
-.funnel-arrow { font-size: 32px; color: var(--primary-light); margin: 0 8px; }
-.funnel-sub { font-size: 13px; font-weight: 400; margin-top: 4px; }
-/* Table */
-.table-wrapper { background: var(--card); border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 24px; overflow-x: auto; }
-table { width: 100%; border-collapse: collapse; }
-th { background: var(--primary); color: #fff; padding: 12px 14px; font-size: 14px; text-align: right; }
-td { padding: 10px 14px; border-bottom: 1px solid var(--border); font-size: 14px; }
-tr:hover td { background: #f8fafc; }
-.pct-bar { display: inline-block; height: 8px; border-radius: 4px; background: var(--primary-light); margin-left: 8px; vertical-align: middle; }
+.funnel{display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;}
+.f-step{display:flex;align-items:center;justify-content:center;color:white;font-weight:700;border-radius:8px;padding:14px 20px;text-align:center;}
+.f-arrow{font-size:1.4rem;color:#94a3b8;margin:3px 0;}
+.f-bottom{display:flex;gap:12px;margin-top:4px;}
+.f-box{background:#f1f5f9;border:2px solid #cbd5e1;border-radius:8px;padding:10px 14px;text-align:center;min-width:130px;}
+.f-box .fn{font-size:1.15rem;font-weight:800;color:#2c5f8a;}
+.f-box .fl{font-size:.72rem;color:#475569;margin-top:2px;}
+/* Tables */
+.tbl{width:100%;border-collapse:collapse;font-size:.84rem;}
+.tbl th{background:#f1f5f9;color:#475569;font-weight:700;padding:9px 11px;text-align:right;border-bottom:2px solid #e2e8f0;}
+.tbl td{padding:8px 11px;border-bottom:1px solid #f1f5f9;vertical-align:middle;}
+.tbl tr:last-child td{border-bottom:none;}
+.tbl tr:hover td{background:#f8fafc;}
+.badge{display:inline-block;padding:2px 8px;border-radius:11px;font-size:.73rem;font-weight:600;color:white;white-space:nowrap;}
+.mbar{display:inline-block;height:7px;border-radius:4px;vertical-align:middle;}
 /* Tabs */
-.tabs-container { background: var(--card); border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 24px; }
-.tab-buttons { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
-.tab-btn { padding: 8px 16px; border: 1px solid var(--border); background: #f8fafc; border-radius: 8px; cursor: pointer; font-size: 13px; font-family: inherit; transition: all 0.2s; }
-.tab-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
-.tab-content { display: none; }
-.tab-content.active { display: block; }
-.conv-row { padding: 12px 16px; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 6px; cursor: pointer; transition: background 0.2s; display: flex; align-items: center; gap: 12px; }
-.conv-row:hover { background: #f1f5f9; }
-.conv-row .conv-num { font-weight: 700; color: var(--primary); min-width: 30px; }
-.conv-row .conv-id { font-size: 13px; color: var(--text-muted); min-width: 80px; }
-.conv-row .conv-q { flex: 1; font-size: 14px; }
-.badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; white-space: nowrap; }
-.badge-danger { background: #fef2f2; color: var(--danger); border: 1px solid #fecaca; }
-.badge-warning { background: #fffbeb; color: #b45309; border: 1px solid #fde68a; }
-.conv-answer { display: none; padding: 14px 18px; margin: 4px 0 10px 0; background: #f8fafc; border-right: 3px solid var(--accent); border-radius: 0 8px 8px 0; font-size: 14px; line-height: 1.8; color: var(--text); }
-.conv-answer.open { display: block; }
-/* Prose */
-.prose { background: var(--card); border-radius: 12px; padding: 28px 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 24px; font-size: 15px; line-height: 2; }
-.prose p { margin-bottom: 12px; }
-.prose ol { padding-right: 24px; }
-.prose ol li { margin-bottom: 8px; }
-.disclaimer { background: #fffbeb; border: 1px solid #fde68a; border-radius: 12px; padding: 20px 28px; margin-bottom: 24px; font-size: 14px; color: #92400e; }
-@media (max-width: 900px) {
-  .kpi-grid { grid-template-columns: repeat(3, 1fr); }
-  .kpi-grid-4 { grid-template-columns: repeat(2, 1fr); }
-  .charts-row { grid-template-columns: 1fr; }
-  .funnel { flex-direction: column; }
-  .funnel-arrow { transform: rotate(90deg); }
-}
-@media (max-width: 600px) {
-  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
-  .kpi-grid-4 { grid-template-columns: repeat(2, 1fr); }
-}
+.tabs{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px;}
+.tab-btn{padding:6px 13px;border-radius:18px;border:2px solid #e2e8f0;background:white;font-size:.76rem;font-weight:600;cursor:pointer;color:#64748b;transition:all .12s;}
+.tab-btn.active{background:#1a3a5c;color:white;border-color:#1a3a5c;}
+.tab-btn:hover:not(.active){border-color:#3b82f6;color:#3b82f6;}
+.tab-pane{display:none;} .tab-pane.active{display:block;}
+/* Conv table */
+.ctbl{width:100%;border-collapse:collapse;font-size:.83rem;}
+.ctbl th{background:#f1f5f9;color:#475569;font-weight:700;padding:9px 11px;text-align:right;border-bottom:2px solid #e2e8f0;}
+.q-row{cursor:pointer;}
+.q-row:hover td{background:#eff6ff;}
+.q-row td{padding:9px 11px;border-bottom:1px solid #f1f5f9;vertical-align:top;}
+.q-row.exp td{background:#f0f9ff;border-bottom:none;}
+.a-row{display:none;}
+.a-row.vis{display:table-row;}
+.a-row td{padding:0 11px 11px 11px;background:#e0f2fe;border-bottom:1px solid #bae6fd;}
+.a-inner{border-right:3px solid #3b82f6;padding:9px 13px;font-size:.8rem;color:#1e3a5f;line-height:1.6;}
+.a-lbl{font-size:.7rem;font-weight:700;color:#2563eb;margin-bottom:4px;text-transform:uppercase;}
+.sbadge{display:inline-block;padding:2px 7px;border-radius:9px;font-size:.7rem;font-weight:700;}
+.si{background:#fee2e2;color:#dc2626;} .sd{background:#fef3c7;color:#d97706;}
+.exp-ico{font-size:.7rem;color:#94a3b8;margin-left:5px;display:inline-block;transition:transform .15s;}
+.q-row.exp .exp-ico{transform:rotate(90deg);}
+/* Exec/Training */
+.ep{line-height:1.75;margin-bottom:11px;font-size:.88rem;color:#334155;}
+.ib{margin-bottom:20px;}
+.it{font-weight:700;color:#1a3a5c;margin-bottom:7px;font-size:.9rem;}
+.ibody{font-size:.85rem;line-height:1.7;color:#334155;}
+.ibody ul,.ibody ol{padding-right:18px;margin-top:5px;}
+.ibody li{margin-bottom:4px;}
+/* Disclaimer */
+.disc{background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;padding:14px 18px;font-size:.8rem;color:#64748b;line-height:1.65;}
+.footer{text-align:center;padding:18px;font-size:.76rem;color:#94a3b8;border-top:1px solid #e2e8f0;margin-top:8px;}
 </style>
 </head>
 <body>
-<div class="container">
 
 <div class="header">
-  <h1>דשבורד ניהולי — דוח קריאות 15-19.03.26</h1>
-  <p>ניתוח פניות לקוחות מתוך הבוט לנציג שירות</p>
+  <h1>דשבורד ניהולי — דוח קריאות בוט | 22-26.3.2026</h1>
+  <div class="sub">ניתוח פניות לקוחות מתוך הבוט לנציג שירות</div>
+  <div class="meta">תאריך הפקה: 29.03.2026 &nbsp;|&nbsp; סה"כ קריאות בדוח: 716 &nbsp;|&nbsp; שיחות שנותחו: 715</div>
 </div>
 
-<!-- KPI Row 1 (5 cards) -->
+<div class="container">
+
+<!-- KPI -->
 <div class="kpi-grid">
-  <div class="kpi-card"><div class="value">5,442</div><div class="label">סך קריאות בטבלת שירות</div></div>
-  <div class="kpi-card"><div class="value">3,310</div><div class="label">סך קריאות בבוט</div></div>
-  <div class="kpi-card"><div class="value accent">685</div><div class="label">קריאות שנפתחו לנציג</div></div>
-  <div class="kpi-card"><div class="value success">79.3%</div><div class="label">שיעור אי-פתיחה לנציג</div></div>
-  <div class="kpi-card"><div class="value success">48.2%</div><div class="label">שיעור טיפול בוט ללא נציג (מסך השירות)</div></div>
-</div>
-<!-- KPI Row 2 (4 cards) -->
-<div class="kpi-grid-4">
-  <div class="kpi-card"><div class="value success">85.3%</div><div class="label">אחוז הצלחה (מענה תקין)</div></div>
-  <div class="kpi-card"><div class="value danger">80</div><div class="label">שיחות לא תקינות</div></div>
-  <div class="kpi-card"><div class="value warning">21</div><div class="label">שיחות לא ניתן לקבוע</div></div>
-  <div class="kpi-card"><div class="value accent small">טכני + משתמשים והרשאות (34)</div><div class="label">נושא מוביל בבעיות</div></div>
+  <div class="kpi"><div class="lbl">סך קריאות בטבלת שירות</div><div class="val">5,979</div><div class="s">כלל פניות השירות לתקופה</div></div>
+  <div class="kpi"><div class="lbl">סך קריאות בבוט</div><div class="val">3,551</div><div class="s">59.4% מסך קריאות השירות</div></div>
+  <div class="kpi r"><div class="lbl">קריאות שנפתחו לנציג</div><div class="val">716</div><div class="s">20.2% מקריאות הבוט</div></div>
+  <div class="kpi g"><div class="lbl">שיעור אי-פתיחה לנציג</div><div class="val">79.8%</div><div class="s">מתוך קריאות הבוט</div></div>
+  <div class="kpi g"><div class="lbl">שיעור טיפול בוט ללא נציג</div><div class="val">47.4%</div><div class="s">מסך קריאות השירות</div></div>
+  <div class="kpi g"><div class="lbl">אחוז הצלחה — מענה תקין</div><div class="val">90.2%</div><div class="s">645 / 715 שיחות</div></div>
+  <div class="kpi r"><div class="lbl">שיחות לא תקינות</div><div class="val">41</div><div class="s">5.7% מהשיחות שנותחו</div></div>
+  <div class="kpi o"><div class="lbl">שיחות לא ניתן לקבוע</div><div class="val">29</div><div class="s">4.1% מהשיחות שנותחו</div></div>
+  <div class="kpi p"><div class="lbl">נושא מוביל בבעיות</div><div class="val">טכני + משתמשים</div><div class="s">16 שיחות בעייתיות</div></div>
 </div>
 
-<!-- Charts Row -->
-<h2 class="section-title">התפלגות נושאים</h2>
-<div class="charts-row">
-  <div class="chart-card">
-    <h3>התפלגות נושאים — כלל 685 הקריאות</h3>
-    <canvas id="topicBarChart"></canvas>
-  </div>
-  <div class="chart-card">
-    <h3>קריאות שנפתחו לנציג מול שלא נפתחו</h3>
-    <canvas id="doughnutChart"></canvas>
-  </div>
-</div>
+<!-- Note -->
+<div class="note"><strong>הערה מתודולוגית:</strong> שיעור אי-פתיחה לנציג משקף לקוחות שלא פתחו קריאה — ולא מהווה מדד ישיר לאיכות המענה. פתיחת קריאה היא אות לחיכוך ולא הוכחה לכשל בבוט.</div>
 
-<!-- Problematic calls chart -->
-<h2 class="section-title">התפלגות נושאים — שיחות לא תקינות + לא ניתן לקבוע</h2>
-<div class="chart-card" style="margin-bottom:24px;">
-  <h3>101 שיחות בעייתיות — לפי נושא</h3>
-  <canvas id="problematicBarChart"></canvas>
+<!-- Charts row -->
+<div class="row2">
+  <div class="card">
+    <h3>התפלגות נושאים — כלל הקריאות (716)</h3>
+    <div id="bar-all"></div>
+  </div>
+  <div class="card">
+    <h3>קריאות בוט: פתיחה לנציג מול ספיגה</h3>
+    <div class="donut-wrap">
+      <svg id="donut-svg" viewBox="0 0 220 220" width="220" height="220"></svg>
+      <div class="donut-center"><div class="dc-num">3,551</div><div class="dc-lbl">קריאות בוט</div></div>
+    </div>
+    <div class="donut-legend">
+      <div class="dl-item"><div class="dl-dot" style="background:#dc2626"></div><span>פתחו קריאה לנציג — 716 (20.2%)</span></div>
+      <div class="dl-item"><div class="dl-dot" style="background:#16a34a"></div><span>טופל ללא נציג — 2,835 (79.8%)</span></div>
+    </div>
+  </div>
 </div>
 
 <!-- Funnel -->
-<h2 class="section-title">משפך פניות</h2>
-<div class="funnel-container">
+<div class="sec">
+  <div class="sec-title">משפך קריאות — מבוט לנציג</div>
   <div class="funnel">
-    <div class="funnel-step">
-      <div class="funnel-box" style="background:var(--primary);font-size:26px;">3,310</div>
-      <div class="funnel-label">משתמשי בוט</div>
-    </div>
-    <div class="funnel-arrow">&#9664;</div>
-    <div class="funnel-step">
-      <div class="funnel-box" style="background:var(--accent);font-size:24px;">685<div class="funnel-sub">20.7%</div></div>
-      <div class="funnel-label">קריאות שנפתחו לנציג</div>
-    </div>
-    <div class="funnel-arrow">&#9664;</div>
-    <div class="funnel-step">
-      <div class="funnel-box" style="background:var(--primary-light);font-size:18px;">
-        Top 3: 357 קריאות<div class="funnel-sub">52.1% מהפניות</div>
-      </div>
-      <div class="funnel-label">טכני (149) | מע״מ (108) | גיבויים (100)</div>
-    </div>
+    <div class="f-step" style="background:#1a3a5c;width:420px;"><div><div style="font-size:1.35rem;">3,551</div><div style="font-size:.8rem;opacity:.85;">משתמשי בוט — סך קריאות בבוט</div></div></div>
+    <div class="f-arrow">▼</div>
+    <div class="f-step" style="background:#2c5f8a;width:300px;"><div><div style="font-size:1.35rem;">716</div><div style="font-size:.8rem;opacity:.85;">קריאות שנפתחו לנציג (20.2%)</div></div></div>
+    <div class="f-arrow">▼</div>
+    <div class="f-bottom" id="funnel-bottom"></div>
   </div>
 </div>
 
-<!-- Topic Detail Table -->
-<h2 class="section-title">טבלת נושאים מפורטת</h2>
-<div class="table-wrapper">
-<table>
-<thead><tr><th>#</th><th>נושא</th><th>כמות</th><th>אחוז</th><th>התפלגות</th></tr></thead>
-<tbody id="topicTableBody"></tbody>
-</table>
+<!-- All Topics Table -->
+<div class="sec">
+  <div class="sec-title">התפלגות נושאים — כלל הקריאות</div>
+  <table class="tbl" id="tbl-all"></table>
 </div>
 
-<!-- Problematic Conversations -->
-<h2 class="section-title">שיחות לא תקינות ולא ניתן לקבוע — לפי נושא</h2>
-<p style="font-size:14px;color:var(--text-muted);margin-bottom:16px;">לחיצה על שאלה מציגה את התשובה שניתנה על ידי הבוט</p>
-<div class="tabs-container">
-  <div class="tab-buttons" id="tabButtons"></div>
-  <div id="tabContents"></div>
+<!-- Invalid Topics -->
+<div class="sec">
+  <div class="sec-title">התפלגות נושאים — שיחות לא תקינות ולא ניתן לקבוע (70 סה"כ)</div>
+  <div class="sec-sub">לחיצה על שאלה מציגה את התשובה שניתנה על ידי הבוט</div>
+  <div class="row2" style="margin-bottom:0;">
+    <div><div id="bar-inv"></div></div>
+    <div><table class="tbl" id="tbl-inv"></table></div>
+  </div>
+</div>
+
+<!-- Conversations -->
+<div class="sec">
+  <div class="sec-title">שיחות לא תקינות ולא ניתן לקבוע — לפי נושא</div>
+  <div class="sec-sub">לחיצה על שאלה מציגה את התשובה שניתנה על ידי הבוט</div>
+  <div class="tabs" id="conv-tabs"></div>
+  <div id="conv-panels"></div>
 </div>
 
 <!-- Executive Summary -->
-<h2 class="section-title">סיכום ניהולי</h2>
-<div class="prose">
-  <p>בתקופת הדוח טופלו בבוט 3,310 קריאות. מתוך קריאות אלו, 685 קריאות הגיעו לנציג ונכללו גם בתוך 5,442 הקריאות שבטבלת השירות. בנוסף, 2,625 קריאות טופלו בבוט מבלי שהגיעו כלל לנציג. המשמעות היא שהבוט כבר מייצר תרומה תפעולית ממשית, הן כמנגנון מענה ראשוני והן ככלי שמפחית עומס מנציגי השירות. שיעור אי הפתיחה לנציג מתוך קריאות הבוט עמד על 79.3 אחוז, ושיעור הקריאות שטופלו בבוט ללא הגעה לנציג עמד על 48.2 אחוז ביחס לטבלת השירות.</p>
-  <p>מבחינת איכות המענה, מתוך 685 שיחות שנותחו, 584 סווגו כתקינות, 80 כלא תקינות ו-21 כלא ניתן לקבוע. אחוז ההצלחה השמרני עמד על 85.3 אחוז. לצד זאת, עיקר הקשיים מרוכזים במספר תחומים ברורים, ובעיקר טכני + משתמשים והרשאות, מע״מ וניכוי במקור, גיבויים וממשקים, ומספר הקצאה, חשבוניות ישראל, טוקן ורשות המיסים. המשמעות הניהולית היא שהבוט כבר נותן ערך גבוה, אך נדרש חיזוק ממוקד במוקדי הכשל המרכזיים כדי לשפר את איכות המענה ולצמצם העברה מיותרת לנציג.</p>
+<div class="sec">
+  <div class="sec-title">סיכום ניהולי</div>
+  <div id="exec-sum"></div>
 </div>
 
 <!-- Training Insights -->
-<h2 class="section-title">תובנות פרקטיות לאימון הבוט</h2>
-<div class="prose">
-<ol>
-  <li>יש לחזק קודם את תחום טכני + משתמשים והרשאות, שהוא גם התחום הגדול ביותר וגם מוקד הכשל המרכזי בשיחות הלא תקינות.</li>
-  <li>יש להוסיף לבוט שכבת אבחון ראשונית לתקלות נפוצות, כגון תוכנה לא עולה, חיבור מהבית, התקנת עמדה, גרסה לא מעודכנת והרשאות.</li>
-  <li>יש להקים מילון קודי שגיאה עם פירוש, בדיקות ראשוניות ותנאי הסלמה, משום שקיימים קודים והודעות שגיאה שהבוט כיום אינו יודע לפרש.</li>
-  <li>יש להרחיב את הידע על ממשקים חיצוניים, ייבוא וייצוא קבצים, כדי לצמצם הפניות מהירות מדי לנציג בתחומים אלה.</li>
-  <li>יש לשפר את המענה בנושאי מע״מ, דיווחים, מספרי הקצאה, טוקנים ורשות המיסים, שהם גם בעלי נפח גבוה וגם בעלי תרומה בולטת לשיחות הלא תקינות.</li>
-  <li>יש לשפר את איכות שאלות ההבהרה, כך שהבוט יבקש פרטים ממוקדים יותר לפני שהוא מסלים לנציג או עוצר את המענה.</li>
-  <li>מומלץ למדוד בדשבורד לא רק תקין ולא תקין, אלא גם את סוג הכשל, כדי לנהל את תהליך האימון בצורה מדויקת יותר לאורך זמן.</li>
-</ol>
+<div class="sec">
+  <div class="sec-title">תובנות פרקטיות לאימון הבוט</div>
+  <div id="training"></div>
 </div>
 
 <!-- Disclaimer -->
-<div class="disclaimer">
-  <strong>הערת מתודולוגיה:</strong> הנתונים בדוח זה מבוססים על ניתוח אוטומטי של שיחות הבוט. הסיווג לנושאים ולסטטוס (תקין / לא תקין / לא ניתן לקבוע) נעשה על בסיס ניתוח תוכן השיחה ואינו מחליף שיקול דעת מקצועי. מומלץ להצליב עם משוב נציגי השירות.
-</div>
+<div class="disc"><strong>הסתייגות מקצועית:</strong> פתיחת קריאת שירות על-ידי לקוח מהווה אות אזהרה בלבד ואינה מוכיחה כשל מוצר או תקלה בבוט. שיעור הקריאות שלא הגיעו לנציג אינו הוכחה לאיכות מענה מלאה. כל תובנה מבוססת אך ורק על מסמכי המקור ונתוני המעטפה שסופקו ידנית.</div>
 
-</div><!-- /container -->
+</div>
+<div class="footer">דשבורד ניהולי | דוח קריאות בוט | 22-26.3.2026 | הופק ב-29.03.2026</div>
 
 <script>
-const TOPIC_COLORS = ['#1a3a5c','#2c5f8a','#3b82f6','#6366f1','#8b5cf6','#a78bfa','#e8913a','#f59e0b','#16a34a','#64748b','#94a3b8'];
+// ============================================================
+// UTILITIES
+// DATA
+// ============================================================
+var COLORS = ['#1a3a5c','#2c5f8a','#3b82f6','#6366f1','#8b5cf6','#a78bfa','#e8913a','#f59e0b','#16a34a','#64748b','#94a3b8'];
+var CONV; // assigned in window.onload after DOM ready
 
-const DATA = {
-  topics: [
-    { name: '\u05D8\u05DB\u05E0\u05D9 + \u05DE\u05E9\u05EA\u05DE\u05E9\u05D9\u05DD \u05D5\u05D4\u05E8\u05E9\u05D0\u05D5\u05EA', count: 149, pct: 21.8 },
-    { name: '\u05DE\u05E2"\u05DE \u05D5\u05E0\u05D9\u05DB\u05D5\u05D9 \u05D1\u05DE\u05E7\u05D5\u05E8', count: 108, pct: 15.8 },
-    { name: '\u05D2\u05D9\u05D1\u05D5\u05D9\u05D9\u05DD \u05D5\u05DE\u05DE\u05E9\u05E7\u05D9\u05DD', count: 100, pct: 14.6 },
-    { name: '\u05DE\u05E1\u05E4\u05E8 \u05D4\u05E7\u05E6\u05D0\u05D4, \u05D7\u05E9\u05D1\u05D5\u05E0\u05D9\u05D5\u05EA \u05D9\u05E9\u05E8\u05D0\u05DC, \u05D8\u05D5\u05E7\u05DF \u05D5\u05E8\u05E9\u05D5\u05EA \u05D4\u05DE\u05D9\u05E1\u05D9\u05DD', count: 91, pct: 13.3 },
-    { name: '\u05DE\u05E1\u05DE\u05DB\u05D9\u05DD, \u05E4\u05E8\u05D9\u05D8\u05D9\u05DD \u05D5\u05E0\u05D9\u05D4\u05D5\u05DC \u05DE\u05DC\u05D0\u05D9', count: 69, pct: 10.1 },
-    { name: '\u05D4\u05E0\u05D4\u05DC\u05EA \u05D7\u05E9\u05D1\u05D5\u05E0\u05D5\u05EA', count: 58, pct: 8.5 },
-    { name: '\u05E9\u05DC\u05D9\u05D7\u05D4 \u05DC\u05DE\u05D9\u05D9\u05DC, \u05D7\u05EA\u05D9\u05DE\u05D4 \u05D3\u05D9\u05D2\u05D9\u05D8\u05DC\u05D9\u05EA, \u05D4\u05D3\u05E4\u05E1\u05D5\u05EA', count: 47, pct: 6.9 },
-    { name: '\u05DB\u05DC\u05DC\u05D9 \u05D5\u05D3\u05D5\u05E7\u05D4', count: 27, pct: 3.9 },
-    { name: '\u05D3\u05D5\u05D7\u05D5\u05EA', count: 23, pct: 3.4 },
-    { name: '\u05E9\u05D1"\u05D0 \u05D5\u05D0\u05E9\u05E8\u05D0\u05D9', count: 12, pct: 1.8 },
-    { name: '\u05E7\u05D1\u05DC\u05D5\u05EA \u05EA\u05E8\u05D5\u05DE\u05D4', count: 1, pct: 0.1 }
-  ],
-  problematicTopics: [
-    { name: '\u05D8\u05DB\u05E0\u05D9 + \u05DE\u05E9\u05EA\u05DE\u05E9\u05D9\u05DD \u05D5\u05D4\u05E8\u05E9\u05D0\u05D5\u05EA', count: 34 },
-    { name: '\u05DE\u05E2"\u05DE \u05D5\u05E0\u05D9\u05DB\u05D5\u05D9 \u05D1\u05DE\u05E7\u05D5\u05E8', count: 16 },
-    { name: '\u05D2\u05D9\u05D1\u05D5\u05D9\u05D9\u05DD \u05D5\u05DE\u05DE\u05E9\u05E7\u05D9\u05DD', count: 13 },
-    { name: '\u05DE\u05E1\u05DE\u05DB\u05D9\u05DD, \u05E4\u05E8\u05D9\u05D8\u05D9\u05DD \u05D5\u05E0\u05D9\u05D4\u05D5\u05DC \u05DE\u05DC\u05D0\u05D9', count: 11 },
-    { name: '\u05DE\u05E1\u05E4\u05E8 \u05D4\u05E7\u05E6\u05D0\u05D4, \u05D7\u05E9\u05D1\u05D5\u05E0\u05D9\u05D5\u05EA \u05D9\u05E9\u05E8\u05D0\u05DC, \u05D8\u05D5\u05E7\u05DF \u05D5\u05E8\u05E9\u05D5\u05EA \u05D4\u05DE\u05D9\u05E1\u05D9\u05DD', count: 8 },
-    { name: '\u05D3\u05D5\u05D7\u05D5\u05EA', count: 7 },
-    { name: '\u05D4\u05E0\u05D4\u05DC\u05EA \u05D7\u05E9\u05D1\u05D5\u05E0\u05D5\u05EA', count: 5 },
-    { name: '\u05E9\u05DC\u05D9\u05D7\u05D4 \u05DC\u05DE\u05D9\u05D9\u05DC, \u05D7\u05EA\u05D9\u05DE\u05D4 \u05D3\u05D9\u05D2\u05D9\u05D8\u05DC\u05D9\u05EA, \u05D4\u05D3\u05E4\u05E1\u05D5\u05EA', count: 3 },
-    { name: '\u05DB\u05DC\u05DC\u05D9 \u05D5\u05D3\u05D5\u05E7\u05D4', count: 2 },
-    { name: '\u05E9\u05D1"\u05D0 \u05D5\u05D0\u05E9\u05E8\u05D0\u05D9', count: 1 },
-    { name: '\u05E7\u05D1\u05DC\u05D5\u05EA \u05EA\u05E8\u05D5\u05DE\u05D4', count: 1 }
-  ]
-};
-
-// Use readable names for topics mapping
-const TOPIC_NAMES = [
-  'טכני + משתמשים והרשאות',
-  'מע"מ וניכוי במקור',
-  'גיבויים וממשקים',
-  'מספר הקצאה, חשבוניות ישראל, טוקן ורשות המיסים',
-  'מסמכים, פריטים וניהול מלאי',
-  'הנהלת חשבונות',
-  'שליחה למייל, חתימה דיגיטלית, הדפסות',
-  'כללי ודוקה',
-  'דוחות',
-  'שב"א ואשראי',
-  'קבלות תרומה'
+var TOPICS_ALL = [
+  {n:'מע"מ וניכוי במקור',c:179,p:25.0},
+  {n:'גיבויים וממשקים',c:135,p:18.9},
+  {n:'טכני + משתמשים והרשאות',c:119,p:16.6},
+  {n:'מספר הקצאה, חשבוניות ישראל, טוקן ורשות המיסים',c:85,p:11.9},
+  {n:'הנהלת חשבונות',c:65,p:9.1},
+  {n:'מסמכים, פריטים וניהול מלאי',c:42,p:5.9},
+  {n:'שליחה למייל, חתימה דיגיטלית, הדפסות',c:35,p:4.9},
+  {n:'דוחות',c:19,p:2.7},
+  {n:'שב"א ואשראי',c:18,p:2.5},
+  {n:'כללי ודוקה',c:10,p:1.4},
+  {n:'קבלות תרומה',c:9,p:1.3}
 ];
 
-DATA.topics.forEach((t,i) => { t.name = TOPIC_NAMES[i]; });
-DATA.problematicTopics[0].name = TOPIC_NAMES[0];
-DATA.problematicTopics[1].name = TOPIC_NAMES[1];
-DATA.problematicTopics[2].name = TOPIC_NAMES[2];
-DATA.problematicTopics[3].name = TOPIC_NAMES[4];
-DATA.problematicTopics[4].name = TOPIC_NAMES[3];
-DATA.problematicTopics[5].name = TOPIC_NAMES[8];
-DATA.problematicTopics[6].name = TOPIC_NAMES[5];
-DATA.problematicTopics[7].name = TOPIC_NAMES[6];
-DATA.problematicTopics[8].name = TOPIC_NAMES[7];
-DATA.problematicTopics[9].name = TOPIC_NAMES[9];
-DATA.problematicTopics[10].name = TOPIC_NAMES[10];
-
-const CONVERSATIONS = [
-  {num:1, id:'10267424', topic:'טכני + משתמשים והרשאות', q:'לא מצליחה להוריד את התוכנה של עדכון גירסה', a:'את שואלת לגבי הקושי בהורדת התוכנה עבור עדכון הגרסה. המידע לגבי פתרון תקלה בהורדת קובץ העדכון אינו מופיע בתיעוד שברשותי, ולכן איני יודע את התשובה לכך. כיוון שסיפקת בהודעתך את כל המידע הנדרש (שם, מספר טלפון ותיאור ברור של הבעיה), הדרך לקבל שירות מנציג או לפתוח קריאת שירות היא על ידי לחיצה על כפתור \u0022פתיחת קריאה\u0022 כאן בצ\u0027ט. האם תרצי לשאול משהו נוסף או לקבל פירוט על נושא אחר בתוכנה?', status:'לא תקין'},
-  {num:2, id:'10267376', topic:'גיבויים וממשקים', q:'איך להוציא חשבונית סוכן לקובץ אקסל? המשתמש שואל איך לייצא חשבונית סוכן לקובץ אקסל.', a:'שלום סשה, אתה שואל לגבי תפעול התוכנה וכיצד ניתן לייצא חשבונית סוכן לקובץ אקסל. על פי התיעוד הקיים, קיימת אפשרות כללית של \u0022יצוא מסמכים ל-Excel\u0022, אך מאחר שאין במידע שברשותי הנחיות מפורטות לביצוע הפעולה עבור \u0022חשבונית סוכן\u0022 באופן ספציפי, איני יודע את התשובה המדויקת לשאלתך. כיוון שציינת את שמך ואת מספר הטלפון שלך וסיפקת שאלה ברורה בנושא השימוש בתוכנה, הדרך היחידה לקבל שירות מנציג או לפתוח קריאת שירות היא על ידי לחיצה על כפתור \u0022פתיחת קריאה\u0022 בצ\u0027ט. אשמח לעזור אם תרצה פירוט נוסף או אם לא קיבלת תשובה מספקת.', status:'לא תקין'},
-  {num:3, id:'10267310', topic:'גיבויים וממשקים', q:'לא קולט בביזיבוקס דפי בנק. המשתמשת מדווחת על קושי בקליטת דפי בנק דרך ביזיבוקס.', a:'אתה מציין שאתה נתקל בקושי בקליטת דפי בנק באמצעות ממשק \u0022ביזיבוקס\u0022 (BusyBox). מכיוון שהמידע לגבי עבודה עם ממשק ביזיבוקס אינו מופיע בתיעוד שברשותי, איני יודע את התשובה לשאלה זו. נשמח לעמוד לשירותך בשאלות נוספות לגבי אופן השימוש בתוכנה. האם תרצה לשאול על נושא אחר או לקבל פירוט לגבי שיטות יבוא דפי בנק אחרות הנתמכות במערכת?', status:'לא תקין'},
-  {num:4, id:'10267210', topic:'טכני + משתמשים והרשאות', q:'נודה לעזרה בהגדרת חשבשבת לברקוד', a:'אתם מבקשים לקבל עזרה בנוגע להגדרת ברקוד בתוכנת חשבשבת. מאחר שהוראות השימוש וההגדרות המפורטות עבור ברקוד אינן מופיעות בתיעוד שברשותי, איני יודע מהן הפעולות המדויקות לביצוע הגדרה זו. הנכם מוזמנים לשאול שאלה נוספת אם תרצו לקבל פירוט בנושא אחר, או במידה ולא קיבלתם תשובה מספקת.', status:'לא תקין'},
-  {num:5, id:'10267111', topic:'מספר הקצאה, חשבוניות ישראל, טוקן ורשות המיסים', q:'בניסיון לקבל מספר הקצאה מופיע תקלה 403', a:'אתה מציין כי מתקבלת שגיאה 403 בעת ניסיון לקבל מספר הקצאה. מאחר שהמידע לגבי תקלה ספציפית זו אינו מופיע בתיעוד שברשותי, איני יודע את התשובה המדויקת. כדי שניתן יהיה לסייע לך באמצעות פתיחת קריאת שירות לנציג טכני, חסרים בשיחה הפרטים הבאים: 1. שמך. 2. מספר טלפון תקין (בעל 7 ספרות לפחות). אנא השלם את המידע החסר כדי שנוכל להתקדם בטיפול לפנייתך. האם תרצה לשאול שאלה נוספת או לקבל פירוט בנושא אחר?', status:'לא תקין'},
-  {num:6, id:'10267014', topic:'גיבויים וממשקים', q:'איך אפשר לשחזר קובץ 100? המשתמשת מבקשת לדעת כיצד לשחזר קובץ 100.', a:'אני מבין שאתה מבקש לדעת כיצד ניתן לשחזר קובץ 100. מכיוון שהמידע לגבי \u0022קובץ 100\u0022 אינו מופיע בתיעוד ובצילומים של הוראות השימוש שברשותי, איני יודע את התשובה לשאלה זו. במידה והתכוונת לשחזור קובץ גיבוי (BAK), שחזור קובץ מס\u0022ב או שימוש במערכת 1000, אשמח לספק מידע רלוונטי מהתיעוד הקיים. אתה מוזמן לשאול שוב אם תרצה פירוט נוסף או במקרה שלא קיבלת תשובה מספקת.', status:'לא תקין'},
-  {num:7, id:'10266935', topic:'הנהלת חשבונות', q:'כשאני קולטת מנות החשבשבת נתקעת בכל פעם כזאת ומאלצת אותי לסגור ולפתוח אותה מחדש דרך מנהל משימות כמה פעמים', a:'את מציינת שתוכנת חשבשבת נתקעת בכל פעם שאת מבצעת קליטת מנות, דבר המאלץ אותך לסגור את התוכנה בצורה יזומה דרך מנהל המשימות. איני יודע מהו הפתרון לתקלה זו, כיוון שהמידע לגבי מצב שבו התוכנה נתקעת בעת קליטת מנות אינו מופיע בתיעוד שברשותי.', status:'לא תקין'},
-  {num:8, id:'10266857', topic:'מספר הקצאה, חשבוניות ישראל, טוקן ורשות המיסים', q:'כשאני רוצה להתחבר לרשות המסים מופיע לי חלון {"err":"JWT Token is missing"}', a:'לגבי שאלתך על הופעת הודעת השגיאה {"err":"JWT Token is missing"} בעת ניסיון ההתחברות לרשות המסים, איני יודע מהו הפתרון לכך כיוון שמידע לגבי שגיאה ספציפית זו אינו מופיע במסמכי התיעוד שברשותי.', status:'לא תקין'},
-  {num:9, id:'10266807', topic:'טכני + משתמשים והרשאות', q:'אני רוצה שיחברו אותי מהבית. המשתמשת מבקשת להתחבר לחשבשבת מהבית.', a:'לגבי שאלתך על חיבור מהבית, המידע אינו מופיע בתיעוד שברשותי ולכן איני יודע את התשובה לכך.', status:'לא תקין'},
-  {num:10, id:'10266800', topic:'טכני + משתמשים והרשאות', q:'התוכנה לא עולה. המשתמש מציין שהתוכנה לא עולה.', a:'אתה מציין שתוכנת חשבשבת לא עולה. מכיוון שהמידע לגבי תקלה זו אינו מופיע בתיעוד שברשותי, איני יודע את התשובה.', status:'לא תקין'},
-  {num:11, id:'10266747', topic:'דוחות', q:'איך אפשר להוציא גיול חובות לתאריך 31/12/2025 של לקוחות. המשתמשת מבקשת לדעת איך להפיק דוח גיול חובות לתאריך עתידי.', a:'אתה שואל כיצד ניתן להפיק דוח גיול חובות ללקוחות לתאריך ה-31/12/2025. על פי המידע שברשותי, החישוב עבור גיול חובות מתבצע בתפריט גיול חובות. מכיוון שהתיעוד שבידי אינו כולל הנחיות ספציפיות להפקת הדוח לתאריך מסוים בתוך התפריט, איני יודע לספק פרטים נוספים מעבר לכך.', status:'לא תקין'},
-  {num:12, id:'10266504', topic:'מספר הקצאה, חשבוניות ישראל, טוקן ורשות המיסים', q:'מה עושים כשמתקבלת הודעה: \u0022לא התקבל מספר הקצאה. חלה תקלה מספר 445\u0022', a:'לצערי, איני יודע את התשובה לשאלה זו, שכן מידע לגבי תקלה מספר 445 אינו מופיע במסמכי ההדרכה שברשותי.', status:'לא תקין'},
-  {num:13, id:'10266423', topic:'מע"מ וניכוי במקור', q:'יש לי גרסה 2025 ואני לא מצליחה לשנות את הדיווח של המע\u0022מ מאחת לחודש לאחת לחודשיים.', a:'את מציינת שברצונך לשנות את תדירות הדיווח למע\u0022מ בגרסה 2025 מדיווח חודשי לדיווח דו-חודשי. על פי התיעוד הקיים, במהדורה a2026 נוסף בתפריט \u0022הגדרות\u0022 > \u0022הגדרות חברה\u0022 כפתור בשם \u0022הגדרות למייצגים\u0022, שבו ניתן להגדיר את תדירות הדיווח. מאחר שהתיעוד שבידי אינו מפרט את המיקום המדויק של הגדרה זו בגרסה 2025, איני יודע בוודאות היכן היא ממוקמת בגרסה שברשותך.', status:'לא תקין'},
-  {num:14, id:'10266319', topic:'מע"מ וניכוי במקור', q:'כשאני מפיקה קובץ PCN אין לי אפשרות לסמן תנועות שאני לא רוצה שיכנסו לדוח. המשתמשת מציינת שההגדרה \u0027הצגת חלון סינון תשומות גם כאשר אין החזר\u0027 מסומנת ובכל זאת החלון לא מופיע.', a:'התשובה הראשונה שניתנה היא לבדוק בהגדרות חברה > דוח למע\u0022מ \u2013 874PCN, ולסמן את הסעיף: \u0027הצגת חלון סינון תשומות גם כאשר אין החזר\u0027. לאחר שהמשתמשת ציינה שהאפשרות כבר מסומנת, התשובה השנייה כללה בדיקות נוספות. לבסוף, המערכת ציינה שאין לה מידע נוסף על סיבות אחרות לתקלה.', status:'לא תקין'},
-  {num:15, id:'10266275', topic:'טכני + משתמשים והרשאות', q:'מדוע אנחנו לא יכולים לייבא קבצי הכנסות? מופיע לנו כי המנוי אינו בשירות', a:'אתם שואלים מדוע אינכם יכולים לייבא קבצי הכנסות בשל הודעה המציינת כי המנוי אינו בשירות. על פי התיעוד, במידה ורכשתם את מודול הממשקים בעבר והתקלה מופיעה כעת, יש לפתוח קריאת שירות לצוות התמיכה.', status:'לא תקין'},
-  {num:16, id:'10266204', topic:'טכני + משתמשים והרשאות', q:'לא מצליחים להיכנס - גרסה לא מעודכנת. רשום שגרסה לא מעודכנת. צריכים את עזרתכם בדחיפות.', a:'אתה מציין שקיימת בעיה להיכנס לתוכנה בשל גרסה שאינה מעודכנת. על פי המידע שברשותי, במקרים של תקלות בכניסה עקב גרסה לא מעודכנת, יש לפתוח קריאת שירות לצוות התמיכה.', status:'לא תקין'},
-  {num:17, id:'10266162', topic:'טכני + משתמשים והרשאות', q:'החליפו לנו רשת, קלטתי חומר של מספר חברות לפני ההחלפה, יש 2 חברות שלא עודכן החומר שקלטתי בגין 2.26', a:'שלום חנה, כיוון שסיפקת את כל המידע הנדרש, הדרך היחידה לקבל שירות מנציג או לפתוח קריאת שירות בנושא עדכון הנתונים היא על ידי לחיצה על כפתור \u0022פתיחת קריאה\u0022 המופיע כאן בצ\u0027ט.', status:'לא תקין'},
-  {num:18, id:'10266157', topic:'טכני + משתמשים והרשאות', q:'יש לי תקלה. נכנסת להנהלת חשבונות-תשלומים. הכל בצבע אפור ולא נותן לבחור שום פעולה.', a:'את שואלת מדוע בתפריט הנהלת חשבונות > תשלומים האפשרויות מופיעות בצבע אפור ואינן ניתנות לבחירה. לגבי שאלתך על השימוש בתוכנה, המידע לגבי תפריט תשלומים שמופיע בצבע אפור אינו נמצא בתיעוד שברשותי, ולכן איני יודע את התשובה המדויקת לכך.', status:'לא תקין'},
-  {num:19, id:'10266026', topic:'טכני + משתמשים והרשאות', q:'פתיחת נקודת מחשב חדשה באתר נוסף', a:'אתה שואל לגבי פתיחת נקודת מחשב חדשה באתר נוסף. המידע לגבי נושא זה אינו מופיע בהוראות השימוש בתוכנה שברשותי, ולכן איני יודע את התשובה לכך.', status:'לא תקין'},
-  {num:20, id:'10265950', topic:'מסמכים, פריטים וניהול מלאי', q:'ספק מהרשות הפלשתינאית הפיק לי חשבונית מכירה של הרש\u0022פ והפקתי כנגד מסמך חשבונית רכש, איפה לרשום את כל המספר (בן 24 ספרות של חשבונית מהספק).', a:'התשובה שניתנה: את מספר חשבונית הספק מומלץ לרשום בשדה אסמכתא 2. שדה האסמכתא מכיל מקום ל-9 תווים בלבד. לשאלת ההמשך לגבי אפסים מובילים, צוין כי התיעוד אינו מפרט כיצד המערכת מתייחסת לאפסים מובילים ולכן אין תשובה ודאית.', status:'לא תקין'},
-  {num:21, id:'10265563', topic:'טכני + משתמשים והרשאות', q:'החלפתי מחשב ואני צריכה התקנה של חשבשבת עליו. המשתמשת צריכה סיוע בהתקנת תוכנת חשבשבת על מחשב חדש.', a:'המידע שברשותי אינו כולל הוראות להתקנה מלאה של התוכנה על מחשב חדש, אלא רק הנחיות לעדכון גרסה. ניתן להוריד את עדכון התוכנה מאתר חשבשבת בתפריט \u0022עזרה ללקוחות\u0022 > \u0022עדכון תוכנה אוטומטי\u0022.', status:'לא תקין'},
-  {num:22, id:'10265252', topic:'מע"מ וניכוי במקור', q:'נשלחה לכם הודעה במייל שלשום עבור דיבדנד ששוב לא תקין אחרי שנדמה לי ששי טיפל בזה', a:'ענת, כדי שניתן יהיה לפתוח קריאת שירות, על השיחה לכלול שאלה ותשובה ברורה לגבי אופן השימוש בתוכנה. תיאור של בעיה בנתונים אינו נחשב לשאלה על אופן השימוש בתוכנה.', status:'לא תקין'},
-  {num:23, id:'10265183', topic:'דוחות', q:'בכל דוח לוקח לו מלא זמן לאבד. הלקוחה מדווחת על איטיות וזמן עיבוד ארוך בהפקת כל הדוחות.', a:'מכיוון שהמידע לגבי פתרון בעיות ביצועים או איטיות כללית בעיבוד דוחות אינו מופיע במסמכי התיעוד שברשותי, איני יודע מהי התשובה המדויקת לפנייתך.', status:'לא תקין'},
-  {num:24, id:'10265181', topic:'טכני + משתמשים והרשאות', q:'התקנת עמדה. המשתמש מעוניין לקבל סיוע בהתקנת עמדה של תוכנת חשבשבת.', a:'מאחר שהוראות לביצוע התקנה טכנית של עמדת עבודה חדשה אינן מופיעות בתיעוד שברשותי, איני יודע מהו התהליך המדויק לביצוע פעולה זו.', status:'לא תקין'},
-  {num:25, id:'10265171', topic:'דוחות', q:'אני צריכה העתקה של דוח מהחשבשבת הרגילה לחשבשבת ענן. זה דוח מעקב שפיתחנו בעבר על מצב לקוחות חייבים ואת אותו דוח על ספקים', a:'על פי התיעוד, דוחות שנבנו במחולל הדוחות נכללים בגיבוי הנתונים של התוכנה. עם זאת, מאחר שהוראות לביצוע מעבר ספציפי של דוחות בודדים בין סביבה מקומית לסביבת ענן אינן מופיעות בתיעוד שברשותי, איני יודע להשיב על אופן ביצוע הפעולה הזו.', status:'לא תקין'},
-  {num:26, id:'10265127', topic:'מספר הקצאה, חשבוניות ישראל, טוקן ורשות המיסים', q:'שאלה בעניין דוקה: 1. לא נפתח הלקוחות למרות שהוגדרו. 2. הדוקה לא קורה את מס\u0027 ההקצאה באף חברה מאף חשבונית', a:'אתה שואל לגבי השימוש במערכת H-DOKKA. על פי הוראות התוכנה, לצורך תמיכה טכנית בנושא H-DOKKA יש לפתוח קריאת שירות.', status:'לא תקין'},
-  {num:27, id:'10265021', topic:'טכני + משתמשים והרשאות', q:'חשבשבת אינה עולה', a:'צר לי, אך איני יודע את התשובה לשאלה זו מכיוון שהיא אינה מופיעה בתיעוד ובהוראות השימוש שברשותי.', status:'לא תקין'},
-  {num:28, id:'10264848', topic:'טכני + משתמשים והרשאות', q:'אני צריכה איש טכני לפתיחת מודול רלוונטי בעמדה שלי. המשתמשת מבקשת שיחזרו אליה טלפונית.', a:'אני עונה רק על שאלות לגבי אופן השימוש בתוכנה. בכל הקשור לפתיחת מודולים, יש לפתוח קריאה או להתקשר לחברה בטלפון 03-5631919.', status:'לא תקין'},
-  {num:29, id:'10264692', topic:'הנהלת חשבונות', q:'מסב אינו תקין', a:'אתה שואל לגבי מצב שבו המס\u0022ב אינו תקין. כיוון שהתשובה לשאלה זו אינה מופיעה בתיעוד שברשותי, איני יודע את התשובה.', status:'לא תקין'},
-  {num:30, id:'10264681', topic:'טכני + משתמשים והרשאות', q:'על אף שכל ההגדרות נכונות והמשתמש מחובר באופן תקין לשרת SQL, כשמנסים להפעיל את חשבשבת מתחנה מקבלים הודעת שגיאה שמסד הנתונים לא קיים.', a:'על פי התיעוד שברשותי, המידע לגבי שגיאה ספציפית זו אינו מופיע בהוראות השימוש בתוכנה, ולכן איני יודע מהי התשובה המדויקת.', status:'לא תקין'},
-  {num:31, id:'10264676', topic:'טכני + משתמשים והרשאות', q:'אני פונה בנושא של אבטחת מידע. לאחר שיחה עם בזק אנחנו חוסמים את הפורט 192.162.3.200 אשר משמש שרת SQL.', a:'מידע בנושא זה אינו מופיע במסמכי התיעוד שברשותי, ולכן איני יודע את התשובה. בנושאים טכניים הקשורים לאבטחת מידע, יש לפתוח קריאת שירות.', status:'לא תקין'},
-  {num:32, id:'10264590', topic:'טכני + משתמשים והרשאות', q:'אני רוצה לפתוח קריאה לחשבשבת מספר המנוי 35563 ספר טלפון שלי ליצירת קשר 0505068789 השם שלי אלעזר חייב התקנה חדשה בשרת', a:'שלום אלעזר, המידע המבוקש אינו מופיע בתיעוד שברשותי. כיוון שסיפקת את שמך, מספר טלפון תקין ותיאור ברור של הבעיה, הדרך לקבל שירות היא על ידי לחיצה על כפתור \u0022פתיחת קריאה\u0022 בצ\u0027ט.', status:'לא תקין'},
-  {num:33, id:'10264511', topic:'גיבויים וממשקים', q:'אני מבקשת לייבא נתונים של לקוח מחשבונית בקליק לחשבשבת.', a:'מכיוון שהתיעוד שברשותי אינו כולל התייחסות ספציפית לממשק מול תוכנת \u0022חשבונית בקליק\u0022, איני יודע אם קיים תהליך ייעודי עבורה.', status:'לא תקין'},
-  {num:34, id:'10264392', topic:'טכני + משתמשים והרשאות', q:'פותח 2 קריאות: הראשונה שיתקינו לי עמדה במחשב חדש, השניה לשירות שמתקבלת הודעת שגיאה בכניסה לחברה שטבלת הגירסאות לא מעודכנת.', a:'לגבי הודעת השגיאה \u0022טבלת הגירסאות לא מעודכנת\u0022, התשובה אינה מופיעה בתיעוד שברשותי ולכן אינני יודע אותה.', status:'לא תקין'},
-  {num:35, id:'10264335', topic:'מע"מ וניכוי במקור', q:'אנו משדרים קובץ מעמ 874 ומקבלים הודעת שגיאה: מספר אסמכתא לא עומד בכללים (222)', a:'לצערי, איני יודע את התשובה לשאלתך כיוון שקוד השגיאה 222 אינו מופיע בתיעוד שברשותי.', status:'לא תקין'},
-  {num:36, id:'10264334', topic:'מע"מ וניכוי במקור', q:'אנו משדרים קובץ מעמ 874 ומקבלים הודעת שגיאה: מספר אסמכתא לא עומד בכללים (222)', a:'לצערי, איני יודע את התשובה לשאלתך כיוון שקוד השגיאה 222 אינו מופיע בתיעוד שברשותי.', status:'לא תקין'},
-  {num:37, id:'10264305', topic:'הנהלת חשבונות', q:'מנסה ייבא קובץ ממוביסופט מופיע הערה הלקוח לא בשירות, לא ניתן לקלוט תנועות יומן, והתנועה לא נקלטת במנה.', a:'כיוון שהשאלה נוגעת לסטטוס חידוש שירות הלקוחות ואינה קשורה ישירות להוראות השימוש בתוכנה, אני עונה רק על שאלות לגבי אופן השימוש בתוכנה.', status:'לא תקין'},
-  {num:38, id:'10264131', topic:'דוחות', q:'שלום יש לי בעיה בהורדת דוחות בחיבור המחשב מרחוק.', a:'מאחר שהמידע לגבי פתרון תקלות טכניות בחיבור מרחוק אינו נמצא בתיעוד שברשותי, איני יודע לספק פתרון לנושא זה.', status:'לא תקין'},
-  {num:39, id:'10264048', topic:'טכני + משתמשים והרשאות', q:'לאחר תקלה בכרטיס הרשת בשרת הטרמינל, יש לאקטב את התוכנה, נא ליצור קשר דחוף', a:'לצערי, המידע לגבי תהליך אקטיבציה לאחר תקלת חומרה אינו מופיע בתיעוד שברשותי, ולכן איני יודע את התשובה הטכנית לכך.', status:'לא תקין'},
-  {num:40, id:'10263721', topic:'טכני + משתמשים והרשאות', q:'חיבור לפביוס. המשתמש מבקש לדעת לגבי חיבור של תוכנת חשבשבת לתוכנת פביוס.', a:'לצערי, מידע בנושא חיבור ספציפי זה אינו מופיע בתיעוד שברשותי, ולכן איני יודע את התשובה.', status:'לא תקין'},
-  {num:41, id:'10263682', topic:'טכני + משתמשים והרשאות', q:'האם הקורסים מתקיימים כסדרם?', a:'כיוון שהמידע לגבי מועדי הקורסים אינו מופיע בתיעוד שברשותי, איני יודע את התשובה לשאלתך. אני מספק מענה לגבי שאלות על אופן השימוש בתוכנה בלבד.', status:'לא תקין'},
-  {num:42, id:'10263647', topic:'גיבויים וממשקים', q:'יש לנו בעיה בקליטה מפרוסי לחשבשבת', a:'מכיוון שהמידע לגבי תוכנת \u0022פרוסי\u0022 אינו מופיע בתיעוד שברשותי, איני יודע מהי התשובה המדויקת לפתרון התקלה בממשק זה.', status:'לא תקין'},
-  {num:43, id:'10263583', topic:'טכני + משתמשים והרשאות', q:'צריכה להפעיל את האוטלוק בבקשה', a:'אני עונה על שאלות בנושא אופן השימוש בתוכנת חשבשבת בלבד, ואיני יודע כיצד להפעיל את תוכנת האוטלוק שכן היא תוכנה חיצונית.', status:'לא תקין'},
-  {num:44, id:'10263490', topic:'מסמכים, פריטים וניהול מלאי', q:'אבקש לדעת, יש לנו לאחד הלקוחות בחשבשבת שלנו הפקת מסמכים, חשבוניות מס וכדומה, האם אני יכולה להפיק אצל לקוח אחר גם או שזו עלות נפרדת?', a:'אני מספק מידע לגבי אופן השימוש בתוכנה בלבד. איני מכיר את העלויות. בכל הנוגע לעלויות או חידוש שירות, יש לפתוח קריאה או להתקשר לחברה.', status:'לא תקין'},
-  {num:45, id:'10263349', topic:'מספר הקצאה, חשבוניות ישראל, טוקן ורשות המיסים', q:'אבקש לחזור אלי בדחיפות בכדי להוציא חשבוניות עם הקצאה דרך התוכנה.', a:'שלום כרמי, הדרך היחידה לקבל שירות (כולל חזרת נציג או פתיחת קריאה) היא על ידי לחיצה על כפתור \u0022פתיחת קריאה\u0022 המופיע כאן בצ\u0027ט.', status:'לא תקין'},
-  {num:46, id:'10263245', topic:'מסמכים, פריטים וניהול מלאי', q:'חשבונית היפוך חיוב. צורת רישום בהנהלת חשבונות.', a:'מכיוון שהמידע לגבי אופן רישום פקודת היומן עבור \u0022היפוך חיוב\u0022 אינו מופיע בתיעוד, איני יודע מהי צורת הרישום המדויקת.', status:'לא תקין'},
-  {num:47, id:'10263110', topic:'כללי ודוקה', q:'מע\u0022מ לא תקין. מופיע 308 תקלה', a:'איני מוצא בתיעוד מידע לגבי \u0022תקלה 308\u0022, ולכן איני יודע מהו הפתרון עבורה.', status:'לא תקין'},
-  {num:48, id:'10262854', topic:'גיבויים וממשקים', q:'מבקש עזרה לגבי העברת חומר מתוכנה ריפיד', a:'מכיוון שמידע ספציפי לגבי תוכנת \u0022ריפיד\u0022 אינו מופיע בתיעוד שברשותי, איני יודע כיצד מתבצעת ההעברה ממנה באופן ממוקד.', status:'לא תקין'},
-  {num:49, id:'10262803', topic:'מע"מ וניכוי במקור', q:'שלום, אני מנסה לדווח 856 אבל הוא אומר לי שהמבנה של הקובץ לא מתאים.', a:'לא קיים אצלי בתיעוד הסבר להודעת השגיאה הספציפית הזו עבור דוח 856, ולכן איני יודע את התשובה.', status:'לא תקין'},
-  {num:50, id:'10262779', topic:'טכני + משתמשים והרשאות', q:'שינוי נייד לקבלת קוד. המשתמשת רוצה לדעת כיצד ניתן לשנות את מספר הטלפון הנייד לקבלת קוד אימות.', a:'אני לא יודע לענות על שאלה זו, מכיוון שהוראות השימוש בתיעוד הקיים אינן מפרטות כיצד לשנות את מספר הטלפון לקבלת קוד.', status:'לא תקין'},
-  {num:51, id:'10262778', topic:'טכני + משתמשים והרשאות', q:'שינוי נייד לקבלת קוד. המשתמשת שאלה כיצד ניתן לשנות את מספר הטלפון הנייד לקבלת קוד אימות בתוכנה.', a:'אני לא יודע לענות על שאלה זו, מכיוון שהוראות השימוש בתיעוד הקיים אינן מפרטות כיצד לשנות את מספר הטלפון לקבלת קוד.', status:'לא תקין'},
-  {num:52, id:'10262559', topic:'גיבויים וממשקים', q:'בקליטה תנועות מאקסל מספר חשבון נקלט עם נקודה ואפס כך שאינו מזהה את החשבון', a:'לצערי, המידע לגבי פתרון תקלה ספציפית זו בתהליך הייבוא מאקסל אינו מופיע במסמכי התיעוד שברשותי, ולכן איני יודע את התשובה המדויקת.', status:'לא תקין'},
-  {num:53, id:'10262461', topic:'טכני + משתמשים והרשאות', q:'בכניסה לחשבשבת נדרש עדכון תוכנה, אך בלחיצה על עדכון מופיע כי לא נמצאה מהדורה של מחולל הדוחות', a:'מאחר שהמידע לגבי שגיאה ספציפית זו אינו מופיע בתיעוד שברשותי, איני יודע מהו הפתרון המדויק עבורה.', status:'לא תקין'},
-  {num:54, id:'10262451', topic:'מע"מ וניכוי במקור', q:'שלחתי לכם פניה לפני כמה ימים ולא חזרתם אלי. יש לי 2 בעיות: 1. הגדרת חשבונית עסקת אקראי לצורך ביצוע דיווח מפורט למע\u0022מ. 2. קליטת קובץ ז\u0027ורנל שנשלח אלי מלקוח למערכת החשבשבת של המשרד.', a:'לגבי הגדרת חשבונית עסקת אקראי \u2013 אינני יודע את התשובה. לגבי קליטת קובץ ז\u0027ורנל \u2013 ניתן לבחור בין ייבוא מ-Journal.mdb דרך כללי > תוכניות עזר > ייבוא מרו\u0022ח, לבין ייבוא מ-JournalOut.mdb דרך ממשקים > ייבוא תנועות יומן.', status:'לא תקין'},
-  {num:55, id:'10262316', topic:'טכני + משתמשים והרשאות', q:'ברצוננו להוריד לשרת שלנו את החשבשבת. אשמח להצעת מחיר עבור הפעולה.', a:'אני מספק מידע והוראות לגבי אופן השימוש בתוכנה בלבד. איני מכיר את העלויות ואין לי מידע לגבי מחירי המוצרים.', status:'לא תקין'},
-  {num:56, id:'10262204', topic:'טכני + משתמשים והרשאות', q:'ניסנו להפעיל עדכון תכנה וקבלנו הודעה: \u0022לא נמצאה גרסה של מחולל הדוחות\u0022.', a:'מאחר שהמידע לגבי הודעת שגיאה ספציפית זו אינו מופיע בתיעוד שברשותי, איני יודע מהו הפתרון המדויק.', status:'לא תקין'},
-  {num:57, id:'10262182', topic:'טכני + משתמשים והרשאות', q:'מה זה שגיאה DB#0', a:'לצערי, מידע לגבי שגיאה ספציפית זו אינו מופיע בתיעוד ובמדריכי התוכנה שברשותי, ועל כן אינני יודע את התשובה.', status:'לא תקין'},
-  {num:58, id:'10262080', topic:'טכני + משתמשים והרשאות', q:'קיימת תקלה בעדכון התוכנה, השגיאה אין אפשרות לכתוב לתוך קובץ היעד', a:'על פי המידע שברשותי, תקלות בעת עדכון גרסה יכולות לנבוע מחוסר בהרשאות מתאימות במחשב. עם זאת, מאחר ונוסח השגיאה הספציפי שציינת אינו מופיע בתיעוד, איני יודע מהו הפתרון המדויק עבורו.', status:'לא תקין'},
-  {num:59, id:'10262051', topic:'גיבויים וממשקים', q:'שלום רב, אבקש עזרה בהמרת נתונים מתוכנת רפיד', a:'מכיוון שמידע ספציפי לגבי עבודה מול תוכנת \u0022רפיד\u0022 אינו מופיע בתיעוד, איני יודע מהו התהליך הייעודי עבורה.', status:'לא תקין'},
-  {num:60, id:'10261684', topic:'מסמכים, פריטים וניהול מלאי', q:'בשלב המיפוי של השדות אני נדרש להעביר נתון לתוך שדה \u0022סוג מסמך\u0022 אני רואה שהוא נומרי, מה הערך שצריך להיות בו עבור הזמנות?', a:'התשובה שהמשתמש קיבל היא שהמידע אינו קיים בתיעוד ולכן אין אפשרות לספק את הערך הנומרי עבור סוג מסמך \u0027הזמנה\u0027.', status:'לא תקין'},
-  {num:61, id:'10261297', topic:'מע"מ וניכוי במקור', q:'שידרתי ישירות מחשבשבת דוח PCN ובשעם אני לא רואה אותו בדיווח מפורט אלא רק ברגיל.', a:'הבוט ענה שאין ברשותו מידע המסביר מדוע הדוח אינו מוצג כמפורט באתר רשות המיסים לאחר שידור ישיר.', status:'לא תקין'},
-  {num:62, id:'10261255', topic:'מסמכים, פריטים וניהול מלאי', q:'בעלים של מספר חברות רשום בדוקה עם אותו מספר טלפון, איך ניתן לשייך לכל חברה את המסמכים שלה בשליחה דרך הטלפון?', a:'המידע לגבי אופן שיוך מסמכים לפי חברה אינו מופיע בתיעוד, ולכן אין תשובה. הומלץ לפתוח קריאת שירות.', status:'לא תקין'},
-  {num:63, id:'10261189', topic:'כללי ודוקה', q:'מה הכוונה: בתנועה זו קוד מטבע ריק?', a:'המידע לגבי הודעה ספציפית זו אינו מופיע במסמכי התיעוד.', status:'לא תקין'},
-  {num:64, id:'10261151', topic:'שב"א ואשראי', q:'יש לנו בעיה עם ההדפסה של ספח אשראי. הספח נדפס אבל ללא כתיב בכלל', a:'התשובה לתקלה ספציפית זו אינה מופיעה בתיעוד שברשותי, אני לא יודע מהי סיבת התקלה.', status:'לא תקין'},
-  {num:65, id:'10261012', topic:'קבלות תרומה', q:'בוקר טוב יש לנו בעיה במספר הקצאה לקבלות בגין תרומה קבלנו הודעת חלה תקלה קוד מספר 503', a:'התשובה שהתקבלה היא שאין מידע על תקלה 503 במסמכי התיעוד.', status:'לא תקין'},
-  {num:66, id:'10260827', topic:'מסמכים, פריטים וניהול מלאי', q:'כשאני מנסה להפיק חשבונית רכש קופצת הודעה חשבון הוצאה שגוי', a:'התשובה לגבי הודעת השגיאה אינה בתיעוד. הוצע לבדוק הגדרת חשבון ראשי בכרטיס החשבון.', status:'לא תקין'},
-  {num:67, id:'10260826', topic:'מסמכים, פריטים וניהול מלאי', q:'בהפקת חשבונית מס ריכוז עבור לקוחות שונים 2999 מקבלת את ההודעה: \u0022נמצאו מסמכים שלא יופקו, האם להמשיך בהפקה?\u0022, מה המשמעות של זה?', a:'התשובה שהתקבלה היא שאין מידע על משמעות ההודעה, אך הוצעו מספר גורמים לבדיקה.', status:'לא תקין'},
-  {num:68, id:'10260679', topic:'טכני + משתמשים והרשאות', q:'לא עובד לי המקלדת בחשבשבת', a:'המידע בתיעוד אינו כולל פתרון למקרה שבו המקלדת אינה מגיבה בתוכנה.', status:'לא תקין'},
-  {num:69, id:'10260582', topic:'מסמכים, פריטים וניהול מלאי', q:'יצירת דוח לחישוב עמלת סוכן לפי כרטיס פריט ולא לפי כרטיס לקוח', a:'המידע לגבי הפקת דוח ספציפי זה אינו מופיע בתיעוד שברשותי, איני יודע את התשובה.', status:'לא תקין'},
-  {num:70, id:'10260479', topic:'טכני + משתמשים והרשאות', q:'שלום החלפנו כונן צריך דחוף להעביר את החשבשבת.', a:'המידע לגבי אופן העברת התוכנה לכונן חדש אינו מופיע בתיעוד ולכן יש צורך בפתיחת קריאת שירות.', status:'לא תקין'},
-  {num:71, id:'10260248', topic:'שליחה למייל, חתימה דיגיטלית, הדפסות', q:'קיבלנו תשובה במייל וזה לא עונה לתקלה (309). צריכים עזרה.', a:'לגבי תקלה 309, המידע אינו מופיע במסמכים שברשותי ולכן איני יודע מהו הפתרון עבורה.', status:'לא תקין'},
-  {num:72, id:'10260023', topic:'מע"מ וניכוי במקור', q:'מקבלת הערה בשידור קובץ מעמ כי מספר שורות בקובץ לא תקין (802). כיצד לתקן?', a:'המידע לגבי הודעת השגיאה \u0027מספר שורות בקובץ לא תקין (802)\u0027 אינו מופיע בתיעוד.', status:'לא תקין'},
-  {num:73, id:'10259871', topic:'טכני + משתמשים והרשאות', q:'אנחנו רוצים לעשות איחוד ל-2 מנויים למנוי אחד', a:'אני עונה רק על שאלות ואופן השימוש בתוכנה. בכל מה שקשור לניהול מנויים, יש לפתוח קריאה או להתקשר לחברה.', status:'לא תקין'},
-  {num:74, id:'10259868', topic:'מע"מ וניכוי במקור', q:'PCN, לא ניתן לשדר למע\u0022מ - יש לשדרג שרת SQL.', a:'המידע לגבי הקשר בין שדרוג שרת ה-SQL ליכולת שידור דוח PCN אינו מופיע בתיעוד, ולכן אין תשובה מדויקת. הומלץ לפתוח קריאה.', status:'לא תקין'},
-  {num:75, id:'10259724', topic:'הנהלת חשבונות', q:'שלום היתרות של הבנקים לא מתאימים לסוף השנה. וגם אין לי העברת משכורות של העובדים.', a:'התשובה שהתקבלה מהמערכת כללה הנחיות לבדיקת אי התאמה ביתרות הבנק באמצעות דוח התאמות בנק ופקודות יומן. בנוגע להעברת משכורות, המערכת ציינה שאין לה מידע בנושא.', status:'לא תקין'},
-  {num:76, id:'10259493', topic:'דוחות', q:'אני צריך קטלוג מוצרים מחיר קניה ומחירה ודוחות Z.', a:'התשובה שהתקבלה מסבירה כיצד להפיק דוחות שונים עבור קטלוג מוצרים ומחירים, אך מציינת שאין מידע זמין לגבי הפקת דוחות Z.', status:'לא תקין'},
-  {num:77, id:'10259445', topic:'טכני + משתמשים והרשאות', q:'שינוי נתיב עקב החלפת IP שרת.', a:'המידע לגבי שינוי הגדרות נתיב השרת או כתובת ה-IP אינו מופיע בתיעוד, ולכן אין מענה טכני.', status:'לא תקין'},
-  {num:78, id:'10259442', topic:'מע"מ וניכוי במקור', q:'לוי לייכנר בעמ - לא מצליחים לשלוח דו\u0022ח מע\u0022מ - לא מזהה אותנו הודעת שגיאה 900 בסימולטור הכול תקין', a:'אין בתיעוד מידע לגבי הודעת שגיאה מספר 900.', status:'לא תקין'},
-  {num:79, id:'10259304', topic:'דוחות', q:'דוח במחולל מחיקות לפי לקוחות וקודי מיון פריטים מחשב חשבוניות זיכוי בפלוס במקום במינוס איך מתקנים', a:'התשובה שהתקבלה היא שאין מידע במערכת על אופן שינוי החישוב במחולל הדוחות והומלץ על פתיחת קריאת שירות.', status:'לא תקין'},
-  {num:80, id:'10266839', topic:'מספר הקצאה, חשבוניות ישראל, טוקן ורשות המיסים', q:'חנה מנהלת צפון דיברה עם טכנאי מחשבים שלי ואמרה שלדעתה הבעיה בתוכנה בקשר למספר הקצאה.', a:'שלום דני חפץ, כדי שניתן יהיה להתקדם לפתיחת פנייה מול נציג שירות, חסר בהיסטוריית השיחה תיאור ברור ומפורט של השאלה או התקלה.', status:'לא ניתן לקבוע'},
-  {num:81, id:'10266733', topic:'מע"מ וניכוי במקור', q:'בעיה בדיווח מעמ. המשתמש מציין שכבר פתח פנייה שלשום ולא חזרו אליו, והמענה שקיבל במייל לא עזר לו.', a:'אתה מציין שיש לך בעיה בדיווח המע\u0022מ, אך התיאור שסיפקת כללי מדי. כדי שאוכל לספק מידע מדויק, אשמח אם תוכל לפרט את השאלה או את התקלה הטכנית.', status:'לא ניתן לקבוע'},
-  {num:82, id:'10266727', topic:'מע"מ וניכוי במקור', q:'בעיה בדיווח מעמ. כבר פתחתי פנייה שלשום ולא חזרו אלי, כתבו לי במייל אך זה לא עזר לי כלום.', a:'אתה מציין שיש לך בעיה בדיווח המע\u0022מ, אך התיאור שסיפקת כללי מדי.', status:'לא ניתן לקבוע'},
-  {num:83, id:'10266646', topic:'טכני + משתמשים והרשאות', q:'לא מצליח להכנס לתוכנה', a:'השאלה ששאלת אינה ברורה מספיק כדי שאוכל לספק הנחיה מדויקת. כדי שאוכל לעזור, אשמח אם תוכל לנסח מחדש את השאלה בצירוף פירוט של הודעת השגיאה המופיעה על המסך.', status:'לא ניתן לקבוע'},
-  {num:84, id:'10266009', topic:'מע"מ וניכוי במקור', q:'צריכה עזרה בדיווח מעמ, יש יתרה בסכום שלילי. הבעיה היא שהעסקאות במינוס. המשתמשת ניסתה את הפתרונות שהוצעו אך לא הצליחה.', a:'המשתמשת שאלה לגבי יתרה שלילית בדוח מע\u0022מ. הוסבר לה שרשות המיסים אינה קולטת דוחות עם יתרה שלילית בעסקאות. הפתרון שהוצע הוא לדחות את הדיווח על תנועות הזיכוי לחודש הבא. המשתמשת השיבה שהיא לא הצליחה לבצע את הפעולות.', status:'לא ניתן לקבוע'},
-  {num:85, id:'10265419', topic:'מסמכים, פריטים וניהול מלאי', q:'איך מעתיקים חשבונית ממאגר זמני לתעודת משלוח? החשבונית במאגר זמני ואני רוצה להפוך אותה לתעודת משלוח. לא עובד לי.', a:'על פי התיעוד, ניתן להשתמש ב\u0022העתקת מסמך\u0022 מהתפריט פעולות נוספות, ולשנות את סוג המסמך לתעודת משלוח.', status:'לא ניתן לקבוע'},
-  {num:86, id:'10263957', topic:'דוחות', q:'היי הדוח שבניתי לא עובד, נא לחזור אלי', a:'המשתמשת ציינה שהדוח שבנתה לא עובד. המערכת ביקשה ממנה לפרט את הבעיה, הסיפקה שם ומספר טלפון, אך עדיין חסר תיאור מפורט של התקלה.', status:'לא ניתן לקבוע'},
-  {num:87, id:'10263802', topic:'מסמכים, פריטים וניהול מלאי', q:'שוב הצילו....... היום טיפל בי נועם הרר, לא ראינו שיש לתקן 3 חשבוניות ותיקנו רק 1. אני חייב שהוא יעזור לי שוב', a:'אני עונה על שאלות לגבי אופן השימוש בתוכנה בלבד. בכל הנוגע לקבלת נציג שירות ספציפי או תלונות, יש לפתוח קריאה.', status:'לא ניתן לקבוע'},
-  {num:88, id:'10263640', topic:'גיבויים וממשקים', q:'נא חזרו בנוגע לקליטת קובץ לחשבשבת מתוכנת מוסכית', a:'בתיעוד שברשותי אין מידע ספציפי לגבי תוכנת \u0022מוסכית\u0022. עם זאת, חשבשבת מאפשרת לקלוט קבצים מכל תוכנה שיודעת לייצר קבצי ממשק.', status:'לא ניתן לקבוע'},
-  {num:89, id:'10263478', topic:'מספר הקצאה, חשבוניות ישראל, טוקן ורשות המיסים', q:'נא לחזור אלי טלפונית, ישנם בעיה עם מספר הקצאה', a:'קלאודיה, כדי שניתן יהיה להתקדם לפתיחת קריאת שירות, חסר עדיין תיאור מפורט של הבעיה המדויקת.', status:'לא ניתן לקבוע'},
-  {num:90, id:'10262814', topic:'גיבויים וממשקים', q:'לא ניתן לעלות קבצים מבקשים בדחיפות שיחה עם נציג חשבשבת', a:'במידה שמעוניינים לצרף קובץ במסמך, יש להיכנס ללשונית פרטי מסמך > קובץ / סריקה.', status:'לא ניתן לקבוע'},
-  {num:91, id:'10261961', topic:'מע"מ וניכוי במקור', q:'איך מדווחים דיווח מקוון לחברה חדשה', a:'הסבר על אופן ביצוע דיווח מקוון (דוח מע\u0022מ 874PCN) עבור חברה חדשה בתוכנת חשבשבת, כולל שלבי ההגדרה והשידור.', status:'לא ניתן לקבוע'},
-  {num:92, id:'10261816', topic:'מספר הקצאה, חשבוניות ישראל, טוקן ורשות המיסים', q:'שתתקשרו ותפתרו את בעית האקצאה', a:'המשתמש התבקש לפרט את הבעיה הטכנית על מנת שניתן יהיה לפתוח קריאת שירות.', status:'לא ניתן לקבוע'},
-  {num:93, id:'10261813', topic:'גיבויים וממשקים', q:'קובץ אקסל הוצאות לא מצליח לעלות לחשבשבת. המשתמשת מנסה לקלוט קובץ אקסל, קיבלה הנחיות אך התהליך לא מצליח והיא זקוקה לעזרת נציג שירות.', a:'המשתמשת קיבלה הנחיה ללחוץ על כפתור \u0027פתיחת קריאה\u0027 לאחר שסיפקה את כל הפרטים הנדרשים.', status:'לא ניתן לקבוע'},
-  {num:94, id:'10260854', topic:'מע"מ וניכוי במקור', q:'יש לי תקלה בדוח 874', a:'הוסבר למשתמש על תקלות נפוצות בדוח 874 ונדרש פירוט נוסף על התקלה.', status:'לא ניתן לקבוע'},
-  {num:95, id:'10260484', topic:'גיבויים וממשקים', q:'קליטת קובץ הנה\u0022ח מתוכנת רווחית שגוי.', a:'הסבר כללי על טיפול בבעיות בקליטת ממשקים בחשבשבת, אך צוין כי אין מידע ספציפי לגבי ממשק מתוכנת \u0027רווחית\u0027.', status:'לא ניתן לקבוע'},
-  {num:96, id:'10260199', topic:'שליחה למייל, חתימה דיגיטלית, הדפסות', q:'פתחתם לנו חברה חדשה בשם חדש \u0022אבי ליברמן חדש\u0022 וכשפתחתם את החברה החדשה הייתי באמצע פקודות יומן ואני חסומה, חזרו אלי טלפונית.', a:'המשתמשת ציינה שבעקבות פתיחת חברה חדשה היא חסומה בביצוע פקודות יומן. הוסבר לה שכדי לפתוח קריאה עליה ללחוץ על כפתור \u0027פתיחת קריאה\u0027.', status:'לא ניתן לקבוע'},
-  {num:97, id:'10259949', topic:'טכני + משתמשים והרשאות', q:'אני צריכה התקנה של עמדה המשך טיפול משבוע שעבר עם ירדם.', a:'המשתמשת מבקשת התקנה של עמדה. נדרש לפתוח קריאת שירות ולספק שם מלא ומספר טלפון.', status:'לא ניתן לקבוע'},
-  {num:98, id:'10259882', topic:'הנהלת חשבונות', q:'אבקש לקבל עזרה בחברת א.ד. מיינק בנוגע למס מנה וכמו כן בחברת ר.ג\u0027יי. זהבי פרויקטים בנוגע לתיקון קבלה', a:'התקבל הסבר על תיקון קבלה ובקשת הבהרה לגבי מס מנה.', status:'לא ניתן לקבוע'},
-  {num:99, id:'10259624', topic:'מסמכים, פריטים וניהול מלאי', q:'יש לי בעיה בהפקת חשבונית לאחר שביטלתי (זיכוי) מ-01.12.24. המערכת לא מאפשרת לי להוציא חשבונית חיוב במקום החשבונית שביטלתי.', a:'הוצע למשתמשת להשתמש במסמך מסוג \u0027חשבונית מס ריכוז\u0027 כיוון שיש לו סדרת ספרור נפרדת.', status:'לא ניתן לקבוע'},
-  {num:100, id:'10259617', topic:'גיבויים וממשקים', q:'שלום רב, אודה על עזרה בהתקנת חשבשבת (ההתקנה מסתבר בוצעה על דיסק גיבוי חיצוני), אודה על יצירת קשר בשעה 15:00 כדי שאוכל להעלות לשיחה את איש המחשבים.', a:'המשתמש ביקש עזרה בהתקנת חשבשבת. המערכת זיהתה שחסרים שם ומספר טלפון וביקשה מהמשתמש להשלים את הפרטים.', status:'לא ניתן לקבוע'},
-  {num:101, id:'10264305', topic:'הנהלת חשבונות', q:'שינוי נתיב עקב החלפת IP שרת', a:'המידע לגבי שינוי הגדרות נתיב השרת אינו מופיע בתיעוד', status:'לא ניתן לקבוע'}
+var TOPICS_INV = [
+  {n:'טכני + משתמשים והרשאות',c:16},
+  {n:'מע"מ וניכוי במקור',c:14},
+  {n:'גיבויים וממשקים',c:14},
+  {n:'מסמכים, פריטים וניהול מלאי',c:7},
+  {n:'הנהלת חשבונות',c:5},
+  {n:'כללי ודוקה',c:4},
+  {n:'מספר הקצאה, חשבוניות ישראל, טוקן ורשות המיסים',c:4},
+  {n:'שב"א ואשראי',c:3},
+  {n:'דוחות',c:2},
+  {n:'שליחה למייל, חתימה דיגיטלית, הדפסות',c:1}
 ];
 
-// Topic table
-(function(){
-  const tbody = document.getElementById('topicTableBody');
-  DATA.topics.forEach((t,i) => {
-    const maxPct = DATA.topics[0].pct;
-    const barW = Math.round((t.pct / maxPct) * 100);
-    tbody.innerHTML += '<tr><td>'+(i+1)+'</td><td style="font-weight:600;">'+t.name+'</td><td>'+t.count+'</td><td>'+t.pct+'%</td><td><span class="pct-bar" style="width:'+barW+'px;background:'+TOPIC_COLORS[i]+';"></span></td></tr>';
-  });
-})();
+// ============================================================
+// SVG BAR CHART (horizontal)
+// ============================================================
+function svgBarChart(containerId, data, maxVal, colorArr, rowH) {
+  var el = document.getElementById(containerId);
+  if (!el) return;
+  var rows = data.map(function(d, i) {
+    var pct = Math.round(d.c / maxVal * 100);
+    var col = colorArr[i % colorArr.length];
+    return '<div style="display:flex;align-items:center;gap:6px;margin:3px 0;direction:rtl;">' +
+      '<div style="flex:0 0 auto;min-width:180px;max-width:300px;font-size:11px;color:#475569;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:right;">' + d.n + '</div>' +
+      '<div style="flex:1;height:16px;background:#f1f5f9;border-radius:4px;overflow:visible;position:relative;">' +
+        '<div style="position:absolute;right:0;height:100%;width:' + pct + '%;background:' + col + ';border-radius:4px;min-width:4px;"></div>' +
+      '</div>' +
+      '<div style="flex:0 0 32px;font-size:10px;color:#64748b;text-align:left;">' + d.c + '</div>' +
+    '</div>';
+  }).join('');
+  el.innerHTML = '<div style="padding:4px 0;">' + rows + '</div>';
+}
 
-// Horizontal bar chart - all 685 calls
-new Chart(document.getElementById('topicBarChart'), {
-  type: 'bar',
-  data: {
-    labels: DATA.topics.map(function(t){ return t.name; }),
-    datasets: [{
-      data: DATA.topics.map(function(t){ return t.count; }),
-      backgroundColor: TOPIC_COLORS,
-      borderRadius: 4,
-      barThickness: 22
-    }]
-  },
-  options: {
-    indexAxis: 'y',
-    responsive: true,
-    plugins: { legend: { display: false },
-      tooltip: { callbacks: { label: function(ctx){ return ctx.raw + ' \u05E7\u05E8\u05D9\u05D0\u05D5\u05EA (' + DATA.topics[ctx.dataIndex].pct + '%)'; } } }
-    },
-    scales: { x: { beginAtZero: true, grid: { color: '#e2e8f0' } }, y: { ticks: { font: { size: 11 } } } }
+function drawDonut(){
+  var total = 3551;
+  var agentCalls = 716;
+  var noCalls = 2835;
+  var cx=110, cy=110, r=90, innerR=60;
+  var agentAngle = (agentCalls/total)*2*Math.PI;
+  var svg = document.getElementById('donut-svg');
+
+  function polar(angle){ return {x: cx+r*Math.sin(angle), y: cy-r*Math.cos(angle)}; }
+  function polarInner(angle){ return {x: cx+innerR*Math.sin(angle), y: cy-innerR*Math.cos(angle)}; }
+
+  function slicePath(startA, endA, color){
+    var p1=polar(startA), p2=polar(endA);
+    var p3=polarInner(endA), p4=polarInner(startA);
+    var large = (endA-startA)>Math.PI?1:0;
+    return '<path d="M '+p4.x+' '+p4.y+' L '+p1.x+' '+p1.y+' A '+r+' '+r+' 0 '+large+' 1 '+p2.x+' '+p2.y+' L '+p3.x+' '+p3.y+' A '+innerR+' '+innerR+' 0 '+large+' 0 '+p4.x+' '+p4.y+' Z" fill="'+color+'" stroke="white" stroke-width="2"/>';
   }
-});
 
-// Doughnut chart
-new Chart(document.getElementById('doughnutChart'), {
-  type: 'doughnut',
-  data: {
-    labels: ['\u05E0\u05E4\u05EA\u05D7\u05D5 \u05DC\u05E0\u05E6\u05D9\u05D2 (685)', '\u05DC\u05D0 \u05E0\u05E4\u05EA\u05D7\u05D5 \u05DC\u05E0\u05E6\u05D9\u05D2 (2,625)'],
-    datasets: [{ data: [685, 2625], backgroundColor: ['#e8913a', '#2c5f8a'], borderWidth: 2, borderColor: '#fff' }]
-  },
-  options: {
-    responsive: true,
-    cutout: '65%',
-    plugins: {
-      legend: { position: 'bottom', labels: { font: { size: 14 }, padding: 16 } },
-      tooltip: { callbacks: { label: function(ctx){ return ctx.label + ': ' + ctx.raw.toLocaleString(); } } }
-    }
-  },
-  plugins: [{
-    id: 'centerText',
-    afterDraw: function(chart) {
-      var ctx2 = chart.ctx;
-      var area = chart.chartArea;
-      var cx = area.left + (area.right - area.left) / 2;
-      var cy = area.top + (area.bottom - area.top) / 2;
-      ctx2.save();
-      ctx2.font = 'bold 22px Segoe UI';
-      ctx2.fillStyle = '#1a3a5c';
-      ctx2.textAlign = 'center';
-      ctx2.textBaseline = 'middle';
-      ctx2.fillText('3,310', cx, cy - 12);
-      ctx2.font = '14px Segoe UI';
-      ctx2.fillStyle = '#64748b';
-      ctx2.fillText('\u05E1\u05D4\u05F4\u05DB \u05DE\u05E9\u05EA\u05DE\u05E9\u05D9 \u05D1\u05D5\u05D8', cx, cy + 14);
-      ctx2.restore();
-    }
-  }]
-});
+  svg.innerHTML = slicePath(0, agentAngle, '#dc2626') + slicePath(agentAngle, 2*Math.PI, '#16a34a');
+}
 
-// Problematic bar chart
-new Chart(document.getElementById('problematicBarChart'), {
-  type: 'bar',
-  data: {
-    labels: DATA.problematicTopics.map(function(t){ return t.name; }),
-    datasets: [{
-      data: DATA.problematicTopics.map(function(t){ return t.count; }),
-      backgroundColor: TOPIC_COLORS,
-      borderRadius: 4,
-      barThickness: 22
-    }]
-  },
-  options: {
-    indexAxis: 'y',
-    responsive: true,
-    plugins: { legend: { display: false },
-      tooltip: { callbacks: { label: function(ctx){ return ctx.raw + ' \u05E9\u05D9\u05D7\u05D5\u05EA'; } } }
-    },
-    scales: { x: { beginAtZero: true, grid: { color: '#e2e8f0' } }, y: { ticks: { font: { size: 11 } } } }
-  }
-});
-
-// Tabbed conversations
-(function(){
-  var topicOrder = {};
-  DATA.problematicTopics.forEach(function(t,i){ topicOrder[t.name] = i; });
-
-  // Group by topic
-  var groups = {};
-  CONVERSATIONS.forEach(function(c){
-    if (!groups[c.topic]) groups[c.topic] = [];
-    groups[c.topic].push(c);
+// ============================================================
+// TABLES
+// ============================================================
+function buildTableAll(){
+  var tbl = document.getElementById('tbl-all');
+  var max = TOPICS_ALL[0].c;
+  var rows = '<thead><tr><th>#</th><th>נושא</th><th>כמות</th><th>אחוז</th><th style="min-width:150px;">ויזואליזציה</th></tr></thead><tbody>';
+  TOPICS_ALL.forEach(function(t,i){
+    var bw = Math.round(t.c/max*130);
+    rows += '<tr><td style="color:#94a3b8;font-size:.78rem;">'+(i+1)+'</td>'+
+      '<td><span class="badge" style="background:'+COLORS[i]+'">'+t.n+'</span></td>'+
+      '<td><strong>'+t.c+'</strong></td><td>'+t.p+'%</td>'+
+      '<td><span class="mbar" style="width:'+bw+'px;background:'+COLORS[i]+';"></span> <span style="font-size:.75rem;color:#94a3b8;">'+t.c+'</span></td></tr>';
   });
+  rows += '</tbody>';
+  tbl.innerHTML = rows;
+}
 
-  // Sort topics by problematic count
-  var sortedTopics = Object.keys(groups).sort(function(a,b){
-    var ia = topicOrder[a] !== undefined ? topicOrder[a] : 99;
-    var ib = topicOrder[b] !== undefined ? topicOrder[b] : 99;
-    return ia - ib;
+function buildTableInv(){
+  var tbl = document.getElementById('tbl-inv');
+  var rows = '<thead><tr><th>#</th><th>נושא</th><th>שיחות בעייתיות</th></tr></thead><tbody>';
+  TOPICS_INV.forEach(function(t,i){
+    rows += '<tr><td style="color:#94a3b8;font-size:.78rem;">'+(i+1)+'</td>'+
+      '<td><span class="badge" style="background:'+COLORS[i]+'">'+t.n+'</span></td>'+
+      '<td><strong>'+t.c+'</strong></td></tr>';
   });
+  rows += '</tbody>';
+  tbl.innerHTML = rows;
+}
 
-  var btnContainer = document.getElementById('tabButtons');
-  var contentContainer = document.getElementById('tabContents');
+// ============================================================
+// FUNNEL BOTTOM
+// ============================================================
+function buildFunnelBottom(){
+  var top3 = TOPICS_ALL.slice(0,3);
+  var el = document.getElementById('funnel-bottom');
+  var html = '';
+  top3.forEach(function(t,i){
+    var shortN = t.n.length>18 ? t.n.substring(0,18)+'...' : t.n;
+    html += '<div class="f-box"><div style="font-size:.7rem;color:#94a3b8;margin-bottom:2px;">נושא #'+(i+1)+'</div>'+
+      '<div class="fn">'+t.c+'</div><div class="fl">'+shortN+'</div></div>';
+  });
+  el.innerHTML = html;
+}
 
-  sortedTopics.forEach(function(topic, idx){
-    var convs = groups[topic];
+// ============================================================
+// CONVERSATIONS
+// ============================================================
+function buildConversations(){
+  var tabsEl = document.getElementById('conv-tabs');
+  var panelsEl = document.getElementById('conv-panels');
+
+  TOPICS_INV.forEach(function(topicObj, ti){
+    var topicName = topicObj.n;
+    var rows = CONV[topicName] || [];
+    if(!rows.length) return;
+
     var btn = document.createElement('button');
-    btn.className = 'tab-btn' + (idx === 0 ? ' active' : '');
-    btn.textContent = topic + ' (' + convs.length + ')';
-    btn.setAttribute('data-idx', idx);
-    btn.onclick = function(){
-      document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
-      document.querySelectorAll('.tab-content').forEach(function(c){ c.classList.remove('active'); });
-      this.classList.add('active');
-      document.getElementById('tab-' + this.getAttribute('data-idx')).classList.add('active');
-    };
-    btnContainer.appendChild(btn);
+    btn.className = 'tab-btn' + (ti===0?' active':'');
+    btn.textContent = topicName + ' ('+rows.length+')';
+    (function(idx){
+      btn.onclick = function(){
+        document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
+        document.querySelectorAll('.tab-pane').forEach(function(p){p.classList.remove('active');});
+        this.classList.add('active');
+        document.getElementById('pane-'+idx).classList.add('active');
+      };
+    })(ti);
+    tabsEl.appendChild(btn);
 
-    var content = document.createElement('div');
-    content.id = 'tab-' + idx;
-    content.className = 'tab-content' + (idx === 0 ? ' active' : '');
+    var pane = document.createElement('div');
+    pane.className = 'tab-pane'+(ti===0?' active':'');
+    pane.id = 'pane-'+ti;
 
-    var html = '';
-    convs.forEach(function(c){
-      var badgeClass = c.status === '\u05DC\u05D0 \u05EA\u05E7\u05D9\u05DF' ? 'badge-danger' : 'badge-warning';
-      var answerId = 'ans-' + c.num;
-      html += '<div class="conv-row" onclick="var el=document.getElementById(\'' + answerId + '\');el.classList.toggle(\'open\');">' +
-        '<span class="conv-num">' + c.num + '</span>' +
-        '<span class="conv-id">' + c.id + '</span>' +
-        '<span class="conv-q">' + c.q + '</span>' +
-        '<span class="badge ' + badgeClass + '">' + c.status + '</span>' +
-        '</div>' +
-        '<div class="conv-answer" id="' + answerId + '">' + c.a + '</div>';
+    var tableHTML = '<table class="ctbl"><thead><tr><th style="width:36px;">#</th><th style="width:86px;">ID</th><th>שאלה</th><th style="width:110px;">סטטוס</th></tr></thead><tbody>';
+    rows.forEach(function(row, ri){
+      var aId = 'ans-'+ti+'-'+ri;
+      var sc = row.s==='לא תקין'?'si':'sd';
+      tableHTML += '<tr class="q-row" onclick="toggleAns(this,\''+aId+'\')">'+
+        '<td style="color:#94a3b8;font-size:.76rem;">'+(ri+1)+'</td>'+
+        '<td style="font-size:.76rem;color:#475569;font-family:monospace;">'+row.id+'</td>'+
+        '<td><span class="exp-ico">&#9654;</span>'+row.q+'</td>'+
+        '<td><span class="sbadge '+sc+'">'+row.s+'</span></td></tr>'+
+        '<tr class="a-row" id="'+aId+'"><td colspan="4"><div class="a-inner"><div class="a-lbl">&#129302; תשובת הבוט</div>'+row.a+'</div></td></tr>';
     });
-    content.innerHTML = html;
-    contentContainer.appendChild(content);
+    tableHTML += '</tbody></table>';
+    pane.innerHTML = tableHTML;
+    panelsEl.appendChild(pane);
   });
-})();
+}
+
+function toggleAns(qRow, aId){
+  var aRow = document.getElementById(aId);
+  var isExp = qRow.classList.contains('exp');
+  qRow.classList.toggle('exp', !isExp);
+  aRow.classList.toggle('vis', !isExp);
+}
+
+// ============================================================
+// EXECUTIVE SUMMARY
+// ============================================================
+function buildExec(){
+  var paras = [
+    'בתקופה הנבדקת נרשמו <strong>5,979 קריאות</strong> בטבלת השירות הכוללת. מתוכן, <strong>3,551 קריאות</strong> עברו דרך הבוט, ורק <strong>716 קריאות</strong> (כ-20% מקריאות הבוט) הגיעו בסופו של דבר לנציג שירות. כלומר, <strong>47.4% מסך קריאות השירות</strong> טופלו על-ידי הבוט ללא פתיחת קריאה לנציג, המצביע על תרומה תפעולית משמעותית של הבוט.',
+    'ניתוח איכות המענה מצביע על <strong>שיעור הצלחה שמרני של 90.2%</strong> מתוך 715 שיחות שנותחו: 645 תגובות תקינות, 41 לא תקינות ו-29 שלא ניתן לקבוע. רמת ביצוע זו נאותה, אך ה-70 שיחות הבעייתיות מצביעות על פערי ידע שניתן לצמצם באמצעות עדכון ממוקד של בסיס הידע.',
+    'מוקדי החיכוך המרכזיים: <strong>טכני ומשתמשים והרשאות</strong> (16 שיחות), <strong>מע"מ וניכוי במקור</strong> (14 שיחות), ו-<strong>גיבויים וממשקים</strong> (14 שיחות). 3 נושאים אלה מייצגים 62.9% מהכשלים.',
+    'מבחינה ניהולית, הבוט מוכיח ערך תפעולי ברור: ספיגת 2,835 קריאות (79.8% מקריאות הבוט) ללא הגעה לנציג. שיעור ההצלחה של 90.2% משקף בוט תפקודי עם פערים ממוקדים ולא כשל מערכתי.',
+    'השקעה ממוקדת בהשלמת בסיס הידע בנושאי מעבר/התקנה, קודי שגיאה ספציפיים ותזרימי הבהרה לשאלות קצרות, צפויה לשפר את שיעור ההצלחה מעבר ל-93%.'
+  ];
+  document.getElementById('exec-sum').innerHTML = paras.map(function(p){return '<p class="ep">'+p+'</p>';}).join('');
+}
+
+// ============================================================
+// TRAINING INSIGHTS
+// ============================================================
+function buildTraining(){
+  var insights = [
+    {t:'א. עדיפות נושאים לאימון', b:'<ol><li><strong>טכני ומשתמשים והרשאות</strong> (16 שיחות): החלפת מחשב/שרת, ביטול נעילת מסמך, הגדרות הרשאות.</li><li><strong>מע"מ וניכוי במקור</strong> (14 שיחות): שגיאות 401, 406, קובץ 856 עם סיומת שגויה.</li><li><strong>גיבויים וממשקים</strong> (14 שיחות): שחזור מגיבוי, מעבר לענן, שגיאות קליטת דפי בנק.</li></ol>'},
+    {t:'ב. ניתוח דפוסי כשל', b:'<ul><li><strong>תשובות "לא יודע" ללא הכוונה:</strong> קודי שגיאה: 401, 406, 703, "input table too many records". נושאים ללא כיסוי: מעבר לענן, שחזור BSB, ביטול נעילת מסמך.</li><li><strong>הפניה לנציג מוקדמת מדי</strong> — ללא ניסיון לסייע.</li><li><strong>ניסוחים קצרים מדי</strong> — הבוט אינו מבקש הבהרה לפני תגובה.</li></ul>'},
+    {t:'ג. המלצות לבסיס הידע', b:'<ul><li>קודי שגיאה: 401, 406, 703, שגיאות קליטת דפי בנק.</li><li>נהלי מעבר: מחשב/שרת/עמדה/ענן.</li><li>ביטול נעילת מסמך, שחזור BSB, שינוי סיומת קובץ 856.</li><li>תזרימי הבהרה לנושאי התקנה.</li></ul>'},
+    {t:'ד. סדר עדיפויות לפעולה', b:'<ol><li>הוספת קודי שגיאה 401/406.</li><li>מאגר ידע למעבר/תחזוקה (מחשב/שרת/ענן).</li><li>תזרים הבהרה לשאלות קצרות.</li><li>תיעוד גיבוי ושחזור BSB.</li><li>כיסוי שגיאות קליטת דפי בנק.</li><li>ביטול נעילת מסמך ושינוי אינדקס.</li><li>בדיקת intent classification לניסוחים קצרים.</li></ol>'}
+  ];
+  document.getElementById('training').innerHTML = insights.map(function(ins){
+    return '<div class="ib"><div class="it">'+ins.t+'</div><div class="ibody">'+ins.b+'</div></div>';
+  }).join('');
+}
+
+// ============================================================
+// INIT
+// ============================================================
+window.onload = function(){
+  CONV = JSON.parse(document.getElementById("conv-data").textContent);
+  svgBarChart('bar-all', TOPICS_ALL.map(function(t){return {n:t.n,c:t.c};}), 179, COLORS);
+  svgBarChart('bar-inv', TOPICS_INV.map(function(t){return {n:t.n,c:t.c};}), 16, COLORS, 28);
+  drawDonut();
+  buildFunnelBottom();
+  buildTableAll();
+  buildTableInv();
+  buildConversations();
+  buildExec();
+  buildTraining();
+};
+</script>
+
+<script type="application/json" id="conv-data">
+{"טכני + משתמשים והרשאות":[{"id":"10275294","q":"שינוי לעמדת עבודה חדשה","a":"השאלה שלך אינה ברורה מספיק. אנא נסח אותה מחדש עם פירוט ברור לגבי הפעולה שברצונך לבצע בתוכנה (לדוגמה: האם מדובר בשינוי הקצאת מכונה בלוח הגאנט של מערכת הייצור, או בשינוי שיוך עובד במערכת השירות?).  איני יודע את התשובה לשאלתך כיוון שהמידע לגבי \"שינוי עמדת עבודה\" אינו מופיע בתיעוד שברשותי.   הנך מוזמן לשאול שוב אם אתה זקוק ליותר פירוט או אם לא קיבלת תשובה מספקת.","s":"לא תקין"},{"id":"10273399","q":"החלפת שרת. השרת הקודם קרס - ואנו צריכים להתקין את השרת החדש - כל המידע הועבר.","a":"אתה שואל לגבי תהליך החלפת שרת. מאחר שהמידע המפורט לגבי אופן ביצוע החלפת שרת אינו מופיע בתיעוד שסופק לי, איני יודע את התשובה לשאלה זו.  אני מספק מענה לגבי שאלות הנוגעות לאופן השימוש בתוכנה בלבד. בכל הקשור להתקנות, החלפת תשתיות או התנהלות מול החברה, יש לפתוח קריאה או להתקשר לחברה לקבלת סיוע טכני מתאים.  אם תרצה פירוט לגבי נושא אחר או שלא קיבלת תשובה מספקת, אשמח לעזור. האם תרצה לשאול משהו נוסף?","s":"לא תקין"},{"id":"10272605","q":"יש לנו מחשב חדש שצריך להתקין בו את תוכנת חשבשת. אנא עדכנו איך עושים זאת.","a":"המידע לגבי אופן התקנת תוכנת חשבשבת במחשב חדש אינו מופיע במסמכים שברשותי, ולכן איני יודע את התשובה לשאלתך.","s":"לא תקין"},{"id":"10272601","q":"מעבר לענן","a":"אני עונה על שאלות בנוגע לאופן השימוש בתוכנה בלבד. המידע לגבי מעבר לענן אינו מופיע בהוראות השימוש בתוכנה שברשותי, ולכן איני יודע להשיב על כך. נושאים הקשורים למעבר לענן או להתנהלות מול החברה יש להפנות למוקד התמיכה או לפתוח קריאת שירות.  כיוון שסיפקת את כל הפרטים הנדרשים (שם, מספר טלפון ונושא הפנייה), כעת באפשרותך ללחוץ על כפתור **\"פתיחת קריאה\"** המופיע כאן בצ'אט ונציג יחזור אליך להמשך טיפול.  האם תר","s":"לא תקין"},{"id":"10271820","q":"שלום רב, אנא ייצרו אתנו קשר לגבי התקנת חשבשבת במחשב חדש. החלפת מחשב","a":"על מנת שניתן יהיה להתקדם לקבלת שירות מנציג או פתיחת קריאה, חסרים בהיסטוריית השיחה הפרטים הבאים:  1. **שם**: אנא ציין את שמך. 2. **מספר טלפון**: אנא ספק מספר טלפון תקין (בן 7 ספרות לפחות). 3. **שאלה מפורטת לגבי השימוש בתוכנה**: יש להציג שאלה ברורה לגבי אופן השימוש בתוכנה כדי שאוכל לנסות לסייע לך מהמידע שברשותי (לדוגמה, האם מדובר בתוכנה לימודית או במערכת ה-ERP?).  אנא השלם את המידע החסר כדי שנוכל לה","s":"לא תקין"},{"id":"10269946","q":"אנו רוצים להפעיל מחשב נוסף - צריכים את עזרתכם. המשתמש מבקש עזרה בהפעלת מחשב נוסף.","a":"אתם מבקשים לקבל עזרה בהפעלת מחשב נוסף לשימוש בתוכנה.  מאחר שהתיעוד שברשותי אינו כולל את הנחיות ההתקנה או ההגדרה של תחנת עבודה נוספת, איני יודע לספק תשובה מדויקת לשאלה זו.  כדי שתוכלו לפתוח קריאת שירות ולקבל מענה מנציג, חסר בשיחה שמכם. אנא ציינו את שמכם כדי שנוכל להתקדם בתהליך.  אתם מוזמנים לשאול עוד אם אתם זקוקים לפירוט נוסף או אם לא קיבלתם תשובה מספקת.","s":"לא תקין"},{"id":"10269142","q":"התקנה HCONNECT. המשתמש שואל לגבי התקנת HCONNECT.","a":"אתה שואל לגבי התקנת HCONNECT. מאחר שהמידע לגבי התקנת רכיב זה אינו מופיע במסמכי התיעוד שברשותי, איני יודע את התשובה לשאלתך.  נשמח לעזור בנושאים אחרים הקשורים להוראות השימוש בתוכנה. אתה מוזמן לשאול שאלות נוספות אם לא קיבלת תשובה מספקת או אם ברצונך לקבל פירוט בנושא אחר.","s":"לא תקין"},{"id":"10268531","q":"החשבשבת לא ניפתחת לי. מבקשת שיחזרו אליה.","a":"כיוון שציינת את מהות התקלה וסיפקת את שמך (אפרת מלכה) ומספר טלפון תקין, השלמת את הפרטים הנדרשים.  לגבי הבעיה שתיארת, שתוכנת חשבשבת אינה נפתחת, להלן מידע מהתיעוד שעשוי לסייע: *   **חריגה ממספר משתמשים:** אם מופיעה הודעה על חריגה ממספר משתמשים, ייתכן שתחנה מסוימת לא התנתקה כראוי. במקרה כזה יש לפנות לאיש המחשבים שלכם כדי שיוציא את המשתמשים מהטרמינל. *   **שיבוש בפונטים או ג'יבריש:** אם התוכנה עולה עם","s":"לא תקין"},{"id":"10268046","q":"לא מצליחה להיכנס למערכת. המשתמשת מדווחת על קושי בכניסה למערכת.","a":"כדי שאוכל לספק תשובה מדויקת מתוך הוראות השימוש בתוכנה, אנא נסחי את השאלה מחדש בצירוף פירוט של הודעת השגיאה המופיעה על המסך (לדוגמה: \"חריגה ממספר משתמשים\", \"תחנה אחרת מופעלת\" או שגיאה בסיסמה).","s":"לא תקין"},{"id":"10272969","q":"הוספת עמדה. המשתמשת מבקשת להוסיף עמדה.","a":"אתה מבקש לדעת כיצד לבצע הוספת עמדה.  על פי התיעוד, להתקנת חשבשבת בעמדה נוספת יש לפתוח קריאת שירות. צוות התמיכה יצור איתך קשר בנוגע לתשלום ותיאום ההתקנה.","s":"לא ניתן לקבוע"},{"id":"10271579","q":"תמיכה מרחוק להתקנת חשבשבת","a":"אתה מעוניין לדעת כיצד לקבל תמיכה מרחוק עבור התקנת תוכנת חשבשבת.  על פי התיעוד והנחיות התוכנה, במקרים של צורך בסיוע טכני, עדכון גרסה או התקנה, ניתן לפנות לצוות התמיכה של חשבשבת בדרכים הבאות: *   פתיחת קריאת שירות דרך כפתור **\"חשבשבת סיוע\"** המופיע בשולחן העבודה או באתר החברה. *   פנייה טלפונית למוקד התמיכה: **03-5631919**. *   שליחת דואר אלקטרוני לכתובת: <url>info@H-erp.co.il</url>.  בעת ביצוע התקנ","s":"לא ניתן לקבוע"},{"id":"10270549","q":"עשיתם עדכון, צריך תמיכה. המשתמש שאל לגבי עדכון תוכנה, ביצע אותו וכעת זקוק לתמיכה.","a":"אתה מציין שבוצע עדכון תוכנה ואתה מעוניין לקבל תמיכה טכנית מנציג.  מכיוון שסיפקת את כל הפרטים הנדרשים (שמך, מספר טלפון ותיאור ברור של הנושא הקשור לעדכון התוכנה) במהלך השיחה, הדרך לקבל שירות מנציג או לפתוח קריאת שירות היא על ידי לחיצה על כפתור **\"פתיחת קריאה\"** כאן בצ'אט.  בנוסף, ניתן ליצור קשר עם מוקד התמיכה הטלפוני בטלפון: 03-5631919.","s":"לא ניתן לקבוע"},{"id":"10270280","q":"ברגע שאני באה לכתוב תאריך התאריך יוצא הפוך - בשאר המחשב הכל תקין כולל בוורד זה קורה רק בחשבשבת. הלקוחה מדווחת שהתאריכים מופיעים הפוך רק בתוכנת חשבשבת, למרות שכל הגדרות המחשב תקינות ומוגדרות על עברית.","a":"הוצע למשתמשת לבדוק את הגדרות השפה והאזור (Region & Language) במערכת ההפעלה, לוודא שנבחרה השפה 'עברית', ולצאת מהתוכנה ולהיכנס אליה מחדש. לאחר שהמשתמשת אישרה שהכל כבר מוגדר על עברית, המערכת ציינה כי אין לה פתרון נוסף לנושא וכי יש צורך בבדיקה טכנית של צוות התמיכה.","s":"לא ניתן לקבוע"},{"id":"10269922","q":"לא רואים את אותה חשבשבת בכל העמדות. הלקוח מבקש שנציג יחזור אליו.","a":"בעיות של חוסר התאמה בין עמדות יכולות לנבוע מאי-התאמה בגרסת התוכנה בין העמדות, בעיות תקשורת של העמדה הספציפית עם השרת או כונן רשת שאינו מחובר (מומלץ לבדוק ב\"מחשב שלי\" אם כונן הרשת של התוכנה נגיש).   מכיוון שסיפקת את שמך, מספר הטלפון ותיאור הבעיה, תוכל כעת לפתוח קריאת שירות על ידי לחיצה על כפתור \"פתיחת קריאה\" בצ’ט.  אנא שאל אם תרצה פירוט נוסף או אם לא קיבלת תשובה מספקת.","s":"לא ניתן לקבוע"},{"id":"10269458","q":"אני רוצה לפתוח קריאה לנציג שיגדיל לי את הכתב בחשבשבת. הכתב דק לאחר עדכון , אני צריכה את המסך הישן קשה לי לראות ככה.","a":"שינוי גודל התצוגה, גודל הגופן או הדגשת הכיתוב בתוכנת חשבשבת יכול להתבצע רק באמצעות נציג תמיכה. מאחר שסיפקת כעת את כל המידע הנדרש (שם, מספר טלפון ותיאור ברור של הצורך הטכני), הדרך לקבל שירות מנציג או לפתוח קריאת שירות היא על ידי לחיצה על כפתור **\"פתיחת קריאה\"** המופיע כאן בצ’ט. נא שאלי עוד אם תרצי פירוט נוסף או אם לא קיבלת תשובה מספקת.","s":"לא ניתן לקבוע"},{"id":"10269049","q":"הוספת משתמש. אני רוצה להוסיף עוד משתמש הכוונה לעוד עמדה. הלקוח מעוניין להוסיף עמדת עבודה חדשה.","a":"אתה מציין שברצונך להוסיף משתמש וכוונתך היא להתקנת עמדת עבודה חדשה עבור התוכנה.  על פי הוראות השימוש, להתקנת חשבשבת בעמדה נוספת יש לפתוח קריאת שירות. צוות התמיכה יצור איתך קשר בנוגע לתשלום ותיאום ההתקנה. אם מדובר על התקנה מחדש בעמדה קיימת או החלפה של עמדה, יש לפתוח קריאת שירות לצוות הטכני. שים לב כי החלפת מחשב ראשי או שרת כרוכה בעלות.","s":"לא ניתן לקבוע"}],"מע\"מ וניכוי במקור":[{"id":"10276171","q":"דחוףףףףעזרה בהדיווח מעמ שגיאה 401","a":"שלום, אני מבין שאתה זקוק לעזרה דחופה בנוגע לשגיאה 401 המופיעה בעת דיווח המע\"מ.  לצערי, מכיוון שהמידע לגבי שגיאה ספציפית זו אינו מופיע בתיעוד שברשותי, איני יודע מהו הפתרון עבורה.  אתה מוזמן לשאול שאלות נוספות אם לא קיבלת תשובה מספקת או אם תרצה פירוט על נושא אחר הקשור לאופן השימוש בתוכנה.","s":"לא תקין"},{"id":"10275947","q":"תקלה 406","a":"אתה שואל לגבי תקלה 406. כיוון שהמידע לגבי תקלה זו אינו מופיע בתיעוד שברשותי, איני יודע מהי התשובה לכך.  אתה מוזמן לשאול שאלות נוספות על השימוש בתוכנה במידה ולא קיבלת תשובה מספקת או אם תרצה פירוט בנושא אחר.","s":"לא תקין"},{"id":"10275846","q":"יש לי קובץ 856 בסיומת ptr ואני חייב סיומת אחרת \"022\" על מנת לשדר למס הכנסה. אני צריך השתלטות שלכם על המחשב שלי ולתקן את הסיומת. הלקוח מבקש סיוע בשינוי סיומת קובץ 856 מ-ptr ל-022 לצורך שידור למס הכנסה,","a":"אתה שואל לגבי שינוי סיומת קובץ 856 מ-ptr לסיומת 022 ומבקש השתלטות מרחוק לצורך תיקון הסיומת. על פי הוראות השימוש בתוכנה, הקובץ מופק באופן אוטומטי עם סיומת של שנת המס (לדוגמה .022) או בסיומת .txt. מאחר שסיומת ptr אינה מופיעה בתיעוד, איני יודע מהו מקורה או כיצד לשנותה ידנית.","s":"לא תקין"},{"id":"10275359","q":"דחוףףף שגיאה 401 בהגשת מעמ אודה לעזרתכם","a":"שלום רב, אתה מציין כי קיבלת שגיאה 401 בעת הגשת המע\"מ ומבקש עזרה בנושא.  מכיוון שהתשובה לשאלתך אינה מופיעה בתיעוד שברשותי, איני יודע מהו הפתרון לשגיאה הספציפית הזו.   באפשרותך לשאול שאלות נוספות על אופן השימוש בתוכנה אם תרצה פירוט נוסף או במידה ולא קיבלת תשובה מספקת.","s":"לא תקין"},{"id":"10273222","q":"איך מבטלים חשבונית עצמית. המשתמש שואל כיצד ניתן לבטל חשבונית עצמית בתוכנה.","a":"אתה מבקש לדעת כיצד מבטלים חשבונית עצמית בתוכנה.  מכיוון שהמידע המדויק לגבי אופן ביטול חשבונית עצמית אינו מופיע בתיעוד שברשותי, איני יודע את התשובה לכך. התיעוד מפרט את אופן הרישום של חשבונית עצמית (באמצעות פקודות יומן או הגדרות מלאי), אך אינו מציין הנחיות לביטולה.  אתה מוזמן לשאול שאלות נוספות אם לא קיבלת תשובה מספקת או אם תרצה פירוט בנושאים אחרים המופיעים במדריכי התוכנה.","s":"לא תקין"},{"id":"10271129","q":"בבקשה נתקלתי בבעיה בדוח מע\"מ רשום קוד 45. המשתמש מבקש להתחבר אליו למחשב כדי להסביר את הבעיה.","a":"אתה מציין שנתקלת בבעיה בדוח המע\"מ שבה מופיע קוד 45. לצערי, מאחר שהתשובה לשאלה זו אינה מופיעה בתיעוד שברשותי, איני יודע מהי המשמעות של קוד זה או כיצד לפתור אותו.","s":"לא תקין"},{"id":"10269599","q":"בהכנה לקובץ מע\"מ לא נקלטות חשבוניות ספק. מבקשת ליצור קשר טלפוני בשעות הבוקר המוקדמות כדי שאוכל להפיק דוח למע\"מ ל-1 2/2026.","a":"את פונה בנוגע לכך שחשבוניות ספק אינן נקלטות בהכנה לקובץ מע\"מ, ומבקשת שנציג שירות יצור עמך קשר טלפוני לתיאום בבוקר.  לגבי שאלתך הטכנית, המידע הספציפי בנוגע לסיבה שחשבוניות ספק אינן מופיעות בקובץ המע\"מ אינו מופיע בתיעוד שברשותי, ולכן איני יודע מהו הפתרון המדויק לבעיה זו.  כיוון שסיפקת את כל הפרטים הנדרשים (שם, מספר טלפון ותיאור ברור של השאלה בנוגע לתוכנה), הדרך היחידה לקבל שירות מנציג או לפתוח קריאת","s":"לא תקין"},{"id":"10269051","q":"מבקש לקבל תמיכה טלפונית בנושא יצירת קובץ PCN857 עבור חברה חדשה","a":"אתה מבקש לקבל תמיכה טלפונית בנושא יצירת קובץ PCN857 עבור חברה חדשה.  בנוגע לשאלתך על אופן השימוש בתוכנה, המידע המופיע בתיעוד שברשותי מתייחס להפקת דוח מע\"מ PCN874 בלבד, ואיני מכיר הנחיות לגבי קובץ PCN857, לכן איני יודע את התשובה לשאלה זו.","s":"לא תקין"},{"id":"10267810","q":"לא מצליחה להפיק דוח מעמ. המשתמשת מדווחת על תקלה בהפקת דוח המעמ.","a":"עינת, את מציינת שאינך מצליחה להפיק דוח מע\"מ.  על פי הוראות השימוש בתוכנה, במקרים בהם יש קושי בהפקת דוח מע\"מ או שהנתונים אינם מופיעים כראוי, יש לבצע את הבדיקות הבאות:  1. **הגדרת חשבון ראשי:** יש לוודא שכרטיסי החשבון (הכנסות, הוצאות ומע\"מ) מוגדרים עם \"חשבון ראשי\" מתאים בתוך כרטיס החשבון. 2. **ביטול הפקה קודמת:** בדקי האם כבר הופק דוח מע\"מ לתקופה הרצויה. במידה וכן, יש לבטל את אותה הפקה ורק לאחר מכן","s":"לא תקין"},{"id":"10271824","q":"אני מנסה להנפיק חשבינית לחברה שכל חודש מנפיקה והפקתי להם חשבונית אחת ואת השנייה לא מצליחה . מקבלת הודעה לא ניתן להפיק מסמך מאחר ולא הוגדרו משתמשים בחברה. אודה לעזרתכם בדחיפות . נא לחזור בדחיפות לנייד","a":"לצערי, איני יודע מהו הפתרון להודעת השגיאה שציינת (\"לא ניתן להפיק מסמך מאחר ולא הוגדרו משתמשים בחברה\"), כיוון שהתשובה לכך אינה מופיעה בתיעוד שברשותי.  בנוגע לבקשתך שנציג יחזור אליך טלפונית, כדי שניתן יהיה להתקדם בתהליך פתיחת קריאת שירות, חסר בשיחה המידע הבא: * **השם שלך.**  אנא ציין/י את שמך המלא בהודעה הבאה כדי שנוכל להמשיך בתהליך.  את/ה מוזמנ/ת לשאול שוב אם תרצה/י פירוט נוסף או אם התשובה לא הייתה","s":"לא ניתן לקבוע"},{"id":"10269907","q":"יש לי סוג תנועה של הכנסות עם חישוב מעמ של 18% ומשום מה לא מחשב נכון. איפה הבעיה? המשתמשת בדקה את כל ההגדרות (הגדרות חברה, סוג תנועה, חשבון ראשי) והכל מוגדר תקין, אך הבעיה נמשכת.","a":"הוצע למשתמשת לבדוק את הגדרות החברה, הגדרת סוג התנועה, אפשרות לשינוי מע\"מ במסמך, והימנעות מסוגי תנועה ישנים. לאחר מכן, הוצע לבדוק את הגדרת החשבון הראשי בכרטיסי החשבון. המשתמשת ציינה שכל ההגדרות תקינות.","s":"לא ניתן לקבוע"},{"id":"10269785","q":"לא עברו לי בשידורים חן עיסקה. המשתמשת מדווחת שחשבון עסקה לא נקלט בשידורי ה-PCN ומבקשת תמיכה טלפונית דחופה.","a":"על פי התיעוד, דוח מע\"מ מקוון (874PCN) כולל פירוט של חשבוניות מכירה (חשבוניות מס) וחשבוניות רכש. חשבון עסקה אינו נחשב למסמך חשבונאי סופי לדיווח מע\"מ, ולכן הוא אינו נכלל בקובץ השידור לרשות המיסים עד להפקת חשבונית מס כנגדו.","s":"לא ניתן לקבוע"},{"id":"10269518","q":"חשבוניות רכש מספקים ברשות הפלסטינית לא מתקבלים בדוח מע\"מ בדיווח על ידי קובץ PCN874.","a":"כדי שחשבוניות רכש מספקים ברשות הפלסטינית יופיעו בדוח PCN874, יש לקבוע לקבוצת הספקים סימון **P** בדוח מע\"מ וקוד מיון ייחודי באינדקס החשבונות. בעת הפקת דוח 874, יש לציין את קוד המיון של ספקי הרש\"פ בשדה המתאים. במידה והארגון מוגדר כמלכ\"ר, יש לסמן בחלון ההפקה את השורה \"ספק מהרש\"פ\" ולציין את קוד המיון של הספקים הרלוונטיים.","s":"לא ניתן לקבוע"},{"id":"10269292","q":"האם ניתן כבר לדווח 856? המשתמש שואל האם ניתן כבר לדווח על טופס 856.","a":"לגבי שאלתך האם ניתן כבר לדווח 856, על פי התיעוד הקיים, לא קיים אצלי מידע לגבי מועד ההגשה עבור דוח 856 לשנה זו.  ניתן למצוא הנחיות להפקת דוח 856 בתוכנת חשבשבת בקישור הבא: https://downloads.h-erp.co.il/files/856/856R.pdf  אתה מוזמן לשאול עוד אם אתה רוצה יותר פירוט או במידה ולא קיבלת תשובה מספקת.","s":"לא ניתן לקבוע"}],"גיבויים וממשקים":[{"id":"10272350","q":"שחזור קובץ מסב","a":"אתה שואל לגבי שחזור קובץ מסב. מאחר שהמידע לגבי פעולה זו אינו מופיע בתיעוד שברשותי, איני יודע את התשובה לכך.  הנך מוזמן לשאול שאלות נוספות אם לא קיבלת תשובה מספקת או אם ברצונך לקבל פירוט בנושא אחר.","s":"לא תקין"},{"id":"10272189","q":"כשאני מפיקה קובץ אחיד מבקש ממני מנוי חלונות, מכניסה לו מנוי 130654 והוא רושם שמנוי לא תקין","a":"אתה שואל לגבי הודעת השגיאה \"מנוי לא תקין\" המופיעה לאחר הזנת מספר מנוי בעת ניסיון להפיק קובץ אחיד.  מכיוון שהמידע לגבי השגיאה הספציפית הזו או הצורך בהזנת מספר מנוי ידני במהלך הפקת קובץ אחיד אינו מופיע בתיעוד שברשותי, איני יודע את התשובה לכך.  באופן כללי, בנושאים הקשורים להתנהלות כספית, סטטוס מנוי או תמיכה טכנית שאינה מפורטת בהוראות השימוש בתוכנה, יש לפתוח קריאת שירות או להתקשר לחברה.","s":"לא תקין"},{"id":"10272149","q":"שלום רב יש לנו קובץ הכנסות 1-2.26 כש קולטים גיבוי לחשבשבת הוא מקורא אותם אבל לאחר גיבוי זה לא מופיע במנה חייבים עזרה לנציג .","a":"שלום ליזה,  צר לי, אך מידע לגבי קליטת קובץ הכנסות שאינו מופיע במנה לאחר הפעולה אינו מופיע במסמכי התיעוד שברשותי, ולכן איני יודע את התשובה המדויקת לנושא זה.  מכיוון שסיפקת את כל הפרטים הנדרשים (שם, טלפון ותיאור הבעיה), הדרך היחידה לקבל שירות מנציג או לפתוח קריאה היא על ידי לחיצה על כפתור \"פתיחת קריאה\" בצ’ט.  את מוזמנת לשאול שאלות נוספות אם את רוצה פירוט נוסף או אם לא קיבלת תשובה מספקת.","s":"לא תקין"},{"id":"10271222","q":"אנחנו מעוניינים לבחון אפשרות חיבור אל המערכת באמצעות API.","a":"אתה שואל לגבי האפשרות לבחון חיבור אל המערכת באמצעות API.   המידע בתיעוד שברשותי אינו כולל הנחיות או פרטים בנוגע לחיבור באמצעות API, ולכן איני יודע את התשובה לשאלה זו.   כיוון שסיפקת את כל המידע הנדרש (שם, מספר טלפון ותיאור השאלה), הדרך לקבל שירות בנושא זה היא על ידי לחיצה על כפתור \"פתיחת קריאה\" בצ’ט.  אם תרצה פירוט נוסף או שלא קיבלת תשובה מספקת, אשמח לעזור.","s":"לא תקין"},{"id":"10271130","q":"נותן לי שגיאה שלא ניתן לחתום במס\"ב. יש לי בעיה של קובץ מסב.","a":"את מציינת כי מתקבלת הודעת שגיאה לפיה לא ניתן לחתום במס\"ב.  מכיוון שהתשובה אינה מופיעה בתיעוד שברשותי, אני לא יודע מהו הפתרון לשגיאה הספציפית הזו.  כיוון שסיפקת את כל המידע הנדרש לפתיחת קריאה (שם, טלפון ותיאור ברור של הבעיה בתוכנה), הדרך היחידה לקבל שירות מנציג או לפתוח קריאת שירות היא על ידי לחיצה על כפתור **\"פתיחת קריאה\"** בצ’ט.  האם תרצי לשאול שאלה נוספת או לקבל פירוט בנושא אחר?","s":"לא תקין"},{"id":"10270581","q":"רשום לי המנוי אינו במנוי שירות ממשקים. המשתמש מקבל הודעה שהמנוי אינו במנוי שירות ממשקים ומבקש שיחזרו אליו בדחיפות.","a":"אתה מציין שמתקבלת הודעה לפיה המנוי אינו במנוי שירות ממשקים.  אני עונה רק על שאלות לגבי אופן השימוש בתוכנה. בכל הקשור לחידוש שירות הלקוחות, מנויים או התנהלות כספית, יש לפתוח קריאה או להתקשר לחברה. מאחר שהמידע לגבי הודעה זו אינו מופיע בתיעוד שברשותי, איני יודע את התשובה המדויקת.","s":"לא תקין"},{"id":"10270386","q":"קיימת אי התאמה ביתרה הסופית בביזיבוקס","a":"אתה שואל לגבי אי התאמה ביתרה הסופית בביזיבוקס.  מכיוון שהמידע לגבי נושא זה אינו מופיע בתיעוד ובהוראות השימוש בתוכנה שסופקו לי, איני יודע את התשובה.  באופן כללי, עבור נושאים שאינם קשורים ישירות לאופן השימוש בתוכנה, יש לפתוח קריאת שירות או להתקשר לחברה לקבלת סיוע.  אתה מוזמן לשאול שאלה נוספת אם ברצונך בפירוט נוסף או אם לא קיבלת תשובה מספקת.","s":"לא תקין"},{"id":"10269539","q":"לקלוט דפי בנק רשם שבעיה בלפתוח יוזר Fail to open recordset{db1}(users). המשתמשת מדווחת על בעיה בקליטת קבצים, ובאופן ספציפי בעת ניסיון לקלוט דפי בנק היא מקבלת את הודעת השגיאה.","a":"את מציינת שבעת ניסיונך לקלוט דפי בנק מתקבלת הודעת השגיאה: Fail to open recordset{db1}(users).  לצערי, המידע לגבי הודעת שגיאה ספציפית זו אינו מופיע בהוראות השימוש שברשותי, ולכן איני יודע מהו הפתרון המדויק לתקלה זו.  כיוון שסיפקת את כל הפרטים הנדרשים (שם, מספר טלפון ותיאור ברור של התקלה בתוכנה), הדרך לקבל שירות מנציג או לפתוח קריאה היא על ידי לחיצה על כפתור \"פתיחת קריאה\" בצ’ט.  את מוזמנת לשאול עוד א","s":"לא תקין"},{"id":"10269309","q":"הממשק לקליטת פקודות יומן משום מה ללא הרשאה למרות שכן מופיע בהזמנה בהתקנת החשבשבת.","a":"אלכסנדרה, מכיוון שסיפקת את כל המידע הנדרש – שמך, מספר הטלפון ותיאור השאלה באופן ברור – הדרך היחידה לקבל שירות (כולל נציג שירות או פתיחת קריאה) היא על ידי לחיצה על כפתור \"פתיחת קריאה\" בצ’ט.  בנוגע לשאלתך בנושא חוסר הרשאה לממשק קליטת פקודות יומן, המידע אינו מופיע בתיעוד שברשותי ולכן איני יודע את התשובה.  מוזמנת לשאול עוד אם תרצי לקבל פירוט בנושא אחר או אם לא קיבלת תשובה מספקת.","s":"לא תקין"},{"id":"10271978","q":"אבקש תמיכה בתקלה של קליטת דפי בנק .","a":"הדרך היחידה לקבל שירות (כולל נציג שירות או פתיחת קריאה) היא על ידי לחיצה על כפתור \"פתיחת קריאה\" בצ’ט.  את מוזמנת לשאול שאלות נוספות אם את מעוניינת בפירוט נוסף או אם לא קיבלת תשובה מספקת.","s":"לא ניתן לקבוע"},{"id":"10271875","q":"יבוא נתוני הנהלת חשבונות מקובץ אחיד. המשתמש שאל גם כיצד מבצעים יצוא נתונים לרואה חשבון.","a":"לגבי יבוא נתוני הנהלת חשבונות מקובץ אחיד, הוסבר למשתמש שקובץ במבנה אחיד (BKMV) משמש ליצוא ולא ליבוא. הוצגו חלופות ליבוא: ממשק MOVEIN, ייבוא תנועות יומן מחברה אחרת, וייבוא מרו\"ח. לגבי יצוא לרואה חשבון, הוצגו האפשרויות: יצוא לרו\"ח (העברת נתונים מלאים), קבצים במבנה אחיד (BKMV), ייצוא תנועות יומן, וייצוא דוחות לאקסל.","s":"לא ניתן לקבוע"},{"id":"10271737","q":"בממשק לקליטת דפי בנק רושם לי:input table too many records. הלקוח מקבל הודעת שגיאה בעת ניסיון לקלוט דפי בנק.","a":"אתה שואל לגבי הודעת השגיאה \"input table too many records\" שמתקבלת בעת שימוש בממשק לקליטת דפי בנק.  עליי לציין כי המידע אודות השגיאה הספציפית הזו אינו מופיע בתיעוד שברשותי, ועל כן איני יודע את התשובה.  כדי שתוכל לקבל סיוע מנציג שירות או לפתוח קריאה בנושא זה, חסרים לי בהיסטוריית השיחה הפרטים הבאים: 1. שמך. 2. מספר טלפון תקין (בן 7 ספרות לפחות).  אנא השלם את הפרטים הללו כדי שתוכל לפתוח קריאת שירות בא","s":"לא ניתן לקבוע"},{"id":"10271733","q":"אנו מנסים לשדר קובץ מבנה אחיד, לא מצליחים לשדר רשום להכניס משתמש בחשבשבת   סיסמא, מנסה ולא מצליחה, רשום שאין הרשאה.","a":"את שואלת לגבי הודעת חוסר הרשאה המופיעה בעת ניסיון להפיק קובץ במבנה אחיד (BKMV).  על פי הוראות השימוש בתוכנה, הפקת קבצים במבנה אחיד דורשת הרשאות של **\"מורשה-על\"**. רק משתמש המוגדר בדרגת הרשאה זו רשאי להפיק את הדוח. במידה והמשתמש או הסיסמה שהזנת אינם שייכים למורשה-על, המערכת תחסום את הפעולה ותציג הודעה על חוסר הרשאה.","s":"לא ניתן לקבוע"},{"id":"10271386","q":"בקליטת דפי בנק -\"דף לא תקין בשורה 1 עקב שדה שגוי(2026--)\". המשתמשת מקבלת הודעת שגיאה זו בעת ניסיון לקלוט דפי בנק.","a":"אתה שואל לגבי הודעת השגיאה \"דף לא תקין בשורה 1 עקב שדה שגוי (2026--)\" שמופיעה בעת תהליך קליטת דפי בנק.  חיפשתי בתיעוד המערכת המצוי ברשותי, אך לצערי המידע לגבי שגיאה ספציפית זו אינו מופיע בנתונים, ולכן איני יודע מהו הפתרון המדויק לתקלה זו.  ככלל, בעת קליטת דפי בנק, חשוב לוודא שבחרת בסוג הבנק הנכון בחלון היבוא ושהקובץ שהורד מהבנק תואם לפורמט הנדרש.   מוזמן לשאול שוב אם תרצה פירוט נוסף או אם לא קיבלת","s":"לא ניתן לקבוע"}],"מסמכים, פריטים וניהול מלאי":[{"id":"10272383","q":"אני צריכה לבטל נעילה למסמך? המשתמשת מבקשת סיוע בביטול נעילה למסמך.","a":"את שואלת לגבי הצורך בביטול נעילה למסמך. מכיוון שהמידע לגבי \"ביטול נעילה\" אינו מופיע בתיעוד שברשותי, איני יודע את התשובה לכך.  אני מזמין אותך לשאול שאלות נוספות אם לא קיבלת תשובה מספקת או אם תרצי פירוט לגבי פעולות אחרות המופיעות במדריכים, כגון ביטול מסמכים או סגירת מסמכים.","s":"לא תקין"},{"id":"10268429","q":"איך אני מבטלת הזמנת סוכן. המשתמש שאל גם איפה נמצא תפריט הזמנות.","a":"התשובה לשאלה 'איך אני מבטלת הזמנת סוכן': ביטול הזמנה מתבצע על ידי איפוס 'יתרה לאספקה'. ניתן לעשות זאת בביטול יתרה גורף דרך תפריט 'הזמנות' > 'ביטול יתרה לאספקה בהזמנות / בהצעת מחיר', או בביטול יתרה לפריט ספציפי על ידי לחיצה ימנית על שורת הפריט בהזמנה. אפשרות נוספת היא תיקון או מחיקה של ההזמנה דרך 'קובץ קבוע' ו'שינוי הזמנות/הצעות מחיר'. התשובה לשאלה 'איפה נמצא תפריט הזמנות': תפריט 'הזמנות' נמצא בסרג","s":"לא תקין"},{"id":"10268221","q":"חשבונית אוטונומיה איך רושמים. המשתמשת שאלה איך רושמים חשבונית אוטונומיה.","a":"אתה שואל לגבי האופן שבו רושמים חשבונית אוטונומיה בתוכנה.  לצערי, המידע לגבי אופן הרישום של חשבונית אוטונומיה אינו מופיע במסמכי ההדרכה שברשותי, ולכן איני יודע את התשובה לשאלה זו.  נשמח לסייע אם יש לך שאלות נוספות לגבי השימוש בתוכנה, או אם תרצה פירוט בנושא אחר המופיע במדריכים.","s":"לא תקין"},{"id":"10273343","q":"שילמנו לכם ב11/2024 סך של 4933 שקל לא קיבלנו חשבונית , מספר מינוי 150436.","a":"התשובה שהתקבלה היא שהשירות בצ'אט מיועד להנחיות תפעוליות בתוכנה בלבד. בנושאים כספיים כמו חשבוניות, יש לפתוח קריאת שירות.","s":"לא ניתן לקבוע"},{"id":"10270757","q":"אבקש לדעת איפה ניתן במסמך הזמת רכש להוסיף תאריך צפי כולל סטטוס","a":"שלום, אתה מבקש לדעת היכן ניתן להוסיף תאריך צפי וסטטוס במסמך הזמנת רכש.  על פי התיעוד הקיים, ניתן לבצע זאת בדרכים הבאות:  *   **סטטוס:** ניתן לקבוע סטטוס למסמך באמצעות בחירה בסעיף **שינוי סטטוס למסמך**. משתמש יכול לקבוע למסמך סטטוס עד לרמה המקסימלית המוגדרת לו. *   **תאריך צפי:** לצורך ציון תאריך צפי (כגון תאריך אספקה), ניתן להשתמש בשדות **תאריך ערך** או **תאריך נוסף** הנמצאים בלשונית פרטי המסמך.","s":"לא ניתן לקבוע"},{"id":"10270404","q":"רציתי לדעת כיצד אפשר לשלוח נאמן למקור חשבוניות וכד'. המשתמשת, מיה, רוצה לשלוח העתק נאמן למקור עבור חשבונית ריכוז. לאחר שהבינה שנדרש שדרוג גרסה ל-a2026, היא שאלה כיצד לבצע את השדרוג.","a":"הוסבר למשתמשת ששליחת העתק נאמן למקור עבור חשבונית ריכוז אפשרית החל ממהדורה a2026. בגרסאות קודמות, השירות לא היה זמין עבור חשבוניות ריכוז. כדי לבצע זאת, יש להיכנס ללשונית 'דפדוף', לפתוח 'פעולות נוספות' ולבחור 'הדפסת העתק משוחזר, נאמן למקור'. בנוסף, הוסבר תהליך שדרוג הגרסה ל-a2026, הכולל יציאה מהתוכנה בכל התחנות והפעלת 'חשבשבת עדכוני תוכנה' משולחן העבודה.","s":"לא ניתן לקבוע"},{"id":"10269950","q":"איך אני מעתיק חשבונית במאגר זמני לתעודת משלוח?","a":"התשובה שהתקבלה היא שעל פי תיעוד התוכנה, במהדורה 2025 גרסה 2 נוספה אפשרות לקלוט מסמך למאגר זמני על סמך מסמך בסיס שנמצא גם הוא במאגר הזמני. בתהליך עבודה ידני, יש להיכנס למסמך היעד (תעודת משלוח), לעבור ללשונית 'מסמכי בסיס', לבחור את סוג מסמך הבסיס (חשבונית) ולאתר את המסמך. הוסבר גם כיצד לשחרר פריט אם החשבונית 'סגורה' ושהעתקת מסמך יוצרת העתק מאותו סוג מסמך.","s":"לא ניתן לקבוע"}],"הנהלת חשבונות":[{"id":"10270670","q":"בהפקת הזמנה מלקוח אי אפשר לשנות את מספר ההזמנה? המשתמש שואל האם ניתן לשנות את מספר ההזמנה בעת הפקת הזמנה מלקוח.","a":"אתה שואל האם ניתן לשנות את מספר ההזמנה בעת הפקת הזמנה מלקוח.  לצערי, המידע בתיעוד שברשותי אינו מציין האם ניתן לשנות באופן ידני את מספר ההזמנה בזמן הפקתה, ולכן איני יודע את התשובה לכך.  נשמח לעמוד לשירותך אם תרצה לשאול פרטים נוספים או אם לא קיבלת תשובה מספקת.","s":"לא תקין"},{"id":"10267829","q":"מבקשת עזרה בהתאמת בנק.","a":"המשתמשת קיבלה הסבר על שתי שיטות לביצוע התאמת בנק בחשבשבת: התאמה ידנית והתאמה אוטומטית. ההסבר כלל את הנתיב בתפריט (הנהלת חשבונות > התאמות וניתוחי כרטיסים) והדגיש את החשיבות של קליטת דפי בנק לפני תחילת התהליך.","s":"לא תקין"},{"id":"10273170","q":"מאזן בוחן לקוחות שנתי לפי חודשים. המשתמש מציין שאין לו את סעיף 'פירוט לקוחות וספקים' בהפקת הדוח. למרות ההסבר החלופי, הוא עדיין לא מצליח ומבקש יצירת קשר באופן דחוף.","a":"הוסבר למשתמש כיצד להפיק דוח מאזן שנתי לפי חודשים ולבחור 'כן' בפירוט לקוחות וספקים. כשהמשתמש ציין שהסעיף לא קיים אצלו, הוסבר לו שהשליטה נעשית דרך 'חתך החשבונות'. המשתמש טוען שהפתרון לא עזר.","s":"לא ניתן לקבוע"},{"id":"10271848","q":"שלום יש לי בעיה עם רישום שקים לפירעון בסוף שנת 25. בבקשה שנציג יחזור אלי","a":"איני יודע את התשובה לשאלתך על סמך התיעוד הקיים.  כדי שניתן יהיה לפתוח קריאת שירות ולקבל מענה מנציג, חסרים בשיחה הפרטים הבאים: 1. שמך. 2. מספר טלפון תקין (בן 7 ספרות לפחות).  אנא השלם את הפרטים הללו בשיחה כדי שניתן יהיה להמשיך בתהליך.  אתה מוזמן לשאול עוד אם תרצה פירוט נוסף או אם לא קיבלת תשובה מספקת.","s":"לא ניתן לקבוע"},{"id":"10271410","q":"איך להזין הרשאה שחוסמת צפייה בכרטיס/קוד מיון מסוים אבל מאפשרת הזנת נתונים בפקודת יומן לאותו כרטיס/קוד מיון. המשתמש מבקש לפתוח קריאת שירות.","a":"אתה שואל לגבי האפשרות להגדיר הרשאה שתחסום צפייה בכרטיס חשבון או קוד מיון מסוים, אך עדיין תאפשר למשתמש להזין נתונים בפקודת יומן עבור אותו כרטיס.  על פי התיעוד, **לא ניתן** לבצע הפרדה כזו עבור משתמשי הנהלת חשבונות.   כאשר מגדירים \"הגבלת גישה לחתך\" עבור משתמש שאינו מורשה-על, ההגבלה חלה הן על עדכון נתונים (רישום) והן על הפקת דוחות (צפייה). התיעוד מציין במפורש כי כאשר קובעים חתך למשתמשי הנה\"ח, החתך חל","s":"לא ניתן לקבוע"}],"כללי ודוקה":[{"id":"10274928","q":"איך אני מאפס את המערכת לאינדקס ריק","a":"אתה שואל לגבי האופן שבו ניתן לאפס את המערכת לאינדקס ריק. כיוון שהמידע המבוקש אינו מופיע במסמכי התיעוד המפורטים בתוכנה, אינני יודע את התשובה לשאלה זו.  לביצוע פעולות מערכתיות מסוג זה או לבירורים שאינם מופיעים בהוראות השימוש בתוכנה, יש לפתוח קריאת שירות או ליצור קשר עם החברה.  אתה מוזמן לשאול שאלות נוספות אם תרצה פירוט בנושא אחר או אם לא קיבלת תשובה מספקת.","s":"לא תקין"},{"id":"10271810","q":"אשמח שתצרו קשר על מנת לבדוק האם יש מודל שאני מחפש אצלכם","a":"אני עונה רק על שאלות לגבי אופן השימוש בתוכנה. בנושאים אחרים, כגון בירור לגבי מודולים חדשים או פנייה כללית לנציג, יש לפתוח קריאת שירות או להתקשר לחברה.  הדרך היחידה לקבל שירות מנציג או לפתוח קריאה היא על ידי לחיצה על כפתור \"פתיחת קריאה\" בצ’ט.  כדי שניתן יהיה לעשות זאת, חסר פרט אחד בהיסטוריית השיחה: עליך לציין שאלה ברורה ומפורטת לגבי אופן השימוש בתוכנה (לדוגמה: מהו המודול שאתה מחפש או מה הצורך התפעו","s":"לא תקין"},{"id":"10269216","q":"איך מגדירים מספר טלפון לצורך שליחת הוצאות לדוקה בוואטסאפ","a":"שלום,  אתה מבקש לדעת איך מגדירים מספר טלפון לצורך שליחת הוצאות למערכת דוקה (H-Dokka) באמצעות הוואטסאפ.  מאחר שהמידע המדויק לגבי הגדרת מספר טלפון לשימוש בוואטסאפ מול מערכת דוקה אינו מופיע בתיעוד שברשותי, איני יודע את התשובה לכך. התיעוד הקיים מציין רק כי החל ממהדורה 2026a ניתן להפיק תשלומים למס\"ב על סמך תנועות צפויות שנקלטו ממערכת דוקה לחשבשבת.  הצע למשתמש לשאול עוד אם הוא רוצה יותר פירוט או שלא קיב","s":"לא תקין"},{"id":"10272923","q":"בחברה- נחשון יש הגדרה לסעיפים באינדקס שעומדים על 4 ספרות צריך לשנות שתהיה אפשרות עד ל15 תווים יש כרגע סעיפים קיימים. הלקוח מבקש לשנות את הגדרת אורך האינדקס מ-4 ספרות ל-15 תווים, אך ישנם כבר סעיפים קיי","a":"על פי הוראות התוכנה, במידה וכבר נפתחו חשבונות או פריטים, שינוי סוג האינדקס (ממספרתי לאלפנומרי) או שינוי באורכו מצריך סיסמה מנציג שירות. לכן, יש לפתוח קריאת שירות בנושא זה.","s":"לא ניתן לקבוע"}],"מספר הקצאה, חשבוניות ישראל, טוקן ורשות המיסים":[{"id":"10268974","q":"כאשר לוחץ על חשבונית בדפדפוף בשביל לקבל מספר הקצאה אני מקבל הודעת שגיאה: \"לא התקבלה מספר הקצאה. חלה תקלה מספר 403\"","a":"אתה מציין כי בעת ניסיון לקבל מספר הקצאה דרך דפדוף במסמכים מתקבלת הודעת שגיאה: \"לא התקבלה מספר הקצאה. חלה תקלה מספר 403\".  מכיוון שהמידע לגבי תקלה מספר 403 אינו מופיע בתיעוד שברשותי, אינני יודע מהי התשובה לשאלתך.   מאחר שכבר סיפקת את כל המידע הנדרש (שם, טלפון ותיאור ברור של התקלה בתוכנה), הדרך לקבל שירות מנציג היא על ידי לחיצה על כפתור \"פתיחת קריאה\" המופיע בצ’אט.  אנא ציין אם תרצה לשאול עוד או אם י","s":"לא תקין"},{"id":"10268902","q":"התקרה המינימלית להפיק מספר הקצאה בחשבשבת 15000 והוא צריך להיות 10000 לפני מע\"מ ולא הצלחתי לשנות התקרה דרך המערכת. המשתמש מציין שלא קיבל תשובה מספקת.","a":"במידה והסכום לא התעדכן אוטומטית ל-10,000 ש\"ח, ניתן לעדכן אותו דרך התפריט: הגדרות > קבלה ועדכון סכום מינימלי > חשבוניות ישראל. יש ללחוץ על \"קבלה ועדכון סכום מינימלי\" בכל חברה. לביצוע פעולה זו יש לוודא שהתוכנה מעודכנת למהדורה 2025 sp4.1 ומעלה. למידע נוסף ניתן לעיין במסמך: https://downloads.h-erp.co.il/files/IsrInv/IsrInvSumM.pdf","s":"לא תקין"},{"id":"10270869","q":"מספרי הקצאה נותנים שגיה. המשתמשת מדווחת על קבלת שגיאה בעבודה עם מספרי הקצאה.","a":"השאלה אינה ברורה די הצורך. כדי שאוכל לספק תשובה מדויקת המבוססת על הוראות השימוש בתוכנה, אנא נסח שוב את שאלתך בפירוט וציין מהו קוד השגיאה שמתקבל (למשל 400 או 403) או מהו נוסח הודעת השגיאה המלא שמופיע על המסך.  הנך מוזמן לשאול שוב אם לא קיבלת תשובה מספקת או אם ברצונך בפירוט נוסף.","s":"לא ניתן לקבוע"},{"id":"10270712","q":"כשמנסים לקבל טוקן מחשבוניות ישראל האפליקציה של tax authority  לא נפחתחת כמו שצריך בלוגים מופיע :  26, 11:56:47 in check size   23.3.2026, 12:01:21 started taxAuth version 1   23.3.2026, 12:01:21 in ch","a":"אתה מציין כי האפליקציה של רשות המיסים אינה נפתחת כראוי בעת ניסיון לקבלת טוקן עבור \"חשבוניות ישראל\", וכי מופיעה שגיאה ביומן הרישום (Log) בנוסח \"in check size\", זאת למרות ביצוע אתחול ונטרול חומת אש.  מאחר שהמידע לגבי השגיאה הספציפית הזו אינו מופיע בתיעוד שברשותי, איני יודע מהו הפתרון הטכני המדויק עבורה.  כיוון שסיפקת את הפרטים הנדרשים (שם, טלפון ותיאור ברור של השאלה), הדרך היחידה לקבל שירות מנציג או","s":"לא ניתן לקבוע"}],"שב\"א ואשראי":[{"id":"10271167","q":"היי אשמח שנציג יחזור אלי בנוגע לחסימת קבלת תשלום מכרטיס אמריקן אקספרס מלקוחות.","a":"שלום אורי,  הדרך היחידה לקבל שירות מנציג או לפתוח קריאת שירות היא על ידי לחיצה על כפתור \"פתיחת קריאה\" בצ’ט. מכיוון שסיפקת את כל המידע הנדרש (שם, טלפון ותיאור פנייה ברור), תוכל להשלים את הפעולה כעת באמצעות לחיצה על הכפתור.  נשמח לעמוד לשירותך.","s":"לא תקין"},{"id":"10271167","q":"היי אשמח שנציג יחזור אלי בנוגע לחסימת קבלת תשלום מכרטיס אמריקן אקספרס מלקוחות.","a":"שלום אורי,  הדרך היחידה לקבל שירות מנציג או לפתוח קריאת שירות היא על ידי לחיצה על כפתור \"פתיחת קריאה\" בצ’ט. מכיוון שסיפקת את כל המידע הנדרש (שם, טלפון ותיאור פנייה ברור), תוכל להשלים את הפעולה כעת באמצעות לחיצה על הכפתור.  נשמח לעמוד לשירותך.","s":"לא תקין"},{"id":"10271876","q":"היי האשרי לא מעביר לי רשום שגיאה 703","a":"אתה מציין כי מתקבלת שגיאה 703 וכרטיס האשראי אינו עובר בתוכנה.  מכיוון שהמידע לגבי קוד שגיאה 703 אינו מופיע במסמכי התיעוד שברשותי, אני לא יודע מהי מהות השגיאה או כיצד לפתור אותה.   הנך מוזמן לשאול שאלה נוספת אם אתה זקוק לפירוט נוסף או אם לא קיבלת תשובה מספקת.","s":"לא ניתן לקבוע"}],"דוחות":[{"id":"10267875","q":"להוציא דוחות. המשתמש רוצה לדעת איך להפיק דוחות בתוכנה.","a":"שלום אור שחר, קיבלתי את פרטי ההתקשרות שלך.  אתה מבקש לדעת כיצד להפיק דוחות בתוכנה. כיוון שבמערכת קיימים דוחות רבים ומגוונים (כגון דוחות מכירות, רכש, מלאי, הנהלת חשבונות ועוד), אבקש שתפרט באיזה דוח מדובר או מהו המידע שברצונך להפיק, כדי שאוכל לספק לך הנחיות מדויקות.  לגבי בקשתך לנציג או לפתיחת קריאת שירות: אף שסיפקת שם ומספר טלפון, כדי שתוכל ללחוץ על כפתור \"פתיחת קריאה\", חסר בהיסטוריית השיחה תיאור ב","s":"לא תקין"},{"id":"10271671","q":"אני צריכה לדעת איך להוציא דוח. הלקוחה מבקשת סיוע בהפקת דוח אך לא פירטה איזה דוח ספציפי היא צריכה.","a":"שני, תודה על הפרטים. את מציינת את שמך ואת מספר הטלפון שלך בהמשך לבקשתך לדעת איך להוציא דוח.  כדי שניתן יהיה לפתוח קריאת שירות באמצעות לחיצה על כפתור **\"פתיחת קריאה\"**, חסר עדיין פירוט ברור לגבי השאלה בתוכנה. כפי שצוין קודם לכן, הבקשה \"להוציא דוח\" היא כללית מדי כיוון שבחשבשבת קיימים דוחות רבים (לדוגמה: דוח מע\"מ, כרטסת חשבון, דוחות מלאי וכו').  אנא צייני איזה דוח ספציפי את מעוניינת להפיק. לאחר שתפרט","s":"לא ניתן לקבוע"}],"שליחה למייל, חתימה דיגיטלית, הדפסות":[{"id":"10270874","q":"זו פניה שלישית או רביעית , קיבלתי מענה במיילים שלא הועילו , יש לי בעיה בפתיחת הדוקה ולא עוזר למחוק עוגיות ולפתוח בדפדפן אחר , מבקשת מענה דחוף ע\"י נציג שיתחבר אלי ....שמי שושי והטלפון שלי לחזרה 03-9324","a":"שלום שושי, את מציינת שאת חווה קושי בפתיחת מערכת H-DOKKA וכי הפתרונות שהוצעו לך עד כה, כמו ניקוי עוגיות והחלפת דפדפן, לא הועילו.  כיוון שסיפקת את כל הפרטים הנדרשים (תיאור הבעיה, שם ומספר טלפון תקין), הדרך לקבלת שירות מנציג או פתיחת קריאה היא על ידי לחיצה על כפתור **\"פתיחת קריאה\"** המופיע כאן בצ'אט.  האם תרצי לשאול שאלות נוספות או לקבל פירוט נוסף לגבי השימוש בתוכנה?","s":"לא תקין"}]}
 </script>
 </body>
 </html>
