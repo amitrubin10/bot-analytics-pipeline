@@ -1,5 +1,9 @@
 # Bot Analytics Dashboard
 
+<p align="center">
+  <img src="screenshots/hero.png" width="700" alt="Bot Analytics Dashboard" />
+</p>
+
 **AI-powered analytics pipeline for customer service chatbot monitoring and optimization**
 
 An end-to-end system that transforms raw customer service call data into actionable management insights. Built as a modular pipeline of 5 specialized AI agents, each handling a distinct analysis layer — from topic classification and response quality evaluation to a fully interactive executive dashboard.
