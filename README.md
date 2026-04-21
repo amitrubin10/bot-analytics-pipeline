@@ -12,9 +12,7 @@ An end-to-end system that transforms raw customer service call data into actiona
 
 ## Live Dashboard
 
-🔗 [View Live Dashboard](https://amitrubin10.github.io/daily-bot-dashboard/)
-
----
+🔗 [View Live Dashboard](https://amitrubin10.github.io/bot-analytics-pipeline/)---
 
 ## The Pipeline
 
