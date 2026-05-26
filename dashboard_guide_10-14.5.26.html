@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מדריך קריאת הדשבורד — 10-14.5.26</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #F4F6FA;
+    color: #222;
+    direction: rtl;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    box-shadow: 0 2px 24px rgba(0,0,0,0.10);
+  }
+
+  /* Header */
+  .doc-header {
+    background: linear-gradient(135deg, #1A1A2E 0%, #16213E 60%, #0F3460 100%);
+    color: #fff;
+    padding: 48px 56px 36px;
+    text-align: center;
+  }
+  .doc-header h1 {
+    font-size: 2.4em;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+  .doc-header .sub { font-size: 1.15em; color: #aac4ff; margin-bottom: 6px; }
+  .doc-header .date { font-size: 0.95em; color: #6b8cbe; }
+
+  /* Content area */
+  .content { padding: 40px 56px 64px; }
+
+  /* Intro box */
+  .intro-box {
+    background: #EBF3FF;
+    border-right: 5px solid #2F81F7;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 36px;
+  }
+  .intro-box strong { font-size: 1.05em; color: #1A1A2E; display: block; margin-bottom: 6px; }
+  .intro-box p { color: #444; font-size: 0.97em; }
+
+  /* Section headers */
+  h2 {
+    font-size: 1.45em;
+    font-weight: 700;
+    color: #1A1A2E;
+    margin: 44px 0 10px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #E8EBF0;
+  }
+  h2 .num {
+    display: inline-block;
+    background: #1A1A2E;
+    color: #fff;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 28px;
+    font-size: 0.78em;
+    margin-left: 10px;
+    vertical-align: middle;
+    font-weight: 700;
+  }
+  h3 {
+    font-size: 1.1em;
+    font-weight: 700;
+    margin: 20px 0 8px;
+  }
+
+  p { margin-bottom: 10px; }
+  ul { padding-right: 22px; margin-bottom: 10px; }
+  ul li { margin-bottom: 5px; }
+
+  /* Divider */
+  hr { border: none; border-top: 1px solid #E0E4ED; margin: 36px 0; }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 18px 0;
+    font-size: 0.93em;
+  }
+  th {
+    background: #1A1A2E;
+    color: #fff;
+    padding: 11px 14px;
+    text-align: right;
+    font-weight: 600;
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #E8EBF0;
+    vertical-align: top;
+    text-align: right;
+  }
+  tr:nth-child(even) td { background: #F7F9FC; }
+  tr:hover td { background: #EEF3FC; }
+  .val-cell {
+    text-align: center;
+    font-size: 1.18em;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  /* Info boxes */
+  .box {
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 14px 0;
+  }
+  .box-blue  { background: #EBF3FF; border-right: 4px solid #2F81F7; }
+  .box-green { background: #F0FFF4; border-right: 4px solid #3FB950; }
+  .box-red   { background: #FFF0F0; border-right: 4px solid #F85149; }
+  .box-amber { background: #FFFBEB; border-right: 4px solid #E3B341; }
+  .box-teal  { background: #F0FFFE; border-right: 4px solid #00D4AA; }
+  .box-purple{ background: #F5F0FF; border-right: 4px solid #A371F7; }
+  .box strong { display: block; margin-bottom: 4px; }
+
+  /* Score colors */
+  .score-blue   { color: #2F81F7; font-weight: 700; }
+  .score-green  { color: #3FB950; font-weight: 700; }
+  .score-amber  { color: #E3B341; font-weight: 700; }
+  .score-red    { color: #F85149; font-weight: 700; }
+  .score-teal   { color: #00D4AA; font-weight: 700; }
+  .score-purple { color: #A371F7; font-weight: 700; }
+
+  /* KPI cards row */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin: 18px 0;
+  }
+  .kpi-card {
+    background: #F7F9FC;
+    border-radius: 10px;
+    border: 1px solid #E0E4ED;
+    padding: 16px 14px;
+    text-align: center;
+  }
+  .kpi-card .kpi-label { font-size: 0.82em; color: #666; margin-bottom: 6px; }
+  .kpi-card .kpi-val { font-size: 1.8em; font-weight: 700; line-height: 1; }
+  .kpi-card .kpi-desc { font-size: 0.78em; color: #777; margin-top: 8px; line-height: 1.4; }
+
+  /* Insight cards */
+  .insight-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 18px 0;
+  }
+  .insight-card {
+    border-radius: 10px;
+    padding: 18px;
+    border: 1px solid;
+  }
+  .insight-card .ic-title { font-weight: 700; margin-bottom: 8px; font-size: 1.0em; }
+  .insight-card ul { padding-right: 18px; font-size: 0.9em; margin-bottom: 8px; }
+  .insight-card .ic-note { font-size: 0.88em; font-style: italic; }
+
+  /* Topic list */
+  .topic-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 14px;
+    border-bottom: 1px solid #EEF0F4;
+    font-size: 0.94em;
+  }
+  .topic-row:last-child { border-bottom: none; }
+  .topic-row .tname { color: #1A1A2E; }
+  .topic-score {
+    font-weight: 700;
+    font-size: 1.05em;
+    min-width: 68px;
+    text-align: center;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.88em;
+  }
+  .ts-green  { background: #E6F9EC; color: #1a6b30; }
+  .ts-amber  { background: #FFF5DC; color: #8a5c00; }
+  .ts-red    { background: #FFECEC; color: #a01010; }
+
+  /* Print-friendly */
+  @media print {
+    body { background: #fff; }
+    .page { box-shadow: none; }
+  }
+
+  @media (max-width: 700px) {
+    .content { padding: 20px 18px 40px; }
+    .doc-header { padding: 30px 18px 24px; }
+    .kpi-grid { grid-template-columns: 1fr 1fr; }
+    .insight-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- HEADER -->
+<div class="doc-header">
+  <h1>מדריך קריאת הדשבורד</h1>
+  <div class="sub">ניתוח איכות שיחות תקינות — בוט שירות</div>
+  <div class="date">שבוע 10–14 במאי 2026</div>
+</div>
+
+<div class="content">
+
+  <!-- INTRO -->
+  <div class="intro-box">
+    <strong>על המסמך הזה</strong>
+    <p>מסמך זה מסביר כל חלק בדשבורד בשפה פשוטה וברורה — ללא מונחים טכניים. אחרי קריאתו תדע מה כל מספר אומר, מה כל גרף מציג, ואיך לנווט בדשבורד.</p>
+  </div>
+
+  <!-- SECTION 1 -->
+  <h2><span class="num">1</span> מה הדשבורד הזה בכלל?</h2>
+  <p>הדשבורד מציג ניתוח של <strong>626 שיחות</strong> שהבוט ענה עליהן בצורה תקינה — שיחות שבהן הבוט ניסה לעזור ולא הפנה לנציג. כל שיחה קיבלה ציון 0–10 לפי 5 קריטריונים.</p>
+  <p><strong>מטרת הדשבורד:</strong> לאפשר החלטות מבוססות נתונים — היכן הבוט טוב, איפה יש חולשות, ומה כדאי לשפר ראשון.</p>
+
+  <hr>
+
+  <!-- SECTION 2 -->
+  <h2><span class="num">2</span> ארבע הכרטיסיות בראש הדשבורד (KPI)</h2>
+  <p style="color:#666;font-style:italic;margin-bottom:16px;">KPI = מדדי ביצוע עיקריים. אלה 4 המספרים החשובים ביותר בדשבורד.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label">שיחות שנותחו</div>
+      <div class="kpi-val score-blue">626</div>
+      <div class="kpi-desc">מתוך 819 שיחות שהגיעו לבוט. השאר הופנו לנציג.</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">ממוצע כולל</div>
+      <div class="kpi-val score-green">7.76</div>
+      <div class="kpi-desc">ציון ממוצע מתוך 10. 8+ = מצוין, 7–8 = טוב, מתחת 6 = בעייתי.</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">מתחת ל-6/10</div>
+      <div class="kpi-val score-amber">19</div>
+      <div class="kpi-desc">רק 3% קיבלו ציון כשל. שיעור כישלון נמוך מאוד.</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">דגלי סיווג שגוי</div>
+      <div class="kpi-val score-red">3</div>
+      <div class="kpi-desc">שיחות שסווגו תקין אך פותחות ב"אינני יודע".</div>
+    </div>
+  </div>
+
+  <div class="box box-blue">
+    <strong>מה זה ציון 7.76?</strong>
+    כל שיחה מקבלת ציון 0–10. הממוצע הוא 7.76. 10 = תשובה מושלמת בכל 5 הממדים. 6 = תשובה שעוברת סף מינימלי. מתחת ל-6 = תשובה בעייתית.
+  </div>
+
+  <hr>
+
+  <!-- SECTION 3 -->
+  <h2><span class="num">3</span> חמשת הממדים — איך מחשבים את הציון?</h2>
+  <p>כל שיחה נבדקת לפי 5 קריטריונים. כל קריטריון מקבל 0, 1 או 2 נקודות. סכום מקסימום: 10.</p>
+
+  <table>
+    <thead>
+      <tr><th>ממד</th><th>ציון ממוצע</th><th>השאלה שהממד עונה עליה</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>רלוונטיות</strong></td>
+        <td class="val-cell score-green">1.84/2 <br><small style="color:#888">(92%)</small></td>
+        <td>האם הבוט ענה על מה שנשאל? ציון גבוה = הבוט מבין ועונה בדיוק על זה.</td>
+      </tr>
+      <tr>
+        <td><strong>ספציפיות</strong></td>
+        <td class="val-cell score-amber">1.45/2 <br><small style="color:#888">(73%)</small></td>
+        <td>האם הבוט נתן הוראות מדויקות? למשל: "תפריט כללי &gt; ממשקים &gt; ייבוא" במקום רק "ממשקים".</td>
+      </tr>
+      <tr>
+        <td><strong>שלמות</strong></td>
+        <td class="val-cell score-green">1.68/2 <br><small style="color:#888">(84%)</small></td>
+        <td>האם הבוט ענה על כל חלקי השאלה? אם הלקוח שאל שתי שאלות — הבוט ענה על שתיהן?</td>
+      </tr>
+      <tr>
+        <td><strong>בהירות</strong></td>
+        <td class="val-cell score-red">0.82/2 <br><small style="color:#888">(41%)</small></td>
+        <td>האם קל לקרוא את התשובה? בלוק ארוך ללא כותרות ושלבים = ציון נמוך. <strong>זה הממד הכי חלש!</strong></td>
+      </tr>
+      <tr>
+        <td><strong>ישירות</strong></td>
+        <td class="val-cell score-teal">1.97/2 <br><small style="color:#888">(99%)</small></td>
+        <td>האם הבוט ענה ישירות? "אינני יודע" / "לצערי" = ציון נמוך. ציון 99% = כמעט מושלם.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <!-- SECTION 4 -->
+  <h2><span class="num">4</span> פערים קריטיים לפיתוח</h2>
+  <p>שלוש כרטיסיות שמציגות את הבעיות לטיפול — מסודרות לפי דחיפות.</p>
+
+  <h3 style="color:#F85149; margin-top:22px;">⚡ כרטיסייה 1 — בהירות מבנה — דחוף ביותר</h3>
+  <div class="box box-red">
+    <p><strong>ציון: <span class="score-red">0.82/2</span> — 41% בלבד. הציון הנמוך ביותר מכל 5 הממדים.</strong></p>
+    <p><strong style="color:#c0392b;">הבעיה:</strong> תשובות ארוכות ניתנות כבלוק אחד של טקסט ללא כותרות, שלבים ממוספרים או רווחים.</p>
+    <p><strong style="color:#1a6b30;">הפתרון:</strong> לאמן את הבוט לבנות תשובות ארוכות (מעל 300 תווים) עם כותרת + שלבים + רווחים.</p>
+    <p><strong style="color:#2F81F7;">ההשפעה:</strong> שינוי זה לבדו צפוי להעלות את הציון הכולל ב-1.5 נקודה.</p>
+  </div>
+
+  <h3 style="color:#E3B341; margin-top:22px;">⚠️ כרטיסייה 2 — ספציפיות תפריטים</h3>
+  <div class="box box-amber">
+    <p><strong>ציון: <span class="score-amber">1.45/2</span> — 73%.</strong> הבוט מסביר פתרונות אך לא תמיד מציין את מסלול התפריט המלא.</p>
+    <p><strong style="color:#1a6b30;">הפתרון:</strong> לוודא שכל תשובה תפעולית מכילה מסלול מלא — לפחות 2 צעדי תפריט. לדוגמה: "כללי &gt; ממשקים &gt; ייבוא נתוני הנה"ח".</p>
+  </div>
+
+  <h3 style="color:#2F81F7; margin-top:22px;">📋 כרטיסייה 3 — שלמות תשובה</h3>
+  <div class="box box-blue">
+    <p><strong>ציון: <span class="score-blue">1.68/2</span> — 84%.</strong> כשלקוח שואל שאלה עם שני חלקים ("בנוסף" / "וגם"), הבוט לפעמים עונה רק על חלק אחד.</p>
+    <p><strong style="color:#1a6b30;">הפתרון:</strong> לאמן את הבוט לזהות שאלות מורכבות ולחלק את התשובה לפסקאות נפרדות.</p>
+  </div>
+
+  <hr>
+
+  <!-- SECTION 5 -->
+  <h2><span class="num">5</span> הגרפים</h2>
+
+  <h3>5א. דונאט — חלוקת רמות ציון</h3>
+  <p>הגרף העגול מחלק את 626 השיחות ל-3 קבוצות:</p>
+  <ul>
+    <li><span class="score-green">●</span> <strong>ירוק — מעולה (ציון 8–10):</strong> 396 שיחות = 63%</li>
+    <li><span class="score-amber">●</span> <strong>ענבר — טוב (ציון 6–7.9):</strong> 211 שיחות = 34%</li>
+    <li><span class="score-red">●</span> <strong>אדום — כשל (מתחת ל-6):</strong> 19 שיחות = 3%</li>
+  </ul>
+  <div class="box box-green">
+    <strong>המשמעות:</strong> 97% מהשיחות קיבלו ציון עובר. רק 3% נכשלו. שיעור כישלון נמוך מאוד.
+  </div>
+
+  <h3 style="margin-top:22px;">5ב. מפת חום — ממדי איכות לפי נושא</h3>
+  <p>טבלת צבעים שמציגה את הציון של כל ממד בכל נושא. זה הגרף האינפורמטיבי ביותר בדשבורד.</p>
+  <p><strong>איך לקרוא:</strong></p>
+  <ul>
+    <li>כל <strong>שורה</strong> = נושא (11 נושאים)</li>
+    <li>כל <strong>עמודה</strong> = ממד איכות (5 ממדים)</li>
+    <li><span style="color:#c0392b;">ורוד-אדום</span> = ציון חלש יחסית לאותה עמודה</li>
+    <li><span style="color:#3c6ea5;">כחול-ציפחה</span> = ציון בינוני</li>
+    <li><span style="color:#00a88a;">טיל</span> = ציון חזק</li>
+  </ul>
+  <div class="box box-amber">
+    <p><strong>חשוב:</strong> הצבעים מנורמלים לפי כל עמודה בנפרד — הנמוך בעמודה מקבל ורוד גם אם הוא ציון גבוה בפועל.</p>
+    <p><strong>מה לחפש:</strong> שורה שלמה בורוד = נושא חלש. עמודה שלמה בורוד = ממד חלש בכל הנושאים. עמודת "בהירות" — כמעט כולה בורוד.</p>
+  </div>
+
+  <p style="margin-top:12px;"><strong>הנושאים מהטוב לחלש:</strong></p>
+  <div style="background:#F7F9FC; border-radius:8px; border:1px solid #E0E4ED; overflow:hidden; margin:12px 0;">
+    <div class="topic-row"><span class="tname">קבלות תרומה</span><span class="topic-score ts-green">9.00/10</span></div>
+    <div class="topic-row"><span class="tname">הנהלת חשבונות</span><span class="topic-score ts-green">8.09/10</span></div>
+    <div class="topic-row"><span class="tname">מספר הקצאה, חשבוניות ישראל</span><span class="topic-score ts-green">7.97/10</span></div>
+    <div class="topic-row"><span class="tname">מסמכים, פריטים וניהול מלאי</span><span class="topic-score ts-green">7.93/10</span></div>
+    <div class="topic-row"><span class="tname">שליחה למייל, חתימה דיגיטלית</span><span class="topic-score ts-green">7.93/10</span></div>
+    <div class="topic-row"><span class="tname">גיבויים וממשקים <span style="color:#aaa;font-size:0.85em;">(136 שיחות — הכי נפוץ)</span></span><span class="topic-score ts-green">7.85/10</span></div>
+    <div class="topic-row"><span class="tname">מע"מ וניכוי במקור</span><span class="topic-score ts-green">7.85/10</span></div>
+    <div class="topic-row"><span class="tname">שב"א ואשראי</span><span class="topic-score ts-amber">7.70/10</span></div>
+    <div class="topic-row"><span class="tname">דוחות</span><span class="topic-score ts-amber">7.62/10</span></div>
+    <div class="topic-row"><span class="tname">טכני + משתמשים והרשאות</span><span class="topic-score ts-amber">7.25/10</span></div>
+    <div class="topic-row"><span class="tname">כללי ודוקה</span><span class="topic-score ts-red">6.89/10</span></div>
+  </div>
+
+  <hr>
+
+  <!-- SECTION 6 -->
+  <h2><span class="num">6</span> דגלי חשד לסיווג שגוי</h2>
+  <p>כותרת לחיצה בדשבורד: <strong>"🚩 דגלי חשד לסיווג שגוי | 3 שיחות"</strong>. לחיצה עליה פותחת את הרשימה.</p>
+  <p>3 שיחות שסווגו "תקין" אבל פותחות ב"אינני יודע". לחיצה על כל שיחה מגלגלת ופותחת אותה ישירות בדשבורד.</p>
+  <div class="box box-red">
+    <strong>הממצא:</strong> 2 מתוך 3 השיחות מנושא שב"א ואשראי — שגיאה 255. ייתכן שיש פער ידע של הבוט בקוד שגיאה זה.
+  </div>
+
+  <hr>
+
+  <!-- SECTION 7 -->
+  <h2><span class="num">7</span> תובנות ניהוליות — 6 כרטיסיות</h2>
+  <p>6 כרטיסיות שמסכמות את הממצאים החשובים בשפה ניהולית.</p>
+
+  <div class="insight-grid" style="margin-top:18px;">
+
+    <div class="insight-card" style="background:#F0FFF4; border-color:#3FB950;">
+      <div class="ic-title" style="color:#1a6b30;">✅ הבוט ישיר ורלוונטי</div>
+      <ul>
+        <li>ישירות: 98.5% — הבוט כמעט אף פעם לא מתחמק</li>
+        <li>רלוונטיות: 92% — הבוט מבין ועונה על מה שנשאל</li>
+      </ul>
+      <div class="ic-note" style="color:#1a6b30;"><strong>משמעות:</strong> תוכן התשובות נכון. אפשר להתמקד בשיפור פורמט — לא ידע.</div>
+    </div>
+
+    <div class="insight-card" style="background:#FFF0F0; border-color:#F85149;">
+      <div class="ic-title" style="color:#c0392b;">⚠️ בהירות הוא הפער הקריטי</div>
+      <ul>
+        <li>41% בלבד — הנמוך מכל 5 הממדים</li>
+        <li>הבעיה: תשובות נכונות אך קשות לקריאה</li>
+      </ul>
+      <div class="ic-note" style="color:#c0392b;"><strong>ה-ROI הגבוה ביותר:</strong> שינוי פורמט הכתיבה — לא הידע — צפוי להעלות את הציון ב-1.5 נקודה.</div>
+    </div>
+
+    <div class="insight-card" style="background:#FFFBEB; border-color:#E3B341;">
+      <div class="ic-title" style="color:#8a5c00;">📊 כללי ודוקה הוא הנושא המפגר</div>
+      <ul>
+        <li>ציון 6.89/10 — הנושא היחיד מתחת ל-7</li>
+        <li>ספציפיות: 60%, שלמות: 68%</li>
+      </ul>
+      <div class="ic-note" style="color:#8a5c00;"><strong>הערה:</strong> זו לא בעיה פורמטית — יש פגיעה בכיסוי מאגר הידע. נדרש לחזק תוכן הידע.</div>
+    </div>
+
+    <div class="insight-card" style="background:#EBF3FF; border-color:#2F81F7;">
+      <div class="ic-title" style="color:#1a4b8a;">🎯 97% מעל סף הכשל</div>
+      <ul>
+        <li>רק 19 שיחות (3%) מתחת ל-6/10</li>
+        <li>הנהלת חשבונות: 8.09/10 | קבלות תרומה: 9.0/10</li>
+      </ul>
+      <div class="ic-note" style="color:#1a4b8a;"><strong>משמעות:</strong> הבוט יציב ואמין. שיעור כשל נמוך מאפיין בוט שירות בוגר.</div>
+    </div>
+
+    <div class="insight-card" style="background:#F5F0FF; border-color:#A371F7;">
+      <div class="ic-title" style="color:#6a3ea8;">🔬 3 שיחות מסומנות לבדיקה</div>
+      <ul>
+        <li>3 שיחות פותחות ב"אינני יודע" למרות שסווגו "תקין"</li>
+        <li>2 מהן בנושא שב"א ואשראי (שגיאה 255)</li>
+      </ul>
+      <div class="ic-note" style="color:#6a3ea8;"><strong>השאלה:</strong> האם קריטריוני הסיווג ב-QA מדויקים? כדאי לבדוק ולהחליט.</div>
+    </div>
+
+    <div class="insight-card" style="background:#F0FFFE; border-color:#00D4AA;">
+      <div class="ic-title" style="color:#007a64;">📈 סדר עדיפויות לפיתוח</div>
+      <ol style="padding-right:18px;font-size:0.9em;margin-bottom:8px;">
+        <li><strong>בהירות מבנה</strong> — שינוי הוראות כתיבה (השפעה גבוהה ביותר)</li>
+        <li><strong>תוכן כללי ודוקה</strong> — הרחבת מאגר הידע</li>
+        <li><strong>ספציפיות תפריטים</strong> — דיוק מסלולי ניווט</li>
+      </ol>
+      <div class="ic-note" style="color:#007a64;"><strong>יעד:</strong> השלושה יחד צפויים להעלות את הממוצע מ-7.76 ל-8.5+</div>
+    </div>
+
+  </div>
+
+  <hr>
+
+  <!-- SECTION 8 -->
+  <h2><span class="num">8</span> פירוט נושאים ושיחות</h2>
+  <p>בתחתית הדשבורד רשימה של 11 הנושאים. לחיצה על נושא פותחת את כל השיחות שלו. לחיצה על שאלה פותחת את התשובה המלאה.</p>
+  <p><strong>הציון ליד כל שיחה:</strong></p>
+  <ul>
+    <li><span class="score-green">●</span> <strong>ירוק (8–10)</strong> — תשובה מצוינת</li>
+    <li><span class="score-amber">●</span> <strong>ענבר (6–7.9)</strong> — תשובה סבירה</li>
+    <li><span class="score-red">●</span> <strong>אדום (מתחת ל-6)</strong> — תשובה בעייתית</li>
+  </ul>
+  <p style="margin-top:10px;">השיחות מסודרות מהציון הנמוך לגבוה — הבעייתיות מופיעות ראשונות. הציון ליד שם הנושא הוא הממוצע של כל השיחות בו.</p>
+
+  <hr>
+
+  <!-- SECTION 9 -->
+  <h2><span class="num">9</span> סיכום</h2>
+  <div class="box" style="background:#fff;border:1px solid #e0e7ef;border-right:4px solid #2F81F7;padding:18px 22px;margin-bottom:28px;font-size:1.0em;line-height:1.85;">
+    <p style="margin-bottom:8px;"><span class="score-red">●</span> <strong>הפעולה הקריטית:</strong> שינוי פורמט התשובות (בהירות). לא דורש ידע חדש — רק אופן כתיבה.</p>
+    <p><span class="score-blue">●</span> <strong>יעד ריאלי:</strong> עם 3 שיפורים ממוקדים, אפשר להגיע מ-7.76 ל-8.5+ תוך זמן קצר.</p>
+  </div>
+
+  <div style="margin:28px 0 24px; background:#edfbf0; border-right:5px solid #2da44e; border-radius:8px; padding:20px 24px;">
+    <div style="font-size:0.78em; letter-spacing:2px; color:#2da44e; font-weight:700; margin-bottom:8px; text-transform:uppercase;">המסר הגדול</div>
+    <div style="font-size:1.25em; font-weight:800; color:#0a3d1f; line-height:1.7;">הבוט עובד טוב. 97% מהשיחות עוברות, הוא ישיר, רלוונטי ואמין.</div>
+  </div>
+
+  <div style="text-align:center; margin-top:48px; color:#aaa; font-size:0.85em; padding-bottom:16px;">
+    מדריך קריאת הדשבורד | ניתוח איכות שיחות תקינות | שבוע 10–14 במאי 2026
+  </div>
+
+</div><!-- .content -->
+</div><!-- .page -->
+</body>
+</html>
