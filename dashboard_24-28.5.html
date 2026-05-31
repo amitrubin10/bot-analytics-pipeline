@@ -1,0 +1,187 @@
+<!DOCTYPE html><html lang="he" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>דשבורד שירות שבועי | חשבשבת | 24/05/2026 - 28/05/2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#1a237e;--primary2:#3949ab;--accent:#00bcd4;--accent2:#ff6f00;--green:#4caf50;--pink:#e91e63;
+--north:#00695c;--dan:#1565c0;--south:#6a1b9a;--web:#e65100;--ink:#1e293b;--muted:#64748b;--line:#e6e9f0;--bg:#eef1f6;
+--shadow:0 6px 20px rgba(20,30,80,.08)}
+body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--ink);direction:rtl;line-height:1.5;padding:24px}
+.container{max-width:1360px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+.header{background:linear-gradient(120deg,#1a237e,#3949ab);color:#fff;border-radius:18px;padding:28px 34px;display:flex;justify-content:space-between;align-items:center;box-shadow:var(--shadow);flex-wrap:wrap;gap:16px}
+.header h1{font-size:30px;font-weight:800}.header .subtitle{font-size:15px;opacity:.85;margin-top:6px;font-weight:300}
+.header-right{text-align:left}.header .company{font-size:24px;font-weight:800}
+.date-badge{margin-top:8px;background:rgba(255,255,255,.18);padding:6px 16px;border-radius:20px;font-size:14px;font-weight:600;display:inline-block}
+.kpi-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.kpi-card{border-radius:16px;padding:22px 20px;color:#fff;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.g1{background:linear-gradient(135deg,#3949ab,#5c6bc0)}.g2{background:linear-gradient(135deg,#00acc1,#26c6da)}
+.g3{background:linear-gradient(135deg,#fb8c00,#ffa726)}.g4{background:linear-gradient(135deg,#43a047,#66bb6a)}
+.g5{background:linear-gradient(135deg,#d81b60,#ec407a)}
+.kpi-icon{font-size:26px;opacity:.55;position:absolute;top:16px;left:18px}
+.kpi-value{font-size:34px;font-weight:800;line-height:1}.kpi-label{font-size:14px;font-weight:600;margin-top:10px;opacity:.95}
+.kpi-sub{font-size:12px;opacity:.8;margin-top:6px}
+.region-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.region-card{border-radius:16px;padding:20px 22px;color:#fff;box-shadow:var(--shadow)}
+.r-north{background:linear-gradient(135deg,#00695c,#26a69a)}.r-dan{background:linear-gradient(135deg,#1565c0,#42a5f5)}
+.r-south{background:linear-gradient(135deg,#6a1b9a,#ab47bc)}.r-web{background:linear-gradient(135deg,#e65100,#ff9800)}
+.r-name{font-size:18px;font-weight:800}.r-branches{font-size:11.5px;opacity:.85;margin:6px 0 14px;min-height:30px}
+.r-big{font-size:38px;font-weight:800;line-height:1}.r-row{font-size:13px;opacity:.95;margin-top:4px}
+.r-detail{font-size:11.5px;opacity:.8;margin-top:8px}
+.r-prog{height:7px;background:rgba(255,255,255,.25);border-radius:6px;margin:12px 0 8px;overflow:hidden}
+.r-prog-fill{height:100%;background:#fff;border-radius:6px}
+.r-rate{font-size:22px;font-weight:800}.r-rate-lbl{font-size:11px;opacity:.85}
+.r-active{font-size:11.5px;opacity:.85;margin-top:8px;border-top:1px solid rgba(255,255,255,.25);padding-top:8px}
+.card{background:#fff;border-radius:16px;padding:22px 24px;box-shadow:var(--shadow)}
+.card-title{font-size:17px;font-weight:800;color:var(--primary);margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--line)}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px}
+.chart-wrap{position:relative;width:100%}
+.h240{height:240px}.h280{height:280px}.h320{height:320px}.h360{height:360px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+thead th{background:var(--primary);color:#fff;padding:11px 12px;font-weight:600;text-align:center;position:sticky;top:0}
+thead th:first-child,tbody td:first-child{text-align:right}
+tbody td{padding:10px 12px;text-align:center;border-bottom:1px solid var(--line)}
+tbody tr:hover{background:#f6f8fc}
+.total-row td{background:#eef1f8;font-weight:800;border-top:2px solid var(--primary)}
+.table-scroll{max-height:420px;overflow:auto;border:1px solid var(--line);border-radius:10px;margin-top:16px}
+.region-row.r-north td:first-child{box-shadow:inset 4px 0 0 #00695c}.region-row.r-dan td:first-child{box-shadow:inset 4px 0 0 #1565c0}
+.region-row.r-south td:first-child{box-shadow:inset 4px 0 0 #6a1b9a}.region-row.r-web td:first-child{box-shadow:inset 4px 0 0 #e65100}
+.region-row.r-north{background:#e0f2f1}.region-row.r-dan{background:#e3f2fd}.region-row.r-south{background:#f3e5f5}.region-row.r-web{background:#fff3e0}
+.region-tag{font-size:11px;font-weight:700;padding:3px 10px;border-radius:12px;display:inline-block}
+.region-tag.r-north{background:#b2dfdb;color:#00695c}.region-tag.r-dan{background:#bbdefb;color:#1565c0}
+.region-tag.r-south{background:#e1bee7;color:#6a1b9a}.region-tag.r-web{background:#ffe0b2;color:#e65100}
+.zero-val{color:#cbd5e1}.highlight-num{font-weight:700;color:var(--primary)}
+.stat-highlight{display:flex;justify-content:space-between;align-items:center;padding:11px 14px;background:#f6f8fc;border-radius:10px;margin-bottom:8px;font-size:13px}
+.stat-highlight strong{color:var(--primary);font-size:14px}
+.module-item{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line);font-size:13px}
+.badge{background:var(--primary2);color:#fff;font-size:12px;font-weight:700;padding:2px 11px;border-radius:12px}
+.badge.v-old{background:#c62828}.badge.v-mid{background:#e65100}.badge.v-new{background:#2e7d32}.badge.v-latest{background:#1565c0}
+.footer{text-align:center;color:var(--muted);font-size:13px;padding:18px}
+@media(max-width:1200px){.kpi-grid{grid-template-columns:repeat(3,1fr)}.region-grid{grid-template-columns:repeat(2,1fr)}.grid-3{grid-template-columns:1fr}}
+@media(max-width:760px){.kpi-grid,.region-grid,.grid-2{grid-template-columns:1fr}}
+</style>
+</head><body><div class="container">
+<div class="header"><div><h1>דשבורד ניהולי שבועי</h1><div class="subtitle">סיכום פעילות קריאות שירות, לקוחות ומהדורות</div></div>
+<div class="header-right"><div class="company">חשבשבת</div><div class="date-badge">24/05/2026 - 28/05/2026</div></div></div>
+<div class="kpi-grid">
+<div class="kpi-card g1"><div class="kpi-icon">📞</div><div class="kpi-value">6,763</div><div class="kpi-label">קריאות שנפתחו</div><div class="kpi-sub">סה"כ בכל הסניפים</div></div>
+<div class="kpi-card g4"><div class="kpi-icon">✓</div><div class="kpi-value">6,074</div><div class="kpi-label">קריאות שנסגרו</div><div class="kpi-sub">89.8% שיעור סגירה</div></div>
+<div class="kpi-card g2"><div class="kpi-icon">👤</div><div class="kpi-value">5</div><div class="kpi-label">לקוחות חדשים</div><div class="kpi-sub">+ 3 לקוח Web חדש</div></div>
+<div class="kpi-card g3"><div class="kpi-icon">💻</div><div class="kpi-value">1,160</div><div class="kpi-label">לקוחות Web</div><div class="kpi-sub">H-Mobile: 79 | H-Protect: 309</div></div>
+<div class="kpi-card g5"><div class="kpi-icon">🔄</div><div class="kpi-value">178</div><div class="kpi-label">חידושי שרות ברצף</div><div class="kpi-sub">חידשו שרות: 5</div></div>
+</div>
+<div class="region-grid">
+<div class="region-card r-north"><div class="r-name">🌿 מרחב צפון</div>
+<div class="r-branches">רעננה · אשדוד · יוקנעם</div><div class="r-big">865</div><div class="r-row">קריאות שנפתחו</div>
+<div class="r-row">נסגרו: <strong>824</strong></div><div class="r-detail">⏳ בהמתנה: 41 | ⚠ ללא טיפול: 7</div>
+<div class="r-prog"><div class="r-prog-fill" style="width:95.3%"></div></div>
+<div><span class="r-rate">95.3%</span> <span class="r-rate-lbl">שיעור סגירה</span></div>
+<div class="r-active">2 סניפים פעילים מתוך 3</div></div>
+<div class="region-card r-dan"><div class="r-name">🏙 מרחב דן</div>
+<div class="r-branches">תל אביב מרכז · תל אביב דרום · דן · השרון · ירושלים · פתח תקוה · ווב</div><div class="r-big">2,742</div><div class="r-row">קריאות שנפתחו</div>
+<div class="r-row">נסגרו: <strong>2,386</strong></div><div class="r-detail">⏳ בהמתנה: 356 | ⚠ ללא טיפול: 110</div>
+<div class="r-prog"><div class="r-prog-fill" style="width:87.0%"></div></div>
+<div><span class="r-rate">87.0%</span> <span class="r-rate-lbl">שיעור סגירה</span></div>
+<div class="r-active">3 סניפים פעילים מתוך 7</div></div>
+<div class="region-card r-south"><div class="r-name">☀ מרחב דרום</div>
+<div class="r-branches">רחובות · חולון · באר שבע</div><div class="r-big">2,148</div><div class="r-row">קריאות שנפתחו</div>
+<div class="r-row">נסגרו: <strong>1,942</strong></div><div class="r-detail">⏳ בהמתנה: 206 | ⚠ ללא טיפול: 22</div>
+<div class="r-prog"><div class="r-prog-fill" style="width:90.4%"></div></div>
+<div><span class="r-rate">90.4%</span> <span class="r-rate-lbl">שיעור סגירה</span></div>
+<div class="r-active">2 סניפים פעילים מתוך 3</div></div>
+<div class="region-card r-web"><div class="r-name">🌐 מרחב ווב</div>
+<div class="r-branches">עכו</div><div class="r-big">1,008</div><div class="r-row">קריאות שנפתחו</div>
+<div class="r-row">נסגרו: <strong>922</strong></div><div class="r-detail">⏳ בהמתנה: 86 | ⚠ ללא טיפול: 8</div>
+<div class="r-prog"><div class="r-prog-fill" style="width:91.5%"></div></div>
+<div><span class="r-rate">91.5%</span> <span class="r-rate-lbl">שיעור סגירה</span></div>
+<div class="r-active">מרחב נפרד</div></div>
+</div>
+<div class="grid-2"><div class="card"><h2 class="card-title">השוואת מרחבים — נפתחו מול נסגרו</h2><div class="chart-wrap h280"><canvas id="regionVolumeChart"></canvas></div></div>
+<div class="card"><h2 class="card-title">שיעור סגירה לפי מרחב</h2><div class="chart-wrap h280"><canvas id="regionRateChart"></canvas></div></div></div>
+<div class="card"><h2 class="card-title">סיכום לפי מרחב</h2><table><thead><tr><th>מרחב</th><th>סניפים</th><th>נפתחו</th><th>נסגרו</th><th>בהמתנה</th><th>ללא טיפול</th><th>% סגירה</th><th>פעילים / סה"כ</th></tr></thead><tbody>
+<tr class="region-row r-north"><td><strong>🌿 צפון</strong></td><td>3</td><td>865</td><td>824</td><td>41</td><td>7</td><td>95.3%</td><td>2 / 3</td></tr>
+<tr class="region-row r-dan"><td><strong>🏙 דן</strong></td><td>7</td><td>2,742</td><td>2,386</td><td>356</td><td>110</td><td>87.0%</td><td>3 / 7</td></tr>
+<tr class="region-row r-south"><td><strong>☀ דרום</strong></td><td>3</td><td>2,148</td><td>1,942</td><td>206</td><td>22</td><td>90.4%</td><td>2 / 3</td></tr>
+<tr class="region-row r-web"><td><strong>🌐 ווב</strong></td><td>1</td><td>1,008</td><td>922</td><td>86</td><td>8</td><td>91.5%</td><td>1 / 1</td></tr>
+<tr class="total-row"><td>סה"כ</td><td>14</td><td>6,763</td><td>6,074</td><td>689</td><td>147</td><td>89.8%</td><td>8 / 14</td></tr>
+</tbody></table></div>
+<div class="card"><h2 class="card-title">קריאות שירות לפי סניף</h2><div class="chart-wrap h360"><canvas id="branchChart"></canvas></div>
+<div class="table-scroll"><table><thead><tr><th>מס'</th><th>סניף</th><th>מרחב</th><th>נפתחו</th><th>נסגרו</th><th>בהמתנה</th><th>ללא טיפול</th><th>% סגירה</th></tr></thead><tbody id="branchTbody"></tbody></table></div></div>
+<div class="grid-3"><div class="card"><h2 class="card-title">שיעור סגירת קריאות</h2><div class="chart-wrap h240"><canvas id="closeRateChart"></canvas></div><p style="text-align:center;color:var(--muted);margin-top:10px">689 קריאות פתוחות נותרו</p></div>
+<div class="card"><h2 class="card-title">התפלגות קריאות לפי סניף</h2><div class="chart-wrap h240"><canvas id="branchPieChart"></canvas></div></div>
+<div class="card"><h2 class="card-title">נתונים מהירים</h2>
+<div class="stat-highlight"><span>סניפים פעילים</span><strong>8 / 14</strong></div>
+<div class="stat-highlight"><span>ממוצע קריאות לסניף פעיל</span><strong>845</strong></div>
+<div class="stat-highlight"><span>סניף מוביל</span><strong>דן (1,168)</strong></div>
+<div class="stat-highlight"><span>שיעור הסגירה הגבוה</span><strong>אשדוד (100.0%)</strong></div></div></div>
+<div class="card"><h2 class="card-title">התקנות מהדורות תוכנה</h2><div class="chart-wrap h360"><canvas id="versionChart"></canvas></div>
+<div class="table-scroll"><table><thead><tr><th>מהדורה</th><th>התקנות</th><th>תחנות</th><th>קטגוריה</th></tr></thead><tbody>
+<tr><td>2018a עד sp8</td><td>102</td><td>296</td><td><span class="badge v-old">ישנה</span></td></tr>
+<tr><td>2018a sp8</td><td>9</td><td>16</td><td><span class="badge v-old">ישנה</span></td></tr>
+<tr><td>2018a sp9</td><td>10</td><td>18</td><td><span class="badge v-old">ישנה</span></td></tr>
+<tr><td>2018a sp10</td><td>6</td><td>9</td><td><span class="badge v-old">ישנה</span></td></tr>
+<tr><td>2018a sp11</td><td>30</td><td>52</td><td><span class="badge v-old">ישנה</span></td></tr>
+<tr><td>2018a sp12</td><td>31</td><td>74</td><td><span class="badge v-old">ישנה</span></td></tr>
+<tr><td>2020a</td><td>8</td><td>10</td><td><span class="badge v-mid">בינונית</span></td></tr>
+<tr><td>2020a sp1</td><td>3</td><td>4</td><td><span class="badge v-mid">בינונית</span></td></tr>
+<tr><td>2020a sp2</td><td>14</td><td>29</td><td><span class="badge v-mid">בינונית</span></td></tr>
+<tr><td>2020a sp3</td><td>16</td><td>34</td><td><span class="badge v-mid">בינונית</span></td></tr>
+<tr><td>2020a sp4</td><td>13</td><td>35</td><td><span class="badge v-mid">בינונית</span></td></tr>
+<tr><td>2020a sp5</td><td>37</td><td>75</td><td><span class="badge v-mid">בינונית</span></td></tr>
+<tr><td>2020a sp6</td><td>153</td><td>391</td><td><span class="badge v-mid">בינונית</span></td></tr>
+<tr><td>2022a</td><td>206</td><td>459</td><td><span class="badge v-new">עדכנית</span></td></tr>
+<tr><td>2022a sp1</td><td>14</td><td>40</td><td><span class="badge v-new">עדכנית</span></td></tr>
+<tr><td>2022a sp2</td><td>32</td><td>53</td><td><span class="badge v-new">עדכנית</span></td></tr>
+<tr><td>2022a sp3</td><td>37</td><td>77</td><td><span class="badge v-new">עדכנית</span></td></tr>
+<tr><td>2022a sp4</td><td>10</td><td>15</td><td><span class="badge v-new">עדכנית</span></td></tr>
+<tr><td>2022a sp5</td><td>101</td><td>256</td><td><span class="badge v-new">עדכנית</span></td></tr>
+<tr><td>2023a</td><td>869</td><td>1,180</td><td><span class="badge v-latest">חדשה</span></td></tr>
+<tr><td>2023a SP1</td><td>413</td><td>764</td><td><span class="badge v-latest">חדשה</span></td></tr>
+<tr><td>2023a SP2</td><td>417</td><td>930</td><td><span class="badge v-latest">חדשה</span></td></tr>
+<tr><td>2025a</td><td>216</td><td>464</td><td><span class="badge v-latest">חדשה</span></td></tr>
+</tbody></table></div></div>
+<div class="grid-3"><div class="card"><h2 class="card-title">התפלגות לפי דור מהדורה</h2><div class="chart-wrap h240"><canvas id="versionGroupChart"></canvas></div>
+<div class="stat-highlight"><span>2018a</span><strong>188 התקנות · 465 תחנות</strong></div>
+<div class="stat-highlight"><span>2020a</span><strong>244 התקנות · 578 תחנות</strong></div>
+<div class="stat-highlight"><span>2022a</span><strong>400 התקנות · 900 תחנות</strong></div>
+<div class="stat-highlight"><span>2023a+</span><strong>1,915 התקנות · 3,338 תחנות</strong></div>
+</div><div class="card"><h2 class="card-title">התקנות מודולים</h2>
+<div class="module-item"><span>עדכון פקודות יומן</span><span class="badge">3</span></div>
+<div class="module-item"><span>התאמות בנק וניתוח כרטיסים</span><span class="badge">5</span></div>
+<div class="module-item"><span>הפקת שיקים</span><span class="badge">4</span></div>
+<div class="module-item"><span>חשבוניות וקבלות</span><span class="badge">3</span></div>
+<div class="module-item"><span>שב"א</span><span class="badge">1</span></div>
+<div class="module-item"><span>ניהול חוזים</span><span class="badge">1</span></div>
+<div class="stat-highlight" style="margin-top:12px"><span>סה"כ התקנות מודולים</span><strong>17</strong></div><div class="chart-wrap h240" style="margin-top:12px"><canvas id="moduleChart"></canvas></div></div>
+<div class="card"><h2 class="card-title">לקוחות Web ומובייל</h2><div class="chart-wrap h240"><canvas id="webChart"></canvas></div>
+<div class="stat-highlight"><span>Web רגיל</span><strong>772</strong></div><div class="stat-highlight"><span>H-PROTECT</span><strong>309</strong></div><div class="stat-highlight"><span>H-MOBILE</span><strong>79</strong></div></div></div>
+<div class="card"><h2 class="card-title">שיעור סגירה לפי סניף</h2><div class="chart-wrap h360"><canvas id="closeRateBranchChart"></canvas></div></div>
+<div class="footer">דשבורד ניהולי — חשבשבת | נתוני שבוע 24/05/2026 - 28/05/2026 | הופק מתאריך הפקת הדוח 28/05/2026 20:00:32 </div>
+</div>
+<script>
+Chart.register(ChartDataLabels);Chart.defaults.font.family="Heebo";Chart.defaults.font.size=12;
+const D={"brs": [{"n": 2, "nm": "תל אביב מרכז", "o": 0, "c": 0, "w": 0, "u": 0, "r": "dan"}, {"n": 3, "nm": "תל אביב דרום", "o": 0, "c": 0, "w": 0, "u": 0, "r": "dan"}, {"n": 4, "nm": "דן", "o": 1168, "c": 972, "w": 196, "u": 69, "r": "dan"}, {"n": 5, "nm": "רחובות", "o": 1107, "c": 990, "w": 117, "u": 12, "r": "south"}, {"n": 6, "nm": "רעננה", "o": 864, "c": 823, "w": 41, "u": 7, "r": "north"}, {"n": 7, "nm": "השרון", "o": 0, "c": 0, "w": 0, "u": 0, "r": "dan"}, {"n": 8, "nm": "ירושלים", "o": 0, "c": 0, "w": 0, "u": 0, "r": "dan"}, {"n": 9, "nm": "חולון", "o": 1041, "c": 952, "w": 89, "u": 10, "r": "south"}, {"n": 10, "nm": "פתח תקוה", "o": 1160, "c": 1014, "w": 146, "u": 41, "r": "dan"}, {"n": 12, "nm": "באר שבע", "o": 0, "c": 0, "w": 0, "u": 0, "r": "south"}, {"n": 13, "nm": "אשדוד", "o": 1, "c": 1, "w": 0, "u": 0, "r": "north"}, {"n": 14, "nm": "יוקנעם", "o": 0, "c": 0, "w": 0, "u": 0, "r": "north"}, {"n": 15, "nm": "עכו", "o": 1008, "c": 922, "w": 86, "u": 8, "r": "web"}, {"n": 17, "nm": "ווב", "o": 414, "c": 400, "w": 14, "u": 0, "r": "dan"}], "rEmoji": {"north": "🌿", "dan": "🏙", "south": "☀", "web": "🌐"}, "rLabel": {"north": "צפון", "dan": "דן", "south": "דרום", "web": "ווב"}, "rLabels": ["צפון", "דן", "דרום", "ווב"], "rOpened": [865, 2742, 2148, 1008], "rClosed": [824, 2386, 1942, 922], "rRate": [95.3, 87.0, 90.4, 91.5], "rFill": ["rgba(38,166,154,.85)", "rgba(66,165,245,.85)", "rgba(171,71,188,.85)", "rgba(255,152,0,.85)"], "rDark": ["#00695c", "#1565c0", "#6a1b9a", "#e65100"], "bNames": ["דן", "פתח תקוה", "רחובות", "חולון", "עכו", "רעננה", "ווב", "אשדוד"], "bOpened": [1168, 1160, 1107, 1041, 1008, 864, 414, 1], "bClosed": [972, 1014, 990, 952, 922, 823, 400, 1], "closed": 6074, "openRem": 689, "closeRate": 89.8, "pieL": ["דן", "פתח תקוה", "רחובות", "חולון", "עכו", "רעננה", "ווב", "אשדוד"], "pieD": [1168, 1160, 1107, 1041, 1008, 864, 414, 1], "vL": ["2023a", "2023a SP2", "2023a SP1", "2025a", "2022a", "2020a sp6", "2018a עד sp8", "2022a sp5"], "vI": [869, 417, 413, 216, 206, 153, 102, 101], "vS": [1180, 930, 764, 464, 459, 391, 296, 256], "famL": ["2018a", "2020a", "2022a", "2023a+"], "famD": [188, 244, 400, 1915], "modL": ["עדכון פקודות יומן", "התאמות בנק וניתוח כרטיסים", "הפקת שיקים", "חשבוניות וקבלות", "שב\"א", "ניהול חוזים"], "modD": [3, 5, 4, 3, 1, 1], "webD": [772, 309, 79], "crbL": ["אשדוד", "ווב", "רעננה", "עכו", "חולון", "רחובות", "פתח תקוה", "דן"], "crbD": [100.0, 96.6, 95.3, 91.5, 91.5, 89.4, 87.4, 83.2]};const fmt=n=>Number(n).toLocaleString("he-IL");
+const PIE=['#1a237e','#3949ab','#5c6bc0','#7986cb','#00bcd4','#ff6f00','#e91e63','#26a69a','#8d6e63','#789262','#5d4037','#455a64','#c2185b','#0097a7'];
+const O={responsive:true,maintainAspectRatio:false};
+const tb=document.getElementById('branchTbody');
+const act=D.brs.filter(b=>b.o>0).sort((a,b)=>a.n-b.n),zero=D.brs.filter(b=>b.o===0).sort((a,b)=>a.n-b.n);
+[...act,...zero].forEach(b=>{const z=b.o===0?'zero-val':'';const tr=document.createElement('tr');
+tr.innerHTML='<td class="'+z+'">'+b.n+'</td><td class="'+z+'">'+b.nm+'</td><td><span class="region-tag r-'+b.r+'">'+D.rEmoji[b.r]+' '+D.rLabel[b.r]+'</span></td><td class="'+(b.o>0?'highlight-num':z)+'">'+(b.o>0?fmt(b.o):'0')+'</td><td class="'+z+'">'+(b.c||0)+'</td><td class="'+z+'">'+(b.w||0)+'</td><td class="'+z+'">'+(b.u||0)+'</td><td class="'+z+'">'+(b.o>0?((b.c/b.o*100).toFixed(1)+'%'):'—')+'</td>';tb.appendChild(tr);});
+const dlBar={anchor:'end',align:'top',offset:4,clamp:false,font:{weight:'700',size:10},formatter:v=>v?fmt(v):''};
+const dlPct={anchor:'end',align:'top',offset:4,clamp:false,font:{weight:'700',size:10},color:'#333',formatter:v=>v+'%'};
+const dlIn={color:'#fff',font:{weight:'800',size:12},formatter:(v,c)=>{const t=c.dataset.data.reduce((a,b)=>a+b,0);return t?((v/t*100).toFixed(1)+'%'):''}};
+new Chart(regionVolumeChart,{type:'bar',data:{labels:D.rLabels,datasets:[{label:'נפתחו',data:D.rOpened,backgroundColor:D.rFill},{label:'נסגרו',data:D.rClosed,backgroundColor:D.rDark}]},options:{...O,layout:{padding:{top:24}},plugins:{datalabels:dlBar,legend:{position:'bottom'}},scales:{y:{beginAtZero:true}}}});
+new Chart(regionRateChart,{type:'bar',data:{labels:D.rLabels,datasets:[{label:'% סגירה',data:D.rRate,backgroundColor:D.rDark}]},options:{...O,layout:{padding:{top:24}},plugins:{datalabels:dlPct,legend:{display:false}},scales:{y:{min:80,max:104}}}});
+new Chart(branchChart,{type:'bar',data:{labels:D.bNames,datasets:[{label:'נפתחו',data:D.bOpened,backgroundColor:'#3949ab'},{label:'נסגרו',data:D.bClosed,backgroundColor:'#4caf50'}]},options:{...O,layout:{padding:{top:24}},plugins:{datalabels:dlBar,legend:{position:'bottom'}},scales:{y:{beginAtZero:true}}}});
+new Chart(closeRateChart,{type:'doughnut',data:{labels:['נסגרו','פתוחות'],datasets:[{data:[D.closed,D.openRem],backgroundColor:['#4caf50','#e0e0e0']}]},options:{...O,cutout:'72%',plugins:{legend:{display:false},datalabels:{color:'#2e7d32',font:{weight:'900',size:24},formatter:(v,c)=>c.dataIndex===0?D.closeRate+'%':''}}}});
+new Chart(branchPieChart,{type:'pie',data:{labels:D.pieL,datasets:[{data:D.pieD,backgroundColor:PIE}]},options:{...O,plugins:{legend:{position:'bottom',labels:{font:{size:10},boxWidth:12}},datalabels:dlIn}}});
+new Chart(versionChart,{type:'bar',data:{labels:D.vL,datasets:[{label:'התקנות',data:D.vI,backgroundColor:'#3949ab'},{label:'תחנות',data:D.vS,backgroundColor:'#00bcd4'}]},options:{...O,layout:{padding:{top:24}},plugins:{datalabels:dlBar,legend:{position:'bottom'}},scales:{y:{beginAtZero:true}}}});
+new Chart(versionGroupChart,{type:'doughnut',data:{labels:D.famL,datasets:[{data:D.famD,backgroundColor:['#c62828','#e65100','#2e7d32','#1565c0']}]},options:{...O,plugins:{legend:{position:'bottom',labels:{boxWidth:12}},datalabels:dlIn}}});
+new Chart(moduleChart,{type:'bar',data:{labels:D.modL,datasets:[{label:'הותקנו',data:D.modD,backgroundColor:'#ff6f00'}]},options:{...O,indexAxis:'y',plugins:{datalabels:{anchor:'end',align:'end',font:{weight:'700'}},legend:{display:false}},scales:{x:{beginAtZero:true}}}});
+new Chart(webChart,{type:'doughnut',data:{labels:['Web רגיל','H-PROTECT','H-MOBILE'],datasets:[{data:D.webD,backgroundColor:['#00838f','#ff6f00','#e91e63']}]},options:{...O,plugins:{legend:{position:'bottom',labels:{boxWidth:12}},datalabels:dlIn}}});
+const cc=D.crbD.map(v=>v>=95?'#2e7d32':v>=92?'#4caf50':v>=90?'#ff9800':'#f44336');
+new Chart(closeRateBranchChart,{type:'bar',data:{labels:D.crbL,datasets:[{label:'% סגירה',data:D.crbD,backgroundColor:cc}]},options:{...O,layout:{padding:{top:24}},plugins:{datalabels:dlPct,legend:{display:false}},scales:{y:{max:105,beginAtZero:true}}}});
+
+</script></body></html>
