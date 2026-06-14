@@ -161,7 +161,7 @@ const nf = n => (n==null?'—':Number(n).toLocaleString('he-IL'));
 
 // ---- KPI cards ----
 function renderKPIs(){
-  const tavla = 'dashboard_07-11.6.26.html';
+  const tavla = 'tavla.html';
   const cards = [
     {cls:'neutral',label:'סך קריאות בטבלת שירות',val:nf(E.totalServiceCalls),sub:'סה"כ פניות לשירות בתקופה',metric:'totalServiceCalls',tavla:true},
     {cls:'accent',label:'סך קריאות בבוט',val:nf(E.totalBotCalls),sub:'פניות שעברו דרך הבוט',metric:'totalBotCalls'},
