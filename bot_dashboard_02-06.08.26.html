@@ -215,7 +215,6 @@ function renderKPIs(){
     {cls:'danger',label:'הנושא המוביל בכשלים',value:e.leadingProblemTopic,valSmall:true,sub:'מתוך פילוח כשלים אמיתיים ('+e.leadingProblemCount+')',metric:'leadingProblemTopic'},
     {cls:'',label:'קריאות שנפתחו לנציג מהבוט',value:fmt(e.callsToAgent),sub:'פניות שהסלימו לנציג אנושי',metric:'callsToAgent'},
     {cls:'danger',label:'תשובות שגויות',value:fmt(e.realInvalidCount+e.indeterminateCount),sub:'פניות שהבוט נכשל בהן',sub2:'מתוכן '+e.realInvalidCount+' שגויות · '+e.indeterminateCount+' לא ניתן לקבוע',metric:'realInvalidCount'},
-    {cls:'success',label:'כמות הפניות נכונות לנציג',value:fmt(e.correctRedirects),sub:'שאלות מחוץ לתחום שהבוט הפנה נכון',metric:'correctRedirects'},
   ];
   document.getElementById('kpiGrid').innerHTML=cards.map(c=>{
     const info=c.info?'<span class="info-q" onclick="openInfo(\''+c.info+'\')">?</span>':'';
