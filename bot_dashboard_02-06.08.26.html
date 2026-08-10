@@ -208,7 +208,7 @@ function renderKPIs(){
   const cards=[
     {cls:'',label:'סך קריאות בטבלת שירות',value:fmt(e.totalServiceCalls),sub:'סה"כ פניות לשירות בתקופה',metric:'totalServiceCalls'},
     {cls:'accent',label:'סך קריאות בבוט',value:fmt(e.totalBotCalls),sub:'פניות שעברו דרך הבוט (בניכוי מנוי הבוט 696962)',sub2:'ברוטו '+fmt(e.totalBotCallsGross)+' · בניכוי '+fmt(e.sub696962)+' קריאות מנוי הבוט 696962',metric:'totalBotCalls'},
-    {cls:'',label:'כמות לקוחות',value:fmt(e.customerCount),sub:'משתמשים ייחודיים לפי session (כיסוי מלא), בניכוי מנוי הבוט 696962',sub2:'מספרי מנוי שונים: '+fmt(e.customerCountCustid)+' (כיסוי חלקי ~20% — השוואה מלאה מהשבוע הבא)',noHist:true},
+    {cls:'',label:'כמות לקוחות',value:fmt(e.customerCount),sub:'משתמשים ייחודיים לפי session: '+fmt(e.customerCountGross),sub2:'בניכוי מנוי הבוט 696962: '+fmt(e.bot696Sessions),noHist:true},
     {cls:'success',label:'שיעור סגירה בבוט (ללא נציג)',value:e.noAgentRate+'%',sub:'מסך הקריאות בבוט',metric:'noAgentRate'},
     {cls:'success',label:'תרומת הבוט להפחתת עומס',value:e.botContribution+'%',info:'botContribution',sub:fmt(e.handled)+' פניות שהבוט סגר מתוך '+fmt(e.uniqueTotal)+' כלל הפניות הייחודיות',metric:'botContribution'},
     {cls:'success',label:'אחוז הצלחה תפעולי (אחוז מענה איכותי)',value:e.operationalSuccessRate+'%',sub:'שמרני: '+e.conservativeSuccessRate+'%',metric:'operationalSuccessRate'},
